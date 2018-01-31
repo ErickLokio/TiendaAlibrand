@@ -7,8 +7,9 @@ public class Sucursal {
     private int idSucursal=0;
     private String sucursal=null;
     private String direccion=null;
-    private int telefono=0;
-    private int idCompania =0;
+    private int telefono_claro=0;
+    private int telefono_movistar=0;
+    private int id_empleado =0;
     private String email=null;
 
     public int getIdSucursal() {
@@ -35,22 +36,6 @@ public class Sucursal {
         this.direccion = direccion;
     }
 
-    public int getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    public int getIdCompania() {
-        return idCompania;
-    }
-
-    public void setIdCompania(int idCompania) {
-        this.idCompania = idCompania;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -58,6 +43,32 @@ public class Sucursal {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public int getTelefono_claro() {
+        return telefono_claro;
+    }
+
+    public void setTelefono_claro(int telefono_claro) {
+        this.telefono_claro = telefono_claro;
+    }
+
+    public int getTelefono_movistar() {
+        return telefono_movistar;
+    }
+
+    public void setTelefono_movistar(int telefono_movistar) {
+        this.telefono_movistar = telefono_movistar;
+    }
+
+    public int getId_empleado() {
+        return id_empleado;
+    }
+
+    public void setId_empleado(int id_empleado) {
+        this.id_empleado = id_empleado;
+    }
+    
+    
     
     
 }
