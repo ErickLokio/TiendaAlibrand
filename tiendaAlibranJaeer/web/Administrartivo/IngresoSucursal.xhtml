@@ -309,25 +309,21 @@
                         <li>
                             <a href="timeline.html"><i class="fa fa-flask fa-fw"></i>Timeline</a>
                         </li>
-                        
-                        
+
+
                         <li>
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Sucursal<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="IngresoSucursal.xhtml">Ingreso Sucursal</a>
+                                    <a href="">Ingreso Sucursal</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Modificar Sucursal</a>
+                                    <a href="frmSucursal.xhtml">Modificar Sucursal</a>
                                 </li>
                             </ul>
                             <!-- second-level-items -->
                         </li>
-                        
-                        
-                        
-                        
-                        
+
                         <li>
                             <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Forms</a>
                         </li>
@@ -409,14 +405,43 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">Sucursal</h1>
                     </div>
+                    
+                    
+                        <b:form id="frm" class="center-block">
+                            <b:inputText label="Nombre" placeholder="Nombre" value="#{sucursalBean.suc.sucursal}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds" />
 
+                            <b:inputText label="Direcciòn" placeholder="Direcciòn" value="#{sucursalBean.suc.direccion}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
 
+                            <b:inputText label="Encargado" placeholder="Encargado" value="#{sucursalBean.suc.id_empleado}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
+
+                            <b:inputText label="Telèfono Claro" placeholder="Telefono Claro" value="#{sucursalBean.suc.telefono_claro}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+
+                            <b:inputText label="Telefono Movistar" placeholder="Telefono Movistar" value="#{sucursalBean.suc.telefono_movistar}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="tel2"/>
+
+                            <b:inputText label="Telefono Movistar" placeholder="E-mail" value="#{sucursalBean.suc.email}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="email"/>
+
+                            <b:commandButton class="uk-button uk-button-default" value="Guardar" action="#{sucursalBean.insertar()}" update="frm"/>
+
+                        </b:form>
+                    
+
+                    <br/><br/><br/>
 
 
                     <h:form class="div-table-row div-table-head" id="frmTabla">
                         <b:dataTable var="sucu" 
                                      value="#{sucursalBean.lstSucursal2}" 
-                                     reflow="true"
                                      id='data'
                                      columnVisibility="true"
                                      class="tabla">
@@ -430,26 +455,19 @@
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_movistar}"  label="Telèfono Movistar"/>
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="E-mail"/>
 
-                            <b:dataTableColumn class="div-table-cell" label="Modificar">
-                                <p:commandButton  oncomplete="PF('wdlgDatos').show()"  icon="ui-icon-refresh" class="btn btn-info tooltips-general" title="Modificar Historial Clinico" />
-                            </b:dataTableColumn>
-
 
                             <p:column headerText="ELIMINAR">
                                 <b:row>
                                     <b:column span="3">
-                                        <b:commandButton value="Eliminar" look="Primary" size="lg" actionListener="#{sucursalBean.Eliminar(sucu)}"/>
+                                        <b:commandButton value="Eliminar" actionListener="#{sucursalBean.Eliminar(sucu)}" look="danger" update="@form"/>
                                     </b:column>
                                 </b:row>
                             </p:column>
+
+
                         </b:dataTable>
 
                     </h:form>
-
-
-
-
-
 
 
 
@@ -525,9 +543,9 @@
         <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
         <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script>
-            $(document).ready(function () {
-                $('#dataTables-example').dataTable();
-            });
+                                             $(document).ready(function () {
+                                                 $('#dataTables-example').dataTable();
+                                             });
         </script>
     </h:body>
 </html>
