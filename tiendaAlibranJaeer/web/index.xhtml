@@ -6,7 +6,539 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <!--.preloader-->
+        <div class="preloader"> <i class="fa fa-circle-o-notch fa-spin"></i></div>
+        <!--/.preloader-->
+        <header id="home">
+            <div id="home-slider" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="item active" style="background-image: url(images/slider/1.jpg)">
+                        <div class="caption">
+                            <h1 class="animated fadeInLeftBig">BIENVENIDO A <span> ALIBRAND</span></h1>
+                            <p class="animated fadeInRightBig"> TIENDA DEPORTIVA - FUTBOOL - BASQUETBALL</p>
+                            <p class="animated fadeInRightBig"> Accesorios Diversos</p>
+                            <a class="data-scroll btn btn-start animated fadeInUpBig"  href="#services">Empezar</a>
+                        </div>
+                    </div>
+                    <div class="item" style="background-image: url(images/slider/2.jpg)">
+                        <div class="caption">
+                            <h1 class="animated fadeInLeftBig">BIENVENIDO A <span> ALIBRAND</span></h1>
+                            <p class="animated fadeInRightBig"> TIENDA DEPORTIVA - FUTBOOL - BASQUETBALL</p>
+                            <p class="animated fadeInRightBig"> Accesorios Diversos</p>
+                            <a  class="data-scroll btn btn-start animated fadeInUpBig" href="#services">Empezar</a>
+                        </div>
+                    </div>
+                    <div class="item" style="background-image: url(images/slider/3.jpg)">
+                        <div class="caption">
+                            <h1 class="animated fadeInLeftBig">BIENVENIDO A <span> ALIBRAND</span></h1>
+                            <p class="animated fadeInRightBig">TIENDA DEPORTIVA - FUTBOOL - BASQUETBALL</p>
+                            <p class="animated fadeInRightBig"> Accesorios Diversos</p>
+                            <a  class=" data-scroll btn btn-start animated fadeInUpBig" href="#services">Empezar</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="left-control" href="#home-slider" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                <a class="right-control" href="#home-slider" data-slide="next"><i class="fa fa-angle-right"></i></a>
+
+                <a id="tohash" href="#seccion3"><i class="fa fa-angle-down"></i></a>
+
+            </div><!--/#home-slider-->
+            <div class="main-nav">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="index.html">
+                            <h1><img class="img-responsive" src="images/alibrand blanco.png"  width="180" alt="logo"/></h1>
+                        </a>                    
+                    </div>
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">                 
+                            <li class="scroll active"><a href="#home">Inicio</a></li>
+                            <li class="scroll"><a href="#services">Productos</a></li> 
+                            <li class="scroll"><a href="#about-us">Existencias</a></li>                     
+                            <li class="scroll"><a href="#portfolio">Nuevos Articulos</a></li>
+                            <li class="scroll"><a href="#contact">Contactanos   </a></li>   
+                            <li class="scroll"><a href="Login.xhtml">Login   </a></li>  
+                        </ul>
+                    </div>
+                </div>
+            </div><!--/#main-nav-->
+        </header><!--/#home-->
+        <section id="services">
+            <div class="container">
+                <div class="heading wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="row">
+                        <div class="text-center col-sm-8 col-sm-offset-2">
+                            <br/><br/><br/>
+                            <h2>Nuestros Productos</h2>
+                            <p>Somos una tienda BASADA EN LA VENTA DE ACCESORIOS DE FUTBOOL Y BASKETBOOL</p>
+                        </div>
+                    </div> 
+                </div>
+                <div class="text-center our-services">
+                    <div class="row">
+                        <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div>
+                                <img src="images/balonfut.jpg" width="75" height="75" class="img-circle" alt=""/>
+                            </div>
+                            <div class="service-info">
+                                <h3>Balones Futbool</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="450ms">
+                            <div>                                                             
+                                <img src="images/balonbasquet.jpg" width="90" height="90" class="img-circle" alt=""/>
+                            </div>
+                            <div    >
+                                <h3>Balones BASKETBOOL</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="550ms">
+                            <div>                                                         
+                                <img src="images/camisa-basketball.png" width="90" height="90" class="img-circle" alt=""/>
+                            </div>
+                            <div>
+                                <h3>Camisolas Basketbool</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="650ms">
+                            <div >
+                                <img src="images/camisola.jpg" width="90" height="90" class="img-circle" alt=""/>
+                            </div>
+                            <div>
+                                <h3>Camisolas Futbool</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="750ms">
+                            <div >
+                                <img src="images/zapatosF50-iloveimg-resized.jpg" width="90" height="90" class="img-circle" alt="" />
+                            </div>
+                            <div>
+                                <h3>Zapatos Futbool</h3> 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="850ms">
+                            <div>                        
+                                <img src="images/zapatosbasquet.jpg" width="90" height="90" class="img-circle" alt=""/>
+                            </div>
+                            <div>
+                                <h3>Zapatos Basketball</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!--/#services-->
+
+        <section id="about-us" class="parallax">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="about-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <h2>Existencias</h2>
+                            <p>Porcentajes de Existencias de Articulos en la Tienda Ali Brand</p>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="our-skills wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                <p class="lead">Articulos de Futbool</p>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="95">95%</div>
+                                </div>
+                            </div>
+                            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="400ms">
+                                <p class="lead">Articulos de Basquet</p>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="85">85%</div>
+                                </div>
+                            </div>
+                            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="500ms">
+                                <p class="lead">Zapatos Futbool</p>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="95">95%</div>
+                                </div>
+                            </div>
+                            <div class="single-skill wow fadeInDown" data-wow-duration="1000ms" data-wow-delay="600ms">
+                                <p class="lead">Zapatos Basketball</p>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-primary six-sec-ease-in-out" role="progressbar"  aria-valuetransitiongoal="85">85%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!--/#about-us-->
+
+
+        <section id="portfolio">
+            <div class="container">
+                <div class="row">
+                    <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <h2>Nuevos Articulos!!!</h2>
+                        <p>Nuevos Articulos Ingresados a la Tienda </p>
+                    </div>
+                </div> 
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/1.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="400ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/2.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="500ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/3.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/4.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="700ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/5.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="800ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/6.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInRightBig" data-wow-duration="1000ms" data-wow-delay="900ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/7.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="folio-item wow fadeInLeftBig" data-wow-duration="1000ms" data-wow-delay="1000ms">
+                            <div class="folio-image">
+                                <img class="img-responsive" src="images/portfolio/8.jpg" alt=""/>
+                            </div>
+                            <div class="overlay">
+                                <div class="overlay-content">
+                                    <div class="overlay-text">
+                                        <div class="folio-info">
+                                            <h3>Time Hours</h3>
+                                            <p>Design, Photography</p>
+                                        </div>
+                                        <div class="folio-overview">
+                                            <span class="folio-link"><a class="folio-read-more" href="#" data-single_url="portfolio-single.html" ><i class="fa fa-link"></i></a></span>
+                                            <span class="folio-expand"><a href="images/portfolio/portfolio-details.jpg" data-lightbox="portfolio"><i class="fa fa-search-plus"></i></a></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="portfolio-single-wrap">
+                <div id="portfolio-single">
+                </div>
+            </div><!-- /#portfolio-single-wrap -->
+        </section><!--/#portfolio-->
+
+        <section id="features" class="parallax">
+            <div class="container">
+                <div class="row count">
+                    <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <i class="fa fa-user"></i>
+                        <h3 class="timer">4000</h3>
+                        <p>Happy Clients</p>
+                    </div>
+                    <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <i class="fa fa-desktop"></i>
+                        <h3 class="timer">200</h3>                    
+                        <p>Modern Websites</p>
+                    </div> 
+                    <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="700ms">
+                        <i class="fa fa-trophy"></i>
+                        <h3 class="timer">10</h3>                    
+                        <p>WINNING AWARDS</p>
+                    </div> 
+                    <div class="col-sm-3 col-xs-6 wow fadeInLeft" data-wow-duration="1000ms" data-wow-delay="900ms">
+                        <i class="fa fa-comment-o"></i>                    
+                        <h3>24/7</h3>
+                        <p>Fast Support</p>
+                    </div>                 
+                </div>
+            </div>
+        </section><!--/#features-->
+
+        <br/>
+
+        <section id="blog">
+            <div class="container">
+                <div class="row">
+                    <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1200ms" data-wow-delay="300ms">
+
+
+                    </div>
+                </div>
+                <div class="blog-posts">
+                    <div class="row">
+                        <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="400ms">
+                            <div class="post-thumb">
+                                <a href="#"><img class="img-responsive" src="images/nike.png" alt=""/></a>                                                             
+                            </div>
+
+
+                        </div>
+                        <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="600ms">
+                            <div class="post-thumb">
+                                <div id="post-carousel"  class="carousel slide" data-ride="carousel">
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#post-carousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#post-carousel" data-slide-to="1"></li>
+                                        <li data-target="#post-carousel" data-slide-to="2"></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div class="item active">
+                                            <a href="#"><img class="img-responsive" src="images/ADIDAS.png" alt=""/></a>
+                                        </div>
+                                        <div class="item">
+                                            <a href="#"><img class="img-responsive" src="images/ADIDAS.png" alt=""/></a>
+                                        </div>
+                                        <div class="item">
+                                            <a href="#"><img class="img-responsive" src="images/ADIDAS.png" alt=""/></a>
+                                        </div>
+                                    </div>                               
+                                    <a class="blog-left-control" href="#post-carousel" role="button" data-slide="prev"><i class="fa fa-angle-left"></i></a>
+                                    <a class="blog-right-control" href="#post-carousel" role="button" data-slide="next"><i class="fa fa-angle-right"></i></a>
+                                </div>                                     
+                            </div>                           
+                        </div>
+                        <div class="col-sm-4 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="800ms">
+                            <div class="post-thumb">
+                                <a href="#"><img class="img-responsive" src="images/puma.jpg" alt=""/></a>                                                              
+                            </div>                                                        
+                        </div>                    
+                    </div>
+
+                </div>
+            </div>
+        </section><!--/#blog-->
+
+
+        <section id="contact">
+            <div id="google-map" class="wow fadeIn" data-latitude="52.365629" data-longitude="4.871331" data-wow-duration="1000ms" data-wow-delay="400ms"></div>
+            <div id="contact-us" class="parallax">
+                <div class="container">
+                    <div class="row">
+                        <div class="heading text-center col-sm-8 col-sm-offset-2 wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                            <h2>Contactanos</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+                        </div>
+                    </div>
+                    <div class="contact-form wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <form id="main-contact-form" name="contact-form" method="post" action="#">
+                                    <div class="row  wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" name="name" class="form-control" placeholder="Nombre" required="required"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="email" name="email" class="form-control" placeholder="Direccion Email " required="required"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="subject" class="form-control" placeholder="Asunto" required="required"/>
+                                    </div>
+                                    <div class="form-group">
+                                        <textarea name="message" id="message" class="form-control" rows="4" placeholder="Enter" required="required"></textarea>
+                                    </div>                        
+                                    <div class="form-group">
+                                        <button type="submit" class="btn-submit">Enviar Ahora</button>
+                                    </div>
+                                </form>   
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="contact-info wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
+                                    <ul class="address">
+                                        <li><i class="fa fa-map-marker"></i> <span> Direccion:</span> 2400 South Avenue A </li>
+                                        <li><i class="fa fa-phone"></i> <span> Telefono:</span> +928 336 2000  </li>
+                                        <li><i class="fa fa-phone"></i> <span> Telefono2:</span> <a href="#">www.sitename.com</a></li>
+                                        <li><i class="fa fa-envelope"></i> <span> Email:</span><a href="mailto:someone@yoursite.com"> support@oxygen.com</a></li>
+
+                                    </ul>
+                                </div>                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+        </section><!--/#contact-->
+
+        <footer id="footer">
+            <div class="footer-top wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                <div class="container text-center">
+                    <div class="footer-logo">
+                        <a href="index.html"><img class="img-responsive" src="images/alibrand blanco.png"  width="200" alt=""/></a>
+                    </div>
+                    <div class="social-icons">
+                        <ul>
+                            <li><a class="envelope" href="#"><i class="fa fa-envelope"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li> 
+                            <li><a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a></li>
+                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="tumblr" href="#"><i class="fa fa-tumblr-square"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p>&copy; 2016 Oxygen Theme.</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <p class="pull-right">Crafted by <a href="http://designscrazed.org/">Allie</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </h:body>
 </html>
 
