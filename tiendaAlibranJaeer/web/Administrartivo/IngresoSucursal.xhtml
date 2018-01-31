@@ -405,11 +405,10 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">Sucursal</h1>
                     </div>
-                    
-                    
-                        <b:form id="frm" class="center-block">
+
+                        <b:form id="frm">
                             <b:inputText label="Nombre" placeholder="Nombre" value="#{sucursalBean.suc.sucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds" />
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
                             <b:inputText label="Direcciòn" placeholder="Direcciòn" value="#{sucursalBean.suc.direccion}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" large-screen="two-thirds"/>
@@ -434,7 +433,7 @@
                             <b:commandButton class="uk-button uk-button-default" value="Guardar" action="#{sucursalBean.insertar()}" update="frm"/>
 
                         </b:form>
-                    
+
 
                     <br/><br/><br/>
 
