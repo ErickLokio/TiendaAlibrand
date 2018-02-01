@@ -16,7 +16,8 @@ import modelo.Producto;
 @ViewScoped
 public class ProductoBean {
     private Producto ingreso = new Producto();
-    private List<Producto> lstProducto = new ArrayList();
+    private ArrayList<Producto> lstProducto = new ArrayList<>();
+    private List<Producto> lstProducto2 = new ArrayList();
 
     public Producto getIngreso() {
         return ingreso;
@@ -26,13 +27,26 @@ public class ProductoBean {
         this.ingreso = ingreso;
     }
 
-    public List<Producto> getLstProducto() {
+    public ArrayList<Producto> getLstProducto() {
         return lstProducto;
     }
 
-    public void setLstProducto(List<Producto> lstProducto) {
+    public void setLstProducto(ArrayList<Producto> lstProducto) {
         this.lstProducto = lstProducto;
     }
+
+    public List<Producto> getLstProducto2() {
+        return lstProducto2;
+    }
+
+    public void setLstProducto2(List<Producto> lstProducto2) {
+        this.lstProducto2 = lstProducto2;
+    }
+    
+    
+    
+    
+
     
     
     
@@ -54,7 +68,7 @@ public class ProductoBean {
         try{
             dao = new ProductoDAO();
             dao.Guardar(ingreso);
-            this.Listar();
+            this.Listar32();
             this.Limpiar();
         }catch(Exception e){
             System.out.println("ERROR INGRESO PRODUCTO BEAN  --BEAN" +e);
@@ -63,16 +77,30 @@ public class ProductoBean {
      
      
      
-     public void Listar(){
-        ProductoDAO dao;
+     public void Listar32(){
+        ProductoDAO proDao = new ProductoDAO();
         
         try{
-            dao = new ProductoDAO();
-            lstProducto = dao.lista();
+            lstProducto = proDao.listaProducto();
         }catch(Exception e){
             System.out.println("ERROR LISTAR PRODUCTO DAO --BEAN"+e);
         }
     }
+     
+     
+     public void ListarTodo(){
+         ProductoDAO dao;
+         
+         try{
+             dao = new ProductoDAO();
+             lstProducto2 = dao.listaProducto();
+         }catch(Exception e){
+             System.out.println("error");
+         }
+         
+     }
+     
+     
     
     public void modificar(){
         ProductoDAO dao;
@@ -80,7 +108,7 @@ public class ProductoBean {
         try{
             dao = new ProductoDAO();
             dao.modificar(ingreso);
-            this.Listar();
+            this.Listar32();
         }catch(Exception e){
             System.out.println("ERROR MODIFICAR PRODUCTO BEAN 2-- Bean" +e);
         }
@@ -93,7 +121,7 @@ public class ProductoBean {
         try{
             dao = new ProductoDAO();
             dao.eliminar(pro);
-            this.Listar();
+            this.Listar32();
         }catch(Exception e){
             System.out.println("ERROR ELIMINAR PRODUCTO BEAN 2 -- BEAN" +e);
         }

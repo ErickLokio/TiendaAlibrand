@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import modelo.Sucursal;
-
+    
 /**
  * @author Walter
  */
@@ -97,6 +97,8 @@ public class SucursalBean {
             System.out.println("Error al listar en sucursal bean");
         }
     }
+    
+    
     
     public void modificar(){
         SucursalDao dao;

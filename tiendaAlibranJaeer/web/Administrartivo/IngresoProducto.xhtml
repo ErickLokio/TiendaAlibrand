@@ -19,7 +19,8 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{sucursalBean.listar33()}"/>
+        
+        
     </h:head>
     <h:body>
 
@@ -90,7 +91,7 @@
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Ingreso Clientes</a>
                         </li>
                         <li>
-                            <a href="IngresoProducto.xhtml"><i class="fa fa-bar-chart-o fa-fw"></i>Ingreso Producto</a>
+                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Ingreso Producto</a>
                             </li>
                         <li>
                             <a href="timeline.html"><i class="fa fa-flask fa-fw"></i>Inventario</a>
@@ -98,7 +99,7 @@
 
 
                         <li>
-                            <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>Sucursal</a>
+                            <a href="IngresoSucursal.xhtml"><i class="fa fa-bar-chart-o fa-fw"></i>Sucursal</a>
                             
                         </li>
 
@@ -140,10 +141,10 @@
                     <!--  page header -->
                     
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Sucursal</h1></center>
+                        <center><h1 class="page-header">Productos</h1></center>
                     </div>
                         <center>
-                            <img  class="centrado" id="imagen" src="assets/images/inventario.png" />
+                            <img  class="centrado" id="imagen" src="assets/images/nuevoproducto.png" />
                         </center>
                     
                     <br/><br/><br/>
@@ -178,7 +179,30 @@
                     
                     <br/><br/><br/>
 
-                    
+                    <h:form class="div-table-row div-table-head" id="frmTabla">
+                        <b:dataTable var="pro" 
+                                     value="#{productoBean.lstProducto}" 
+                                     id='data'
+                                     columnVisibility="true"
+                                     class="tabla">
+
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.idSucursal}" label="Id"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.sucursal}"  label="Tipo Producto"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.direccion}"  label="Sucusal"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.id_empleado}"  label="Precio Costo"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_claro}"  label="Precio Venta"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_movistar}"  label="Margen"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="Descripción"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="Cantidad"/>
+                            
+                            <b:dataTableColumn class="div-table-cell" label="Eliminar">
+                                <b:commandButton value="Eliminar" class="btn btn-danger" update="frmTabla" actionListener="#{sucursalBean.Eliminar(sucu)}" />
+                            </b:dataTableColumn>
+                            
+                            
+                        </b:dataTable>
+                    </h:form>
+
                     <!-- end  page header -->
                 </div>
             </div>
