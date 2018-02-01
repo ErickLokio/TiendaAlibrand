@@ -2,7 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
@@ -429,9 +428,8 @@
                         <b:inputText label="Telefono Movistar" placeholder="E-mail" value="#{sucursalBean.suc.email}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="email"/>
-
-                        <b:commandButton look="primary" value="Guardar" action="#{sucursalBean.insertar()}" update="@frm"/>
-
+                        
+                        <h:commandLink value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}"></h:commandLink>
 
                     </h:form>
 
