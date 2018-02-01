@@ -100,12 +100,12 @@ public class SucursalBean {
     
     
     
-    public void modificar(){
+    public void modificar(Sucursal su){
         SucursalDao dao;
         
         try{
             dao = new SucursalDao();
-            dao.modificar(suc);
+            dao.modificar(su);
             this.listar33();
         }catch(Exception e){
             System.out.println("ERROR MODIFICAR Sucursal BEAN -- Bean" +e);
