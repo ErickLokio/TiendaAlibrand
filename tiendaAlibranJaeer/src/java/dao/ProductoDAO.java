@@ -39,35 +39,7 @@ public class ProductoDAO extends DAO {
     
     
     
-    public ArrayList<Producto> listaProducto() throws Exception{
-    ArrayList<Producto> lista = null;
     
-    try{
-        this.conectar();
-        sql = "select * from Producto";
-        st = this.getCn().prepareCall(sql);
-        rs = st.executeQuery();
-        lista = new ArrayList();
-        
-        while(rs.next()){
-            Producto su = new Producto();
-            su.setId_producto(rs.getInt("id_producto"));
-            su.set(rs.getString("nombre_sucursal"));
-            su.setId_sucursal(rs.getString("direccion"));
-            su.setPrecio_costo(res.getInt("telefono_claro"));
-            su.setPrecio_venta(res.getInt("telefono_movistar"));
-            su.setMargen_ganancia(res.getInt("id_empleado"));
-            su.setDescripcion(res.getString("email"));
-            su.setDescripcion(res.getString("email"));
-            lista.add(su);
-        }
-    }catch(Exception e){
-        System.out.println("ERROR LISTAR SUCURSAL DAO "+e);
-    }finally{
-        this.cerrar();
-    }
-    return lista;
-}
     
     
     

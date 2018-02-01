@@ -68,7 +68,7 @@ public class ProductoBean {
         try{
             dao = new ProductoDAO();
             dao.Guardar(ingreso);
-            this.Listar32();
+     
             this.Limpiar();
         }catch(Exception e){
             System.out.println("ERROR INGRESO PRODUCTO BEAN  --BEAN" +e);
@@ -77,28 +77,8 @@ public class ProductoBean {
      
      
      
-     public void Listar32(){
-        ProductoDAO proDao = new ProductoDAO();
-        
-        try{
-            lstProducto = proDao.listaProducto();
-        }catch(Exception e){
-            System.out.println("ERROR LISTAR PRODUCTO DAO --BEAN"+e);
-        }
-    }
      
      
-     public void ListarTodo(){
-         ProductoDAO dao;
-         
-         try{
-             dao = new ProductoDAO();
-             lstProducto2 = dao.listaProducto();
-         }catch(Exception e){
-             System.out.println("error");
-         }
-         
-     }
      
      
     
@@ -108,7 +88,7 @@ public class ProductoBean {
         try{
             dao = new ProductoDAO();
             dao.modificar(ingreso);
-            this.Listar32();
+            
         }catch(Exception e){
             System.out.println("ERROR MODIFICAR PRODUCTO BEAN 2-- Bean" +e);
         }
@@ -121,7 +101,7 @@ public class ProductoBean {
         try{
             dao = new ProductoDAO();
             dao.eliminar(pro);
-            this.Listar32();
+            
         }catch(Exception e){
             System.out.println("ERROR ELIMINAR PRODUCTO BEAN 2 -- BEAN" +e);
         }
