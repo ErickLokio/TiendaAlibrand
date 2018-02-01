@@ -447,6 +447,9 @@
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_claro}"  label="Telèfono Claro"/>
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_movistar}"  label="Telèfono Movistar"/>
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="E-mail"/>
+                            <b:dataTableColumn class="div-table-cell" label="E-mail">
+                                <h:commandLink actionListener="#{sucursalBean.Eliminar(sucu)}" class="btn btn-primary" value="Eliminar"></h:commandLink>
+                            </b:dataTableColumn>
 
                         </b:dataTable>
                     </h:form>
