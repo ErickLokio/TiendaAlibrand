@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -425,11 +426,11 @@
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="tel2"/>
 
-                        <b:inputText label="Telefono Movistar" placeholder="E-mail" value="#{sucursalBean.suc.email}"
+                        <b:inputText label="Correo Electrónico" placeholder="E-mail" value="#{sucursalBean.suc.email}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="email"/>
                         
-                        <h:commandLink value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}"></h:commandLink>
+                        <p:commandButton value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}" update=":frmTabla"></p:commandButton>
 
                     </h:form>
 
@@ -447,10 +448,12 @@
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_claro}"  label="Telèfono Claro"/>
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_movistar}"  label="Telèfono Movistar"/>
                             <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="E-mail"/>
-                            <b:dataTableColumn class="div-table-cell" label="E-mail">
-                                <h:commandLink actionListener="#{sucursalBean.Eliminar(sucu)}" class="btn btn-primary" value="Eliminar"></h:commandLink>
+                            
+                            <b:dataTableColumn class="div-table-cell" label="Elimnae">
+                                <b:commandButton value="Eliminar" class="btn btn-danger" update="frmTabla" actionListener="#{sucursalBean.Eliminar(sucu)}" />
                             </b:dataTableColumn>
-
+                            
+                            
                         </b:dataTable>
                     </h:form>
 
