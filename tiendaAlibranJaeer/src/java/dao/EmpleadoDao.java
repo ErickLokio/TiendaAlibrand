@@ -109,23 +109,29 @@ public class EmpleadoDao extends DAO {
         return lstEmpleado;
     }
 
+    
+    
+    
+    
+    
     public ArrayList<Empleado> listaEmpleado() throws Exception {
         ArrayList<Empleado> lista = null;
 
         try {
             this.conectar();
-            query = "select * from Empleado";
+            query = "select * from empleado";
             sta = this.getCn().prepareCall(query);
             res = sta.executeQuery();
             lista = new ArrayList();
 
             while (res.next()) {
                 Empleado su = new Empleado();
-                su.setIdEmpleado(res.getInt("idEmpleado"));
-                su.setNombreEmplado(res.getString("nombreEmplado"));
-                su.setTelefono(res.getInt("telefono"));
-                su.setTelefono2(res.getInt("telefono2"));
-                su.setIdSucursal(res.getInt("idSucursal"));
+                su.setIdEmpleado(res.getInt("id_empleado"));
+                su.setNombreEmplado(res.getString("nombre_empleado"));
+                su.setTelefono(res.getInt("telefono_claro"));
+                su.setTelefono2(res.getInt("telefono_movistar"));
+                su.setIdPuesto(res.getInt("id_puesto"));
+                su.setIdSucursal(res.getInt("id_sucursal"));
                 su.setDireccion(res.getString("direccion"));
                 su.setEmail(res.getString("email"));
                 lista.add(su);
@@ -152,6 +158,8 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
     }
+    
+    
 
     public void modificar(innerEmpleado emp) throws Exception {
         try {
@@ -170,4 +178,36 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
     }
+    
+    
+    
+    
+    
+    
+    public void modificarTodo(Empleado emp) throws Exception {
+        try {
+            this.conectar();
+            query = "update empleado set nombre_empleado=?,telefono_claro=?, telefono_movistar=?, id_puesto=?,id_sucursal=?, direccion =?, email=? where id_empleado=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setString(1, emp.getNombreEmplado());
+            sta.setInt(2, emp.getTelefono());
+            sta.setInt(3, emp.getTelefono2());
+            sta.setInt(4, emp.getIdPuesto());
+            sta.setInt(5, emp.getIdSucursal());
+            sta.setString(6, emp.getDireccion());
+            sta.setString(7, emp.getEmail());
+            sta.setInt(8, emp.getIdEmpleado());
+            sta.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.cerrar();
+        }
+    }
+    
+    
+    
+    
+    
+    
 }
