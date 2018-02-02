@@ -51,7 +51,7 @@ margin-bottom: 0px
     background-color:rgba(74, 72, 126, 0);
 }
 .navbar-top-links  .open > a, .nav .open > a:hover, .nav .open > a:focus {
-    background-color: #75C5B8;
+    background-color: #151A2D;
 }
 .navbar-top-links > li > a {
 color: #FFFFFF;
@@ -60,7 +60,7 @@ color: #FFFFFF;
 padding: 20px 15px;
 }
 #side-menu {
-    background-color:#04B173;
+    background-color:#151A2D;
 }
 
  #side-menu a {
@@ -92,7 +92,7 @@ padding: 20px 15px;
 /* tap nvbar Section */
 
 #navbar {
-    background-color:rgb(83, 163, 163);
+    background-color:rgb(42, 42, 46);
 }
 
 .navbar-brand {
