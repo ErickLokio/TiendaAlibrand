@@ -181,12 +181,13 @@
                         <b:inputText label="Sucursal" placeholder="Sucursal" value="#{camisolaBean.cam.idSucursal}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
-                        <h:panelGrid columns="3" >
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
-                            <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{camisolaBean.calcularGanancia()}"/>
-                        </h:panelGrid>
+                        <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+                            <f:facet name="append">
+                                <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{camisolaBean.calcularGanancia()}"/>
+                            </f:facet>
+                        </b:inputText>
+                        <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
                         <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{camisolaBean.cam.precioCosto}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
