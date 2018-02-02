@@ -1,4 +1,3 @@
-
 package dao;
 
 import java.sql.PreparedStatement;
@@ -12,12 +11,13 @@ import modelo.innerEmpleado;
 /**
  * @author Walter
  */
-public class EmpleadoDao extends DAO{
+public class EmpleadoDao extends DAO {
+
     private PreparedStatement sta;
     private ResultSet res;
     private String query;
-    
-    public void ingresar(Empleado emp) throws Exception{
+
+    public void ingresar(Empleado emp) throws Exception {
         try {
             this.conectar();
             query = "insert into empleado (nombre_empleado, telefono_claro, telefono_movistar, id_puesto, id_sucursal, direccion, email) values(?,?,?,?,?,?,?)";
@@ -30,27 +30,28 @@ public class EmpleadoDao extends DAO{
             sta.setString(6, emp.getDireccion());
             sta.setString(7, emp.getEmail());
             sta.executeUpdate();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             this.cerrar();
         }
-        
+
     }
+
     //este metodo esta utilizando una vista y la vista contiene un innerjoin
-    public ArrayList<innerEmpleado> listar() throws Exception{
-        ArrayList<innerEmpleado> lstEmpleado=null;
+    public ArrayList<innerEmpleado> listar() throws Exception {
+        ArrayList<innerEmpleado> lstEmpleado = null;
         try {
             this.conectar();
-            query="select * from dato_empleado";
+            query = "select * from dato_empleado";
             sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
             lstEmpleado = new ArrayList();
-            
-            while(res.next()){
+
+            while (res.next()) {
                 innerEmpleado innEmp = new innerEmpleado();
-                
+
                 innEmp.setDireccion(res.getString("direccion"));
                 innEmp.setDireccionSucursal("direccion_sucursal");
                 innEmp.setEmail(res.getString("email"));
@@ -63,29 +64,29 @@ public class EmpleadoDao extends DAO{
                 innEmp.setTelefonoMovistar(res.getInt("telefono_movistar"));
                 lstEmpleado.add(innEmp);
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             this.cerrar();
         }
-        
+
         return lstEmpleado;
     }
-    
-   public ArrayList<innerEmpleado> listarPorId(int idEmpleado) throws Exception{
-        ArrayList<innerEmpleado> lstEmpleado=null;
+
+    public ArrayList<innerEmpleado> listarPorId(int idEmpleado) throws Exception {
+        ArrayList<innerEmpleado> lstEmpleado = null;
         try {
             this.conectar();
-            query="select * from dato_empleado where id_empleado=?";
+            query = "select * from dato_empleado where id_empleado=?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, idEmpleado);
             res = sta.executeQuery();
             lstEmpleado = new ArrayList();
-            
-            while(res.next()){
+
+            while (res.next()) {
                 innerEmpleado innEmp = new innerEmpleado();
-                
+
                 innEmp.setDireccion(res.getString("direccion"));
                 innEmp.setDireccionSucursal("direccion_sucursal");
                 innEmp.setEmail(res.getString("email"));
@@ -98,32 +99,61 @@ public class EmpleadoDao extends DAO{
                 innEmp.setTelefonoMovistar(res.getInt("telefono_movistar"));
                 lstEmpleado.add(innEmp);
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             this.cerrar();
         }
-        
+
         return lstEmpleado;
     }
-    
-    public void eliminar(Empleado emp) throws Exception{
+
+    public ArrayList<Empleado> listaEmpleado() throws Exception {
+        ArrayList<Empleado> lista = null;
+
         try {
             this.conectar();
-            query="delete from empleado where id_empleado=? limit 1";
+            query = "select * from Empleado";
+            sta = this.getCn().prepareCall(query);
+            res = sta.executeQuery();
+            lista = new ArrayList();
+
+            while (res.next()) {
+                Empleado su = new Empleado();
+                su.setIdEmpleado(res.getInt("idEmpleado"));
+                su.setNombreEmplado(res.getString("nombreEmplado"));
+                su.setTelefono(res.getInt("telefono"));
+                su.setTelefono2(res.getInt("telefono2"));
+                su.setIdSucursal(res.getInt("idSucursal"));
+                su.setDireccion(res.getString("direccion"));
+                su.setEmail(res.getString("email"));
+                lista.add(su);
+            }
+        } catch (Exception e) {
+            System.out.println("ERROR LISTAR SUCURSAL DAO " + e);
+        } finally {
+            this.cerrar();
+        }
+        return lista;
+    }
+
+    public void eliminar(Empleado emp) throws Exception {
+        try {
+            this.conectar();
+            query = "delete from empleado where id_empleado=? limit 1";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, emp.getIdEmpleado());
             sta.executeUpdate();
-            
+
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             this.cerrar();
         }
     }
-    
-    public void modificar(innerEmpleado emp) throws Exception{
+
+    public void modificar(innerEmpleado emp) throws Exception {
         try {
             this.conectar();
             query = "update empleado set telefono_claro=?, telefono_movistar=?, direccion =?, email=? where id_empleado limit 1";
@@ -136,7 +166,7 @@ public class EmpleadoDao extends DAO{
             sta.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             this.cerrar();
         }
     }
