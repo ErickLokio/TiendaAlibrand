@@ -1,4 +1,3 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -19,7 +18,7 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{empleadoBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{empleadoBean.listar33()}"/>
     </h:head>
     <h:body>
 
@@ -120,12 +119,27 @@
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Envio</a>
                         </li>
+                        
+                        
+                        
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Ingreso Empleados</a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Empleados<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoEmpleado.xhtml">Registro de Empleados</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarUsuario.xhtml">Modificar Empleado</a>
+                                </li>
 
+                            </ul>
+                            <!-- second-level-items -->
                         </li>
 
-
+                        
+                        
+                        
+                        
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -140,6 +154,7 @@
                             <!-- second-level-items -->
                         </li>
 
+                        
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
 
@@ -158,44 +173,36 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Empleado</h1></center>
+                        <center><h1 class="page-header">Empleados</h1></center>
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
                     </center>
 
-                    <br/><br/><br/>
-
                     <h:form id="frm">
                         <b:inputText label="Nombre" placeholder="Nombre" value="#{empleadoBean.emp.nombreEmplado}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
-
-                        <b:inputText label="Teléfono Claro" placeholder="Teléfono Claro" value="#{empleadoBean.emp.telefono}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
-
-                        <b:inputText label="Teléfono Movistar" placeholder="Teléfono Movistar" value="#{empleadoBean.emp.telefono2}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
-
-                        <b:inputText label="Puesto" placeholder="Puesto" value="#{empleadoBean.emp.idPuesto}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
                         
-                        <b:inputText label="Sucursal" placeholder="Sucursal" value="#{empleadoBean.emp.idSucursal}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+                        <b:inputText label="Telèfono Claro" placeholder="Tel" value="#{empleadoBean.emp.telefono}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
                         
-                        <b:inputText label="Dirección" placeholder="Dirección" value="#{empleadoBean.emp.direccion}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+                        <b:inputText label="Telèfono Movistar" placeholder="Tel" value="#{empleadoBean.emp.telefono2}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
                         
-                        <b:inputText label="Correo Electrónico" placeholder="E-mail" value="#{empleadoBean.emp.email}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+                        <b:inputText label="Puesto" placeholder="Tel" value="#{empleadoBean.emp.idPuesto}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+                        
+                        <b:inputText label="Sucursal" placeholder="Tel" value="#{empleadoBean.emp.idSucursal}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+                        
+                        <b:inputText label="Direcciòn" placeholder="Direcciòn" value="#{empleadoBean.emp.direccion}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+                        
+                        <b:inputText label="Correo" placeholder="Correo" value="#{empleadoBean.emp.email}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
 
-                        <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{empleadoBean.ingresar()}" update=":frmTabla"></p:commandButton>
+                        <p:commandButton value="Ingresar" class="btn btn-primary" actionListener="#{empleadoBean.ingresar()}" update=":frmTabla"></p:commandButton>
 
                     </h:form>
 
@@ -203,22 +210,27 @@
 
 
 
+
                     <h:form class="div-table-row div-table-head" id="frmTabla">
-                        <b:dataTable var="usu" 
-                                     value="#{empleadoBean.lstEmpleado}" 
+                        <b:dataTable var="emp" 
+                                     value="#{empleadoBean.lstTodoEmpleado}" 
                                      id='data'
                                      columnVisibility="true"
                                      class="tabla">
 
-                            
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.telefono2}"  label="Teléfono Movistar"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.idPuesto}"  label="Puesto"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.idSucursal}"  label="Sucursal"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.direccion}"  label="Direccion"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.email}"  label="E-mail"/>
+
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.idEmpleado}" label="Id"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.nombreEmplado}"  label="Empleado"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.telefono}"  label="Teléfono Claro"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.telefono2}"  label="Teléfono Movistar"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.idPuesto}"  label="Puesto"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.idSucursal}"  label="Sucursal"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.direccion}"  label="Direcció"/>
+                            <b:dataTableColumn class="div-table-cell" value="#{emp.email}"  label="E-mail"/>
+
 
                             <b:dataTableColumn class="div-table-cell" label="Eliminar">
-                                <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTabla" actionListener="#{empleadoBean.eliminar(usu)}" />
+                                <b:commandButton value="Eliminar" class="btn btn-danger" update="frmTabla" actionListener="#{empleadoBean.eliminar(emp)}" />
                             </b:dataTableColumn>
 
 
@@ -250,5 +262,4 @@
         </script>
     </h:body>
 </html>
-
 
