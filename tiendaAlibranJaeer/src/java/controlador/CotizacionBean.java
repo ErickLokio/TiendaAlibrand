@@ -16,7 +16,7 @@ import modelo.Cotizacion;
 public class CotizacionBean {
     private Cotizacion ingreso = new Cotizacion();
     private List<Cotizacion> lstCotizacion = new ArrayList();
-
+    
     public Cotizacion getIngreso() {
         return ingreso;
     }

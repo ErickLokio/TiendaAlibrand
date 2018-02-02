@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand</title>
+        <title>Tienda Alibrand | Ingreso de Camisolas</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{empleadoBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{camisolaBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -166,36 +166,37 @@
 
                     <br/><br/><br/>
 
-                    <h:form id="frm">
-                        <b:inputText label="Nombre" placeholder="Nombre" value="#{empleadoBean.emp.nombreEmplado}"
+                    <h:form id="frmCamisola">
+                        <b:inputText label="Nombre" placeholder="Nombre: " value="#{camisolaBean.cam.nombreCamisola}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                        <b:inputText label="Teléfono Claro" placeholder="Teléfono Claro" value="#{empleadoBean.emp.telefono}"
+                        <b:inputText label="Descripcion" placeholder="Descripcion" value="#{camisolaBean.cam.descripcion}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
 
-                        <b:inputText label="Teléfono Movistar" placeholder="Teléfono Movistar" value="#{empleadoBean.emp.telefono2}"
+                        <b:inputText label="Talla" placeholder="Talla" value="#{camisolaBean.cam.idTalla}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                         <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
 
-                        <b:inputText label="Puesto" placeholder="Puesto" value="#{empleadoBean.emp.idPuesto}"
+                        <b:inputText label="Sucursal" placeholder="Sucursal" value="#{camisolaBean.cam.idSucursal}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
-                        
-                        <b:inputText label="Sucursal" placeholder="Sucursal" value="#{empleadoBean.emp.idSucursal}"
+                        <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
+                        <h:panelGrid columns="3" >
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
+                            <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{camisolaBean.calcularGanancia()}"/>
+                        </h:panelGrid>
+                        <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{camisolaBean.cam.precioCosto}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
-                        
-                        <b:inputText label="Dirección" placeholder="Dirección" value="#{empleadoBean.emp.direccion}"
+                        <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
+
+                        <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{camisolaBean.cam.precioVenta}"
                                      onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
-                        
-                        <b:inputText label="Correo Electrónico" placeholder="E-mail" value="#{empleadoBean.emp.email}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+                        <b:label text="#{inputTextBean.map['key']}" id="precioVenta"/>
 
 
-                        <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{empleadoBean.ingresar()}" update=":frmTabla"></p:commandButton>
+                        <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{camisolaBean.ingresar()}" update=":frmTablaCamisola"></p:commandButton>
 
                     </h:form>
 
@@ -203,22 +204,24 @@
 
 
 
-                    <h:form class="div-table-row div-table-head" id="frmTabla">
-                        <b:dataTable var="usu" 
-                                     value="#{empleadoBean.lstEmpleado}" 
+                    <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                        <b:dataTable var="cami" 
+                                     value="#{camisolaBean.lstCamisola}" 
                                      id='data'
                                      columnVisibility="true"
                                      class="tabla">
 
-                            
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.telefono2}"  label="Teléfono Movistar"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.idPuesto}"  label="Puesto"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.idSucursal}"  label="Sucursal"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.direccion}"  label="Direccion"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{usu.email}"  label="E-mail"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.idCamisola}" label="Id"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.nombreCamisola}"  label="Nombre"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.idSucursal}"  label="Sucursal"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.precioCosto}"  label="Precio Costo"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.precioVenta}"  label="Precio Venta"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.margenGanancia}"  label="Margen de Ganancia"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.descripcion}"  label="Descripcion"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{cami.cantidad}"  label="Cantidad"/>
 
-                            <b:dataTableColumn class="div-table-cell" label="Eliminar">
-                                <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTabla" actionListener="#{empleadoBean.eliminar(usu)}" />
+                            <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
+                                <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{camisolaBean.eliminar(cami)}"/>
                             </b:dataTableColumn>
 
 

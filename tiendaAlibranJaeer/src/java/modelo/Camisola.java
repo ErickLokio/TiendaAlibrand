@@ -14,7 +14,7 @@ public class Camisola {
     private double margenGanancia;
     private String descripcion;
     private int cantidad;
-
+    
     public int getIdCamisola() {
         return idCamisola;
     }
@@ -86,6 +86,6 @@ public class Camisola {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
+ 
     
 }
