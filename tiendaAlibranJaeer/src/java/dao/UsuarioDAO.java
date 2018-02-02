@@ -24,9 +24,9 @@ public class UsuarioDAO extends DAO {
       while (result.next()) {
         usuarios = new Usuarios();        
         usuarios.setId_usuario(result.getInt("id_usuario"));
+        usuarios.setId_puesto(result.getInt("id_puesto"));
         usuarios.setNombre(result.getString("nombre"));
         usuarios.setContraseña(result.getString("contrasena"));        
-        usuarios.setTipo_usuario(result.getInt("id_tipoUsuario"));
         //lista.add(usuarios);               
         
        

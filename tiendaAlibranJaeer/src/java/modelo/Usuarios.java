@@ -4,27 +4,27 @@ package modelo;
 public class Usuarios{
 
   private int id_usuario = 0;
+  private int id_puesto = 0;
   private String nombre = null;
   private String contraseña = null;
-  private int tipo_usuario = 0;
-  private int idEmpleado = 0;
-
+  
   public Usuarios() {
     id_usuario = 0;
     nombre = null;
     contraseña = null;
-    tipo_usuario = 0;
+    this.id_puesto = 0;
 
   }
 
-    public int getIdEmpleado() {
-        return idEmpleado;
+    public int getId_puesto() {
+        return id_puesto;
     }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public void setId_puesto(int id_puesto) {
+        this.id_puesto = id_puesto;
     }
-  
+
+    
   public int getId_usuario() {
     return id_usuario;
   }
@@ -49,12 +49,5 @@ public class Usuarios{
     this.contraseña = contraseña;
   }
 
-  public int getTipo_usuario() {
-    return tipo_usuario;
-  }
-
-  public void setTipo_usuario(int tipo_usuario) {
-    this.tipo_usuario = tipo_usuario;
-  }
-
+ 
 }

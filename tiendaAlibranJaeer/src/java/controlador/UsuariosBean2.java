@@ -1,45 +1,45 @@
 package controlador;
 
 import dao.UsuarioDAO2;
-import java.util.ArrayList;
-import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import modelo.Usuarios;
+import java.util.ArrayList;
 
 /**
  *
  * @author erick osoy
  */
-
 @ManagedBean
 @ViewScoped
+
 public class UsuariosBean2 {
-    private Usuarios usu = new Usuarios();
-    private List<Usuarios> lstUsuarios = new ArrayList();
+    private Usuarios Ingreso = new Usuarios();
+    private ArrayList<Usuarios> lstUsuarios = new ArrayList<>();
 
-    public Usuarios getUsu() {
-        return usu;
+    public Usuarios getIngreso() {
+        return Ingreso;
     }
 
-    public void setUsu(Usuarios usu) {
-        this.usu = usu;
+    public void setIngreso(Usuarios Ingreso) {
+        this.Ingreso = Ingreso;
     }
 
-    public List<Usuarios> getLstUsuarios() {
+    public ArrayList<Usuarios> getLstUsuarios() {
         return lstUsuarios;
     }
 
-    public void setLstUsuarios(List<Usuarios> lstUsuarios) {
+    public void setLstUsuarios(ArrayList<Usuarios> lstUsuarios) {
         this.lstUsuarios = lstUsuarios;
     }
     
     
+    
     public void Limpiar(){
-        usu.setId_usuario(0);
-        usu.setIdEmpleado(0);
-        usu.setNombre("");
-        usu.setContraseña("");
+        Ingreso.setId_usuario(0);
+        Ingreso.setId_puesto(0);
+        Ingreso.setNombre("");
+        Ingreso.setContraseña("");
     }
     
     
@@ -48,35 +48,37 @@ public class UsuariosBean2 {
         
         try{
             dao = new UsuarioDAO2();
-            dao.GuardarUsuario(usu);
-            this.ListarUsuario();
+            dao.GuardarUsuario(Ingreso);
+            this.listar33();
             this.Limpiar();
         }catch(Exception e){
-            System.out.println("ERROR INGRESO USUARIOS BEAN 2 --BEAN" +e);
+            System.out.println("ERROR INGRESO Usuario BEAN  --BEAN" +e);
         }
     }
     
     
-    public void ListarUsuario(){
-        UsuarioDAO2 dao;
-        
-        try{
-            dao = new UsuarioDAO2();
-            lstUsuarios = dao.lista();
-        }catch(Exception e){
-            System.out.println("ERROR LISTAR USUARIOS DAO 2 --BEAN"+e);
+    
+    public void listar33(){
+        UsuarioDAO2 sucDao = new UsuarioDAO2();
+        try {
+           lstUsuarios = sucDao.listaUsuario();
+            
+        } catch (Exception e) {
+            System.out.println("Error al listar en Usuario bean");
         }
     }
     
-    public void modificar(){
+    
+    
+    public void modificar(Usuarios usu){
         UsuarioDAO2 dao;
         
         try{
             dao = new UsuarioDAO2();
             dao.modificar(usu);
-            this.ListarUsuario();
+            this.listar33();
         }catch(Exception e){
-            System.out.println("ERROR MODIFICAR USUARIO BEAN 2-- Bean" +e);
+            System.out.println("ERROR MODIFICAR Usuario BEAN -- Bean" +e);
         }
     }
     
@@ -87,9 +89,9 @@ public class UsuariosBean2 {
         try{
             dao = new UsuarioDAO2();
             dao.eliminar(usu);
-            this.ListarUsuario();
+            this.listar33();
         }catch(Exception e){
-            System.out.println("ERROR ELIMINAR USUARIOS BEAN 2 -- BEAN" +e);
+            System.out.println("ERROR ELIMINAR Usuario BEAN  -- BEAN" +e);
         }
     }
     
@@ -102,11 +104,22 @@ public class UsuariosBean2 {
             temp = dao.leerID(usu);
             
             if(temp != null){
-                this.usu = temp;
+                this.Ingreso = temp;
             }
         }catch(Exception e){
-            System.out.println("ERROR BUSCAR USUARIO BEAN 2 --BEAN" +e);
+            System.out.println("ERROR BUSCAR Usuario BEAN --BEAN" +e);
         }
         
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -23,7 +23,7 @@ public void GuardarUsuario(Usuarios usu) throws Exception{
         sql = "INSERT INTO usuario values(?,?,?,?)";
         st = this.getCn().prepareStatement(sql);
         st.setInt(1, usu.getId_usuario());
-        st.setInt(2, usu.getIdEmpleado());
+        st.setInt(2, usu.getId_puesto());
         st.setString(3, usu.getNombre());
         st.setString(4, usu.getContraseña());
         st.executeUpdate();
@@ -36,8 +36,8 @@ public void GuardarUsuario(Usuarios usu) throws Exception{
 
 
 
-public List<Usuarios> lista() throws Exception{
-    List<Usuarios> lista = null;
+public ArrayList<Usuarios> listaUsuario() throws Exception{
+    ArrayList<Usuarios> lista = null;
     
     try{
         this.conectar();
@@ -49,7 +49,7 @@ public List<Usuarios> lista() throws Exception{
         while(rs.next()){
             Usuarios usu = new Usuarios();
             usu.setId_usuario(rs.getInt("id_usuario"));
-            usu.setIdEmpleado(rs.getInt("id_empleado"));
+            usu.setId_puesto(rs.getInt("id_puesto"));
             usu.setNombre(rs.getString("nombre_usuario"));
             lista.add(usu);
         }
@@ -75,7 +75,7 @@ public Usuarios leerID(Usuarios usu) throws Exception{
         while(rs.next()){
             usuu = new Usuarios();
             usuu.setId_usuario(rs.getInt("id_usuario"));
-            usuu.setIdEmpleado(rs.getInt("id_empleado"));
+            usuu.setId_puesto(rs.getInt("id_puesto"));
             usuu.setNombre(rs.getString("nombre_usuario"));
             }
     }catch(Exception e){
