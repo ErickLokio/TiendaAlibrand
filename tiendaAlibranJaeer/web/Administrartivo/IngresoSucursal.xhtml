@@ -125,7 +125,7 @@
 
                         </li>
 
-                        
+
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -140,9 +140,9 @@
                             <!-- second-level-items -->
                         </li>
 
-                        
-                        
-                        
+
+
+
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
 
@@ -169,61 +169,69 @@
 
                     <br/><br/><br/>
 
-                    <h:form id="frm">
-                        <b:inputText label="Nombre" placeholder="Nombre" value="#{sucursalBean.suc.sucursal}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
 
-                        <b:inputText label="Direcciòn" placeholder="Direcciòn" value="#{sucursalBean.suc.direccion}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
+                        <h:form id="frm">
+                            <b:inputText label="Nombre" placeholder="Nombre" value="#{sucursalBean.suc.sucursal}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                        <b:inputText label="Encargado" placeholder="Encargado" value="#{sucursalBean.suc.id_empleado}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
+                            <b:inputText label="Direcciòn" placeholder="Direcciòn" value="#{sucursalBean.suc.direccion}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
 
-                        <b:inputText label="Telèfono Claro" placeholder="Telefono Claro" value="#{sucursalBean.suc.telefono_claro}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+                            <b:inputText label="Encargado" placeholder="Encargado" value="#{sucursalBean.suc.id_empleado}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
 
-                        <b:inputText label="Telefono Movistar" placeholder="Telefono Movistar" value="#{sucursalBean.suc.telefono_movistar}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="tel2"/>
+                            <b:inputText label="Telèfono Claro" placeholder="Telefono Claro" value="#{sucursalBean.suc.telefono_claro}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
 
-                        <b:inputText label="Correo Electrónico" placeholder="E-mail" value="#{sucursalBean.suc.email}"
-                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                        <b:label text="#{inputTextBean.map['key']}" id="email"/>
+                            <b:inputText label="Telefono Movistar" placeholder="Telefono Movistar" value="#{sucursalBean.suc.telefono_movistar}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="tel2"/>
 
-                        <p:commandButton value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}" ></p:commandButton>
+                            <b:inputText label="Correo Electrónico" placeholder="E-mail" value="#{sucursalBean.suc.email}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="email"/>
 
-                    </h:form>
+                            <p:commandButton value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}" ></p:commandButton>
+
+                        </h:form>
+                    </div> 
+                    <div class="col-lg-3"></div>
 
                     <br/><br/><br/>
 
 
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <br/><br/>
+                            <h:form class="div-table-row div-table-head" id="frmTabla">
+                                <b:dataTable var="sucu" 
+                                             value="#{sucursalBean.lstSucursal2}" 
+                                             id='data'
+                                             columnVisibility="true"
+                                             class="tabla">
 
-                    <h:form class="div-table-row div-table-head" id="frmTabla">
-                        <b:dataTable var="sucu" 
-                                     value="#{sucursalBean.lstSucursal2}" 
-                                     id='data'
-                                     columnVisibility="true"
-                                     class="tabla">
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.idSucursal}" label="Id"/>
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.sucursal}"  label="Nombre"/>
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.direccion}"  label="Dirección"/>
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_claro}"  label="Teléfono Claro"/>
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_movistar}"  label="Teléfono Movistar"/>
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.id_empleado}"  label="Empleado"/>
+                                    <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="Cantidad"/>
 
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.idSucursal}" label="Id"/>
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.sucursal}"  label="Nombre"/>
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.direccion}"  label="Dirección"/>
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_claro}"  label="Teléfono Claro"/>
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.telefono_movistar}"  label="Teléfono Movistar"/>
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.id_empleado}"  label="Empleado"/>
-                            <b:dataTableColumn class="div-table-cell" value="#{sucu.email}"  label="Cantidad"/>
-
-                            <b:dataTableColumn class="div-table-cell" label="Eliminar">
-                                <b:commandButton value="Eliminar" class="btn btn-danger" update="frmTabla" actionListener="#{sucursalBean.Eliminar(sucu)}" />
-                            </b:dataTableColumn>
+                                    <b:dataTableColumn class="div-table-cell" label="Eliminar">
+                                        <b:commandButton value="Eliminar" class="btn btn-danger" update="frmTabla" actionListener="#{sucursalBean.Eliminar(sucu)}" />
+                                    </b:dataTableColumn>
 
 
-                        </b:dataTable>
-                    </h:form>
-
+                                </b:dataTable>
+                            </h:form>
+                        </div>
+                    </div>
 
 
                     <!-- end  page header -->
@@ -243,9 +251,9 @@
         <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
         <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script>
-                                         $(document).ready(function () {
-                                             $('#dataTables-example').dataTable();
-                                         });
+                                             $(document).ready(function () {
+                                                 $('#dataTables-example').dataTable();
+                                             });
         </script>
     </h:body>
 </html>

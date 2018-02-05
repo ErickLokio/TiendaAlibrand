@@ -53,8 +53,9 @@ public class LicraBean {
         try{
             dao = new LicraDao();
             dao.Guardar(ingreso);
-            this.listar33();
             this.Limpiar();
+            this.listar33();
+            
         }catch(Exception e){
             System.out.println("ERROR INGRESO Licra BEAN  --BEAN" +e);
         }

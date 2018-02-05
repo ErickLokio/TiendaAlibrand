@@ -53,7 +53,7 @@ public class BalonDao extends DAO {
                 ba.setId_balon(res.getInt("id_balon"));
                 ba.setNombre_balon(res.getString("nombre_balon"));
                 ba.setId_talla_balon(res.getInt("id_talla_balon"));
-                ba.setId_sucursal(res.getInt("tid_sucursal"));
+                ba.setId_sucursal(res.getInt("id_sucursal"));
                 ba.setPrecio_costo(res.getDouble("precio_costo"));
                 ba.setPrecio_venta(res.getDouble("precio_venta"));
                 ba.setMargen_ganancia(res.getDouble("margen_ganancia"));

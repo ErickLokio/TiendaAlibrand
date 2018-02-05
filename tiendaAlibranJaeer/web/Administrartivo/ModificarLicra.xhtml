@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand</title>
+        <title>Tienda Alibrand | Modificacion de Licra</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{usuariosBean2.listar33()}"/>
+        <f:event type="preRenderView" listener="#{licraBean.listar33()}"/>
     </h:head>
     <h:body>
 
@@ -139,6 +139,20 @@
                             </ul>
                             <!-- second-level-items -->
                         </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoUsuarios.xhtml">Registro de Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarUsuario.xhtml">Modificar Usuarios</a>
+                                </li>
+
+                            </ul>
+                            <!-- second-level-items -->
+                        </li>
 
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
@@ -158,65 +172,61 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Usuarios</h1></center>
+                        <center><h1 class="page-header">Licra</h1></center>
                     </div>
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/images/login.png" />
+                        <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
                     </center>
 
-                    <br/><br/><br/>
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-6">
-                        <h:form id="frm">
-                            <b:inputText label="Código" placeholder="Código" value="#{usuariosBean2.ingreso.id_usuario}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
-
-                            <b:inputText label="Puesto" placeholder="Puesto" value="#{usuariosBean2.ingreso.id_puesto}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
-
-                            <b:inputText label="Usuario" placeholder="Usuario" value="#{usuariosBean2.ingreso.nombre}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
-
-                            <b:inputText label="Contraseña" placeholder="Contraseña" value="#{usuariosBean2.ingreso.contraseña}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
-
-
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{usuariosBean2.insertar()}" update=":frmTabla"></p:commandButton>
-
-                        </h:form>
-                    </div>
-                    <div class="col-lg-3"></div>
-
-
 
                     <br/><br/><br/>
 
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <br/><br/>
-                            <h:form class="div-table-row div-table-head" id="frmTabla">
-                                <b:dataTable var="usu" 
-                                             value="#{usuariosBean2.lstUsuarios}" 
-                                             id='data'
-                                             columnVisibility="true"
-                                             class="tabla">
-
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{usu.id_usuario}" label="Id"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{usu.id_puesto}"  label="Puesto"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{usu.nombre}"  label="Usuario"/>
-
-                                    <b:dataTableColumn class="div-table-cell" label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTabla" actionListener="#{usuariosBean2.Eliminar(usu)}" />
-                                    </b:dataTableColumn>
 
 
-                                </b:dataTable>
-                            </h:form>
-                        </div>
-                    </div>
+                    <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                        <b:dataTable var="li" 
+                                     value="#{licraBean.lstLicra}" 
+                                     id='data'
+                                     columnVisibility="true"
+                                     class="tabla">
+
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{li.id_licra}" label="Id"/>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
+                                <b:inputText value="#{li.nombre_licra}" fieldSize="sm"/>
+                            </b:dataTableColumn>
+                           
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{li.id_sucursal}"  label="Sucursal"/>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
+                                <b:inputText value="#{li.precio_costo}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Precio Venta">
+                                <b:inputText value="#{li.precio_venta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Margen de Ganancia">
+                                <b:inputText value="#{li.margen_ganancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Descripción">
+                                <b:inputText value="#{li.descripcion}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Cantidad">
+                                <b:inputText value="#{li.cantidad}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
+                                <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{licraBean.modificar(li)}"/>
+                            </b:dataTableColumn>
+
+
+                        </b:dataTable>
+                    </h:form>
+
+
 
                     <!-- end  page header -->
                 </div>
@@ -235,11 +245,12 @@
         <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
         <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script>
-                                             $(document).ready(function () {
-                                                 $('#dataTables-example').dataTable();
-                                             });
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
         </script>
     </h:body>
 </html>
+
 
 

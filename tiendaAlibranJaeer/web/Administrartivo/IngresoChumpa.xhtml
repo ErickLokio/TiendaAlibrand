@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Ingreso de Camisolas</title>
+        <title>Tienda Alibrand | Ingreso de Chumpa</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{mediaBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{chumpaBean.listar33()}"/>
     </h:head>
     <h:body>
 
@@ -132,12 +132,11 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
-
+                                            <a href="IngresoBalon.xhtml">Registro</a>
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="ModificarBalon.xhtml">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -178,11 +177,10 @@
                                     <ul class="nav nav-second-level">
                                         <li>
                                             <a href="IngresoMedia.xhtml">Registro</a>
-
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="ModificarMedia.xhtml">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -259,7 +257,7 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Registro de Medias</h1></center>
+                        <center><h1 class="page-header">Registro de Chumpas</h1></center>
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
@@ -271,46 +269,48 @@
                     <div class="col-lg-6">
 
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{mediaBean.ingreso.nombre_media}"
+                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{chumpaBean.ingreso.nombre_chumpa}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
+                            <b:inputText label="Talla" placeholder="Talla" value="#{chumpaBean.ingreso.id_talla}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
 
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{mediaBean.ingreso.id_sucursal}"
+                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{chumpaBean.ingreso.id_sucursal}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{mediaBean.ingreso.margen_ganancia}"
+                            
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{chumpaBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">
-                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{mediaBean.calcularGanancia()}"/>
+                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{chumpaBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
 
                             <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{mediaBean.ingreso.precio_costo}"
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{chumpaBean.ingreso.precio_costo}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
 
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{mediaBean.ingreso.precio_venta}"
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{chumpaBean.ingreso.precio_venta}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="precioVenta"/>
 
 
-                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{mediaBean.ingreso.descripcion}"
+                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{chumpaBean.ingreso.descripcion}"
                                              onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"/>
                             <b:label text="#{inputTextBean.map['key']}" id="descripcion"/>
 
-                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{mediaBean.ingreso.cantidad}"
+                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{chumpaBean.ingreso.cantidad_total}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="Cantidad"/>
 
 
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{mediaBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{chumpaBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
                     </div>
                     <div class="col-lg-3"></div>
-
-
 
                     <br/><br/><br/>
 
@@ -319,31 +319,31 @@
                         <div class="col-lg-12">
                             <br/><br/>
                             <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
-                            <b:dataTable var="me" 
-                                         value="#{mediaBean.lstMedia}" 
-                                         id='data'
-                                         columnVisibility="true"
-                                         class="tabla">
+                                <b:dataTable var="chu" 
+                                             value="#{chumpaBean.lstChumpa}" 
+                                             id='data'
+                                             columnVisibility="true"
+                                             class="tabla">
 
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.id_media}" label="Id"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.nombre_media}"  label="Nombre"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.id_sucursal}"  label="Sucursal"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.precio_costo}"  label="Precio Costo"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.precio_venta}"  label="Precio Venta"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.margen_ganancia}"  label="Margen de Ganancia"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.descripcion}"  label="Descripcion"/>
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{me.cantidad}"  label="Cantidad"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.id_chumpa}" label="Id"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.nombre_chumpa}"  label="Nombre"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.id_talla}"  label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.id_sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.precio_costo}"  label="Precio Costo"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.precio_venta}"  label="Precio Venta"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.margen_ganancia}"  label="Margen de Ganancia"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.descripcion}"  label="Descripcion"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.cantidad_total}"  label="Cantidad"/>
 
-                                <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
-                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{mediaBean.Eliminar(me)}"/>
-                                </b:dataTableColumn>
+                                    <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
+                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{chumpaBean.Eliminar(chu)}"/>
+                                    </b:dataTableColumn>
 
-                            </b:dataTable>
-                        </h:form>
+
+                                </b:dataTable>
+                            </h:form>
                         </div>
-                        
                     </div>
-
 
 
                     <!-- end  page header -->
