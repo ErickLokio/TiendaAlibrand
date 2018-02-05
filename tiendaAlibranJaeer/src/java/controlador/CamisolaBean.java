@@ -77,6 +77,9 @@ public class CamisolaBean {
         total = ((ganancia*precioCosto)/100)+precioCosto;
         cam.setPrecioVenta(total);
     }
+    
+    
+    
     public void limpiar(){
         cam.setCantidad(0);
         cam.setDescripcion(null);

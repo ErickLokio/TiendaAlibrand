@@ -23,7 +23,7 @@ public class EspinilleraDao extends DAO {
     
         try{
             this.conectar();
-            query = "INSERT INTO espinillera(nombre_espnillera, id_talla_espinillera, id_sucursal,precio_venta,precio_costo,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
+            query = "INSERT INTO espinillera(nombre_espinillera, id_talla_espinillera, id_sucursal,precio_venta,precio_costo,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, esp.getNombre_espnillera());
             sta.setInt(2, esp.getId_talla_espinillera());
@@ -56,7 +56,7 @@ public class EspinilleraDao extends DAO {
         while(res.next()){
             Espinillera su = new Espinillera();
             su.setId_espinillera(res.getInt("id_espinillera"));
-            su.setNombre_espnillera(res.getString("nombre_espnillera"));
+            su.setNombre_espnillera(res.getString("nombre_espinillera"));
             su.setId_talla_espinillera(res.getInt("id_talla_espinillera"));
             su.setId_sucursal(res.getInt("id_sucursal"));
             su.setPrecio_costo(res.getDouble("precio_costo"));
@@ -80,7 +80,7 @@ public class EspinilleraDao extends DAO {
     public void modificar(Espinillera esp) throws Exception{
         try {
             this.conectar();
-            query = "UPDATE espinillera SET nombre_espnillera=?,id_talla_espinillera=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_espinillera=?";
+            query = "UPDATE espinillera SET nombre_espinillera=?,id_talla_espinillera=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_espinillera=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, esp.getNombre_espnillera());
             sta.setInt(2, esp.getId_talla_espinillera());
@@ -110,14 +110,10 @@ public class EspinilleraDao extends DAO {
             sta.setInt(1, esp.getId_espinillera());
             sta.executeUpdate();
         } catch (SQLException e) {
-            System.out.println("Error sucursal eliminar dao: "+e);
+            System.out.println("Error espinillera eliminar dao: "+e);
         } finally {
             this.cerrar();
         }
     }
-    
-    
-    
-    
     
 }

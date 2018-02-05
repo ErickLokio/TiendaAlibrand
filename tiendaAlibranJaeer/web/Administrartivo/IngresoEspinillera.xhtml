@@ -1,0 +1,365 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Tienda Alibrand | Ingreso de Camisolas</title>
+        <!-- Core CSS - Include with every page -->
+        <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+        <link href="assets/css/style.css" rel="stylesheet" />
+        <link href="assets/css/main-style.css" rel="stylesheet" />
+
+        <!-- Page-Level CSS -->
+        <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
+        <f:event type="preRenderView" listener="#{espinilleraBean.listar33()}"/>
+    </h:head>
+    <h:body>
+
+        <div id="wrapper">
+            <!-- navbar top -->
+            <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+                <!-- navbar-header -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                    </a>
+                </div>
+                <!-- end navbar-header -->
+                <!-- navbar-top-links -->
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-user fa-3x"></i>
+                        </a>
+                        <!-- dropdown user-->
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="fa fa-user fa-fw"></i>User Profile</a>
+                            </li>
+                            <li><a href="#"><i class="fa fa-gear fa-fw"></i>Settings</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                            </li>
+                        </ul>
+                        <!-- end dropdown-user -->
+                    </li>
+                    <!-- end main dropdown -->
+                </ul>
+                <!-- end navbar-top-links -->
+
+            </nav>
+            <!-- end navbar top -->
+
+            <!-- navbar side -->
+            <nav class="navbar-default navbar-static-side" role="navigation">
+                <!-- sidebar-collapse -->
+                <div class="sidebar-collapse">
+                    <!-- side-menu -->
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <!-- user image section-->
+                            <div class="user-section">
+                                <div class="user-info">
+                                    <div>#Tienda <strong>Alibrand</strong></div>
+
+                                </div>
+                            </div>
+                            <!--end user image section-->
+                        </li>
+                        <li class="sidebar-search">
+                            <!-- search section-->
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search..."/>
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!--end search section-->
+                        </li>
+                        <li class="">
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Ingreso Clientes</a>
+                        </li>
+
+
+                        <!-- Productos -->
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Productos<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <!-- Productos Espinillera -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Espinillera<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoEspinillera.xhtml">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarEspinillera.xhtml">Modificación</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!-- Productos Camisola -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Camisolas<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoCamisola.xhtml">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarCamisola.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Balon -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Balónes<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoCamisola.xhtml">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Chumpas -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Chumpas<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoCamisola.xhtml">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Licra -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Licra<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoCamisola.xhtml">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Medias -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Medias<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoCamisola.xhtml">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- second-level-items -->
+                        </li>
+
+
+                        
+                        <li>
+                            <a href="timeline.html"><i class="fa fa-flask fa-fw"></i>Inventario</a>
+                        </li>
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Sucursal<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoSucursal.xhtml">Registro de sucursales</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarSucursal.xhtml">Modificar Sucursal</a>
+                                </li>
+
+                            </ul>
+                            <!-- second-level-items -->
+                        </li>
+                        <li>
+                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Cotización</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Facturación</a>
+
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Envio</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Ingreso Empleados</a>
+
+                        </li>
+
+
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoUsuarios.xhtml">Registro de Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarUsuario.xhtml">Modificar Usuarios</a>
+                                </li>
+
+                            </ul>
+                            <!-- second-level-items -->
+                        </li>
+
+                        <li>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
+
+                        </li>
+                    </ul>
+                    <!-- end side-menu -->
+                </div>
+                <!-- end sidebar-collapse -->
+            </nav>
+            <!-- end navbar side -->
+            <!--  page-wrapper -->
+            <div id="page-wrapper">
+
+
+                <div class="row">
+                    <!--  page header -->
+
+                    <div class="col-lg-12">
+                        <center><h1 class="page-header">Registro de Espinilleras</h1></center>
+                    </div>
+                    <center>
+                        <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
+                    </center>
+
+                    <br/><br/><br/>
+
+                    <h:form id="frmCamisola">
+                        <b:inputText label="Nombre" placeholder="Nombre: " value="#{espinilleraBean.ingreso.nombre_espnillera}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+
+                        <b:inputText label="Talla" placeholder="Talla" value="#{espinilleraBean.ingreso.id_talla_espinillera}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                        <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
+
+                        <b:inputText label="Sucursal" placeholder="Sucursal" value="#{espinilleraBean.ingreso.id_sucursal}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                        <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
+                        <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{espinilleraBean.ingreso.margen_ganancia}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+                            <f:facet name="append">
+                                <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{espinilleraBean.calcularGanancia()}"/>
+                            </f:facet>
+                        </b:inputText>
+
+                        <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
+                        <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{espinilleraBean.ingreso.precio_costo}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                        <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
+
+                        <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{espinilleraBean.ingreso.precio_venta}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                        <b:label text="#{inputTextBean.map['key']}" id="precioVenta"/>
+
+
+                        <b:inputTextarea label-col-md="Descripcion" placeholder="Descripcion" value="#{espinilleraBean.ingreso.descripcion}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"/>
+                        <b:label text="#{inputTextBean.map['key']}" id="descripcion"/>
+
+                        <b:inputText label="Cantidad" placeholder="Cantidad" value="#{espinilleraBean.ingreso.cantidad}"
+                                     onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                        <b:label text="#{inputTextBean.map['key']}" id="Cantidad"/>
+
+
+                        <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{espinilleraBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
+
+                    </h:form>
+
+                    <br/><br/><br/>
+
+
+
+                    <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                        <b:dataTable var="esp" 
+                                     value="#{espinilleraBean.lstEspinillera}" 
+                                     id='data'
+                                     columnVisibility="true"
+                                     class="tabla">
+
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_espinillera}" label="Id"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.nombre_espnillera}"  label="Nombre"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_sucursal}"  label="Sucursal"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.precio_costo}"  label="Precio Costo"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.precio_venta}"  label="Precio Venta"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.margen_ganancia}"  label="Margen de Ganancia"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.descripcion}"  label="Descripcion"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.cantidad}"  label="Cantidad"/>
+
+                            <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
+                                <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{espinilleraBean.Eliminar(esp)}"/>
+                            </b:dataTableColumn>
+
+
+                        </b:dataTable>
+                    </h:form>
+
+
+
+                    <!-- end  page header -->
+                </div>
+            </div>
+            <!-- end page-wrapper -->
+
+        </div>
+        <!-- end wrapper -->
+        <!-- Core Scripts - Include with every page -->
+        <script src="assets/plugins/jquery-1.10.2.js"></script>
+        <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="assets/plugins/pace/pace.js"></script>
+        <script src="assets/scripts/siminta.js"></script>
+        <!-- Page-Level Plugin Scripts-->
+        <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
+        <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+        <script>
+                                         $(document).ready(function () {
+                                             $('#dataTables-example').dataTable();
+                                         });
+        </script>
+    </h:body>
+</html>
+
+
