@@ -1086,7 +1086,7 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{pescadorBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -1242,11 +1242,13 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre" value="#{pescadorBean.modPes.nombrePescador}"/>
+                            <b:inputText label="Nombre" placeholder="Nombre" value="#{productoInventarioBean.modProdInv.nombreProducto}"/>
 
-                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{pescadorBean.modPes.descripcion}"/>
-
-                            <b:inputText label="Talla" placeholder="Talla" value="#{pescadorBean.modPes.idTalla}"
+                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{productoInventarioBean.modProdInv.descripcion}"/>
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTalla}" label="Talla" >
+                                <f:selectItems value="#{productoInventarioBean.lstProductoInventario}" var="c" itemValue="#{c.id_producto}" itemLabel="#{c.nombreProducto}"/>
+                            </b:selectOneMenu>
+                            <b:inputText label="Talla" placeholder="Talla" value="#{productoInventarioBean.modProdInv.idTalla}"
                                          update="@next" />
 
                             <b:inputText label="Sucursal" placeholder="Sucursal" value="#{pescadorBean.modPes.idSucursal}"
