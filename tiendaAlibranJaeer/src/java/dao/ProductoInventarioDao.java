@@ -103,6 +103,7 @@ public class ProductoInventarioDao extends DAO{
                 proInv.setIdTallaZapatilla(res.getInt("id_talla_zapatilla"));
                 proInv.setIdTipoZapatilla(res.getInt("id_tipo_zapatilla"));
                 proInv.setId_producto(res.getInt("id_producto"));
+                System.out.println("id producto: "+res.getInt("id_producto"));
                 proInv.setMargenGanancia(res.getDouble("margen_ganancia"));
                 proInv.setNombreProducto(res.getString("nombre_producto"));
                 proInv.setPrecioCosto(res.getDouble("precio_costo"));
