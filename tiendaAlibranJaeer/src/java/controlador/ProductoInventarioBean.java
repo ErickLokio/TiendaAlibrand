@@ -62,6 +62,9 @@ public class ProductoInventarioBean {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
             lstProductoInventario=proInvDao.listar();
+            lstProductoInventario.get(1).getId_producto();
+            System.out.println("producto inventario---------" +lstProductoInventario.get(0).getId_producto());
+            System.out.println(lstProductoInventario.get(1).getId_producto());
         } catch (Exception e) {
             System.out.println("Error al listar en el bean: "+e);
         }

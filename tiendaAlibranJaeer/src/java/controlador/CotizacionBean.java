@@ -15,8 +15,9 @@ import modelo.Cotizacion;
 @ViewScoped
 public class CotizacionBean {
     private Cotizacion ingreso = new Cotizacion();
-    private List<Cotizacion> lstCotizacion = new ArrayList();
+    private ArrayList<Cotizacion> lstCotizacion = new ArrayList<>();
     
+
     public Cotizacion getIngreso() {
         return ingreso;
     }
@@ -25,15 +26,13 @@ public class CotizacionBean {
         this.ingreso = ingreso;
     }
 
-    public List<Cotizacion> getLstCotizacion() {
+    public ArrayList<Cotizacion> getLstCotizacion() {
         return lstCotizacion;
     }
 
-    public void setLstCotizacion(List<Cotizacion> lstCotizacion) {
+    public void setLstCotizacion(ArrayList<Cotizacion> lstCotizacion) {
         this.lstCotizacion = lstCotizacion;
     }
-
-    
     
     public void Limpiar(){
         ingreso.setId_cotizacion(0);
@@ -76,9 +75,14 @@ public class CotizacionBean {
             CotizacionDao dao;
 
             try{
+                ingreso.getId_producto_1();
+                System.out.println("prueba :" +ingreso.getId_producto_1());
+                
                 dao = new CotizacionDao();
                 dao.guardarCotizacion(ingreso);
-                this.Listar();
+                
+                
+                this.listar33();
                 this.Limpiar();
             }catch(Exception e){
                 System.out.println("ERROR INGRESO SUCURSAL BEAN  --BEAN" +e);
@@ -86,15 +90,26 @@ public class CotizacionBean {
         }
     
     
-    public void Listar(){
-        CotizacionDao dao;
-        
-        try{
-            dao = new CotizacionDao();
-            lstCotizacion = dao.lista();
-        }catch(Exception e){
-            System.out.println("ERROR LISTAR Cotizacion --BEAN"+e);
+    public void listar33() {
+        CotizacionDao sucDao = new CotizacionDao();
+        try {
+            lstCotizacion= (ArrayList<Cotizacion>) sucDao.lista();
+            lstCotizacion.get(1).getId_producto_1();
+            lstCotizacion.get(1).getId_producto_2();
+            lstCotizacion.get(1).getId_producto_3();
+            lstCotizacion.get(1).getId_producto_4();
+            lstCotizacion.get(1).getId_producto_5();
+            
+            System.out.println(lstCotizacion.get(1).getId_producto_1());
+            System.out.println(lstCotizacion.get(1).getId_producto_2());
+            System.out.println(lstCotizacion.get(1).getId_producto_3());
+            System.out.println(lstCotizacion.get(1).getId_producto_4());
+            System.out.println(lstCotizacion.get(1).getId_producto_5());
+
+        } catch (Exception e) {
+            System.out.println("Error al listar Chumpa bean");
         }
+        
     }
     
     
@@ -112,6 +127,24 @@ public class CotizacionBean {
         }catch(Exception e){
             System.out.println("ERROR BUSCAR Cotizacion BEAN --BEAN" +e);
         }
+        
+    }
+    
+    
+    
+    
+    public void listaProducto(){
+        CotizacionDao dao;
+        
+        
+        try{
+            dao = new CotizacionDao();
+            lstCotizacion = dao.listarProductos();
+        
+        }catch(Exception e){
+            System.out.println("ERROR BUSCAR Cotizacion BEAN --BEAN" +e);
+        }
+        
         
     }
 }

@@ -4,6 +4,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelo.Cotizacion;
 
 /**
@@ -34,6 +36,7 @@ public class CotizacionDao extends DAO {
             sta.setString(5, co.getFecha());
             //--- PRODUCTO 1
             sta.setInt(6, co.getId_producto_1());
+            System.out.println("id: "+co.getId_producto_1());
             sta.setInt(7, co.getCantidad_1());
             sta.setDouble(8, co.getPrecio_unitario_1());
             sta.setDouble(9, co.getTotal_1());
@@ -183,13 +186,31 @@ public class CotizacionDao extends DAO {
     }
     
     
-    public void total_1(Cotizacion co){
-        int num1 = co.getCantidad_1();
-        int num2 = (int) co.getPrecio_unitario_1();
-        int mult;
-        int total_1 = (int) co.getTotal_1();
-        
-        mult = num1 * num2;
-        total_1 = mult;
+    
+    
+    
+    public ArrayList<Cotizacion> listarProductos() throws Exception{
+        ArrayList<Cotizacion> lstProInv = null;
+        try {
+            this.conectar();
+            query="select * from productoinventario";
+            sta = this.getCn().prepareStatement(query);
+            res = sta.executeQuery();
+            lstProInv = new ArrayList<>();
+            
+            while(res.next()){
+                Cotizacion co = new Cotizacion();
+                co.setId_producto_1(res.getInt("id_producto"));
+                co.setNombre_producto(res.getString("nombre_producto"));
+                lstProInv.add(co);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        }finally{
+            this.cerrar();
+        }
+        return lstProInv;
     }
+    
+    
 }

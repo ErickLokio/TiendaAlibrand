@@ -6,9 +6,9 @@ import java.sql.DriverManager;
 public class DAO {
 
     private Connection cn;
-    private String user = "jaeer";
-    private String password = "jaeer2018";
-    private String hostname = "192.168.0.25";
+    private String user = "root";
+    private String password = "";
+    private String hostname = "localhost";
     private String port = "3306";
     private String database = "tienda_alibrand";
     private String url = "jdbc:mysql://" + hostname+"/" + database;
