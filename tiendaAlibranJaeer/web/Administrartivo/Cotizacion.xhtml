@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Ingreso de Espinillera</title>
+        <title>Tienda Alibrand | Cotizacion</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -19,7 +19,7 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{espinilleraBean.listar33()}"/>
+
     </h:head>
     <h:body>
 
@@ -255,7 +255,7 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Registro de Espinilleras</h1></center>
+                        <center><h1 class="page-header">Cotizaciòn</h1></center>
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
@@ -267,46 +267,143 @@
                     <div class="col-lg-6">
 
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{espinilleraBean.ingreso.nombre_espnillera}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
-                            <b:label text="#{inputTextBean.map['key']}" id="nombre"/>
+                            <div class="col-lg-12">
+                                <center><h1 class="page-header">Datos Generales</h1></center>
+                                
+                            </div>
 
-                            <b:inputText label="Talla" placeholder="Talla" value="#{espinilleraBean.ingreso.id_talla_espinillera}"
+                            <b:inputText label="No.Nit" placeholder="No.Nit" value="#{cotizacionBean.ingreso.no_rut}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="nit"/>
+
+                            <b:inputText label="Empleado" placeholder="Empleado:" value="#{cotizacionBean.ingreso.id_empleado}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="empleado"/>
+
+                            <b:inputText label="Direcciòn" placeholder="Direcciòn:" value="#{cotizacionBean.ingreso.direccion}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
 
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{espinilleraBean.ingreso.id_sucursal}"
+                            <b:inputText label="Cliente" placeholder="Cliente:" value="#{cotizacionBean.ingreso.nombre_cliente}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{espinilleraBean.ingreso.margen_ganancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
-                                <f:facet name="append">
-                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{espinilleraBean.calcularGanancia()}"/>
-                                </f:facet>
-                            </b:inputText>
+                            <b:label text="#{inputTextBean.map['key']}" id="Cliente"/>
 
-                            <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{espinilleraBean.ingreso.precio_costo}"
+                            <b:inputText label="Fecha" placeholder="Fecha:" value="#{cotizacionBean.ingreso.fecha}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="Fecha"/>
 
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{espinilleraBean.ingreso.precio_venta}"
+                            <div class="col-lg-12">
+                                <center><h2 class="page-header"><strong>Cotización:</strong>   Producto 1</h2></center>
+                            </div>
+
+                            <b:inputText label="Producto" placeholder="Producto:" value="#{cotizacionBean.ingreso.id_producto_1}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="precioVenta"/>
-
-
-                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{espinilleraBean.ingreso.descripcion}"
-                                             onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"/>
-                            <b:label text="#{inputTextBean.map['key']}" id="descripcion"/>
-
-                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{espinilleraBean.ingreso.cantidad}"
+                            <b:label text="#{inputTextBean.map['key']}" id="Producto1"/>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_1}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad"/>
+                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad1"/>
+                            
+                            <b:inputText label="Precio Unitario" placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_1}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Precio_Unitario1"/>
+                            
+                            <b:inputText label="Total" placeholder="Total:" value="#{cotizacionBean.ingreso.total_1}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Total_1"/>
+                            
+                            
+                            <div class="col-lg-12">
+                                <center><h2 class="page-header"><strong>Cotización:</strong>   Producto 2</h2></center>
+                            </div>
 
+                            <b:inputText label="Producto" placeholder="Producto:" value="#{cotizacionBean.ingreso.id_producto_2}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Producto2"/>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_2}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad2"/>
+                            
+                            <b:inputText label="Precio Unitario" placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_2}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Precio_Unitario2"/>
+                            
+                            <b:inputText label="Total" placeholder="Total:" value="#{cotizacionBean.ingreso.total_2}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Total_2"/>
+                            
+                            
+                            <div class="col-lg-12">
+                                <center><h2 class="page-header"><strong>Cotización:</strong>   Producto 3</h2></center>
+                            </div>
 
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{espinilleraBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <b:inputText label="Producto" placeholder="Producto:" value="#{cotizacionBean.ingreso.id_producto_3}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Producto3"/>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_3}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad3"/>
+                            
+                            <b:inputText label="Precio Unitario" placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_3}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Precio_Unitario3"/>
+                            
+                            <b:inputText label="Total" placeholder="Total:" value="#{cotizacionBean.ingreso.total_3}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Total_3"/>
 
+                            
+                            
+                            <div class="col-lg-12">
+                                <center><h2 class="page-header"><strong>Cotización:</strong>   Producto 4</h2></center>
+                            </div>
+
+                            <b:inputText label="Producto" placeholder="Producto:" value="#{cotizacionBean.ingreso.id_producto_4}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Producto4"/>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_4}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad4"/>
+                            
+                            <b:inputText label="Precio Unitario" placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_4}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Precio_Unitario4"/>
+                            
+                            <b:inputText label="Total" placeholder="Total:" value="#{cotizacionBean.ingreso.total_4}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Total_4"/>
+
+                            
+                            
+                            
+                            <div class="col-lg-12">
+                                <center><h2 class="page-header"><strong>Cotización:</strong>   Producto 5</h2></center>
+                            </div>
+
+                            <b:inputText label="Producto" placeholder="Producto:" value="#{cotizacionBean.ingreso.id_producto_5}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Producto5"/>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_5}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad5"/>
+                            
+                            <b:inputText label="Precio Unitario" placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_5}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Precio_Unitario5"/>
+                            
+                            <b:inputText label="Total" placeholder="Total:" value="#{cotizacionBean.ingreso.total_5}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:label text="#{inputTextBean.map['key']}" id="Total_5"/>
+
+                            
                         </h:form>
+
+
+
                     </div>
                     <div class="col-lg-3"></div>
 
@@ -316,29 +413,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <br/><br/>
-                            <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
-                                <b:dataTable var="esp" 
-                                             value="#{espinilleraBean.lstEspinillera}" 
-                                             id='data'
-                                             columnVisibility="true"
-                                             class="tabla">
 
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_espinillera}" label="Id"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.nombre_espnillera}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_sucursal}"  label="Sucursal"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.precio_costo}"  label="Precio Costo"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.precio_venta}"  label="Precio Venta"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.margen_ganancia}"  label="Margen de Ganancia"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.descripcion}"  label="Descripcion"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.cantidad}"  label="Cantidad"/>
-
-                                    <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{espinilleraBean.Eliminar(esp)}"/>
-                                    </b:dataTableColumn>
-
-
-                                </b:dataTable>
-                            </h:form>
                         </div>
                     </div>
 

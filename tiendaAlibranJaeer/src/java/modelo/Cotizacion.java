@@ -33,6 +33,8 @@ public class Cotizacion {
     private double precio_unitario_5;
     private double total_5;
     private double gran_total;
+    private String nombre_producto;
+    
 
     public Cotizacion() {
         this.id_cotizacion = 0;
@@ -62,6 +64,7 @@ public class Cotizacion {
         this.precio_unitario_5=0;
         this.total_5=0;
         this.gran_total=0;
+        this.nombre_producto="";
     }
 
     public int getId_cotizacion() {
@@ -278,6 +281,14 @@ public class Cotizacion {
 
     public void setGran_total(double gran_total) {
         this.gran_total = gran_total;
+    }
+
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
     }
     
     
