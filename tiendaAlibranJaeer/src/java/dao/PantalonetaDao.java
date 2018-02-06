@@ -19,15 +19,17 @@ public class PantalonetaDao extends DAO {
     public void ingresar(Pantaloneta pan) throws Exception {
         try {
             this.conectar();
-            query = "insert into pantaloneta(nombre_pantaloneta, id_talla_pantaloneta, precio_costo, precio_venta, margen_ganancia, descripcion, cantidad) values(?,?,?,?,?,?,?)";
+            query = "insert into pantaloneta(nombre_pantaloneta, id_talla_pantaloneta, id_sucursal, precio_costo, precio_venta, margen_ganancia, descripcion, cantidad) values(?,"
+                    + " ?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, pan.getNombrePantaloneta());
             sta.setInt(2, pan.getIdTallaPantaloneta());
-            sta.setDouble(3, pan.getPrecioCosto());
-            sta.setDouble(4, pan.getPrecioVenta());
-            sta.setDouble(5, pan.getMargenGanancia());
-            sta.setString(6, pan.getDescripcion());
-            sta.setInt(7, pan.getCantidad());
+            sta.setInt(3, pan.getIdSucursal());
+            sta.setDouble(4, pan.getPrecioCosto());
+            sta.setDouble(5, pan.getPrecioVenta());
+            sta.setDouble(6, pan.getMargenGanancia());
+            sta.setString(7, pan.getDescripcion());
+            sta.setInt(8, pan.getCantidad());
             sta.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(PantalonetaDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -39,15 +41,15 @@ public class PantalonetaDao extends DAO {
     public void modificar(Pantaloneta pan) throws Exception{
         try {
             this.conectar();
-            query="update pantaloneta set nombre_pantaloneta=?, id_talla_pantaloneta=?, precio_costo=?, precio_venta=?, margen_ganancia=?, descripcion=?, cantidad=? where id_pantaloneta=?";
+            query="update pantaloneta set nombre_pantaloneta=?, id_talla_pantaloneta=?, precio_costo=?, precio_venta=?, margen_ganancia=?, cantidad=? where id_pantaloneta=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, pan.getNombrePantaloneta());
             sta.setInt(2, pan.getIdTallaPantaloneta());
             sta.setDouble(3, pan.getPrecioCosto());
             sta.setDouble(4, pan.getPrecioVenta());
             sta.setDouble(5, pan.getMargenGanancia());
-            sta.setString(6, pan.getDescripcion());
-            sta.setInt(7, pan.getCantidad());
+            sta.setInt(6, pan.getCantidad());
+            sta.setInt(7, pan.getIdPantaloneta());
             sta.executeUpdate();
         } catch (Exception ex) {
             Logger.getLogger(PantalonetaDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +77,7 @@ public class PantalonetaDao extends DAO {
         
         try {
             this.conectar();
-            query="select * from pantaloneta where id_pantaloneta=?";
+            query="select * from pantaloneta";
             sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
             lstPantaloneta = new ArrayList<>();
@@ -91,6 +93,7 @@ public class PantalonetaDao extends DAO {
                 pan.setNombrePantaloneta(res.getString("nombre_pantaloneta"));
                 pan.setPrecioCosto(res.getDouble("precio_costo"));
                 pan.setPrecioVenta(res.getDouble("precio_venta"));
+                lstPantaloneta.add(pan);
             }
         } catch (Exception ex) {
             Logger.getLogger(PantalonetaDao.class.getName()).log(Level.SEVERE, null, ex);

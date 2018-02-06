@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Ingreso de Camisolas</title>
+        <title>Tienda Alibrand | Modificacion de Camisolas</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -18,7 +18,8 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{camisolaBean.listar()}"/>
+
+        <f:event type="preRenderView" listener="#{pantalonetaBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -27,14 +28,8 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="../recursos/images/ALIBRANDC.png" alt="" />
+                        <img src="assets/images/ALIBRANDC.png" alt=""/>
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -146,6 +141,20 @@
                         </li>
 
                         <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoUsuarios.xhtml">Registro de Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarUsuario.xhtml">Modificar Usuarios</a>
+                                </li>
+
+                            </ul>
+                            <!-- second-level-items -->
+                        </li>
+
+                        <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
 
                         </li>
@@ -163,89 +172,77 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Empleado</h1></center>
+                        <center><h1 class="page-header">Camisola</h1></center>
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
                     </center>
-                </div>    
-                <br/><br/><br/>
+
+
+                    <br/><br/><br/>
+                </div>   
                 <div class="row">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{camisolaBean.cam.nombreCamisola}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{camisolaBean.cam.descripcion}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:inputText label="Talla" placeholder="Talla" value="#{camisolaBean.cam.idTalla}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{camisolaBean.cam.idSucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{pantalonetaBean.pan.precioCosto}"/>
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{pantalonetaBean.pan.margenGanancia}">
                                 <f:facet name="append">
-                                    <b:commandButton  value="Calcular" look="success" actionListener="#{camisolaBean.calcularGanancia()}"/>
+                                    <b:commandButton  value="Calcular" look="success" actionListener="#{pantalonetaBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
-
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{camisolaBean.cam.precioCosto}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{camisolaBean.cam.precioVenta}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{camisolaBean.ingresar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pantalonetaBean.pan.precioVenta}"/>
 
                         </h:form>
                     </div>    
                 </div>
-
                 <div class="row">
-                    <div class="col-lg-12">
-                        <b:panel>
-                            <h:form  id="frmTablaCamisola">
-                                <br/><br/><br/>
-                                <b:dataTable 
-                                    value="#{camisolaBean.lstCamisola}"
-                                    var="cami"
-                                    id="bcarPool2"
-                                    fixedHeader="true"
-                                    scroll-size="400px"
-                                    scroll-x="false"
-                                    responsive="true"
-                                    lang="es"
-                                    searching="false">
+                    <div >
+                        <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                            <b:dataTable var="cami" 
+                                         value="#{pantalonetaBean.lstPantaloneta}" 
+                                         id='data'
+                                         columnVisibility="true"
+                                         class="tabla">
+
+                                <b:dataTableColumn styleClass="div-table-cell" value="#{cami.idPantaloneta}" label="Id"/>
+                                <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
+                                    <b:inputText value="#{cami.nombrePantaloneta}" fieldSize="sm"/>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Talla Pantaloneta">
+                                    <b:inputText value="#{cami.idTallaPantaloneta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
+                                    <b:inputText value="#{cami.precioCosto}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Precio Venta">
+                                    <b:inputText value="#{cami.precioVenta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Margen de Ganancia">
+                                    <b:inputText value="#{cami.margenGanancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn styleClass="div-table-cell" value="#{cami.descripcion}"  label="Descripcion"/>
+                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Cantidad">
+                                    <b:inputText value="#{cami.cantidad}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                </b:dataTableColumn>
+                                <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
+                                    <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{pantalonetaBean.modificar(cami)}"/>
+                                </b:dataTableColumn>
 
 
-                                    <b:dataTableColumn value="#{cami.idCamisola}" label="Id"/>
-                                    <b:dataTableColumn value="#{cami.nombreCamisola}"  label="Nombre"/>
-                                    <b:dataTableColumn value="#{cami.idSucursal}"  label="Sucursal"/>
-                                    <b:dataTableColumn value="#{cami.precioCosto}"  label="Precio Costo"/>
-                                    <b:dataTableColumn value="#{cami.precioVenta}"  label="Precio Venta"/>
-                                    <b:dataTableColumn value="#{cami.margenGanancia}"  label="Margen de Ganancia"/>
-                                    <b:dataTableColumn value="#{cami.descripcion}"  label="Descripcion"/>
-                                    <b:dataTableColumn value="#{cami.cantidad}"  label="Cantidad"/>
-
-                                    <b:dataTableColumn label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{camisolaBean.eliminar(cami)}"/>
-                                    </b:dataTableColumn>
-                                </b:dataTable>
-                            </h:form>
-                        </b:panel>
+                            </b:dataTable>
+                        </h:form>
                     </div>
                 </div>
+
                 <!-- end  page header -->
 
             </div>
+            <!-- end page-wrapper -->
 
         </div>
-        <!-- end page-wrapper -->
-
+        <!-- end wrapper -->
         <!-- Core Scripts - Include with every page -->
         <script src="assets/plugins/jquery-1.10.2.js"></script>
         <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
@@ -256,9 +253,9 @@
         <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
         <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script>
-                                             $(document).ready(function () {
-                                                 $('#dataTables-example').dataTable();
-                                             });
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
         </script>
     </h:body>
 </html>
