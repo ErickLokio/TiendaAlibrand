@@ -260,7 +260,7 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Cotizaciòn</h1></center>
+                        <center><h1 class="page-header">Factura</h1></center>
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
@@ -277,48 +277,24 @@
                                     <div class="col-lg-12">
                                         <center><h1 class="page-header">Datos Generales</h1></center>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <b:inputText label="No.Nit" placeholder="No.Nit" value="#{cotizacionBean.ingreso.no_rut}"
+                                            <b:inputText label="Nombre" placeholder="Nombre:" value="#{facturaBean.ingreso.nombre_cliente}"
                                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                                            <b:label text="#{inputTextBean.map['key']}" id="nit"/>
+                                            <b:label text="#{inputTextBean.map['key']}" id="Nombre"/>
 
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h4><span>Empleado</span></h4>
-
-                                            <b:selectOneMenu value="#{cotizacionBean.ingreso.id_empleado}" large-screen="full-width" >
-                                                <f:selectItems value="#{empleadoBean.lstTodoEmpleado}"
-                                                               var="emp" itemLabel="#{emp.nombreEmplado}"
-                                                               itemValue="#{emp.idEmpleado}" />
-                                            </b:selectOneMenu>
-                                        </div>
-                                    </div>
-
-
-
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <b:inputText label="Direcciòn" placeholder="Direcciòn:" value="#{cotizacionBean.ingreso.direccion}"
+                                            <b:inputText label="Nit" placeholder="Nit:" value="#{facturaBean.ingreso.nit}"
                                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
-
+                                            <b:label text="#{inputTextBean.map['key']}" id="Nit"/>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <b:inputText label="Cliente" placeholder="Cliente:" value="#{cotizacionBean.ingreso.nombre_cliente}"
-                                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                                            <b:label text="#{inputTextBean.map['key']}" id="Cliente"/>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <b:inputText label="Fecha" placeholder="Fecha:" value="#{cotizacionBean.ingreso.fecha}"
+                                            <b:inputText label="Fecha" placeholder="Fecha:" value="#{facturaBean.ingreso.fecha}"
                                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                                             <b:label text="#{inputTextBean.map['key']}" id="Fecha"/>
 
@@ -337,10 +313,10 @@
                             <div class="row">
 
                                 <div class="col-lg-12">
-                                    <center><h1 class="page-item text-danger">Productos</h1></center>
+                                    <center><h1 class="page-item text-danger">Facturación</h1></center>
                                 </div>
 
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
 
                                 <div class="col-lg-2">
                                     <div class="col-lg-12">
@@ -362,24 +338,29 @@
 
                                 <div class="col-lg-2">
                                     <div class="col-lg-12">
-                                        <center><h3 class="page-header">Total</h3></center>
+                                        <center><h3 class="page-header">Descuento</h3></center>
                                     </div>
                                 </div>
 
                                 <div class="col-lg-2">
+                                    <div class="col-lg-12">
+                                        <center><h3 class="page-header">Total</h3></center>
+                                    </div>
                                 </div>
 
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                             </div>
                             <!-- FIN TITULOS DE COTIZACION --> 
 
+                            
+                            
                             <!-- PRODUCTO #1 --> 
                             <div class="row">
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
 
-                                    <b:selectOneMenu value="#{cotizacionBean.ingreso.id_producto_1}" large-screen="full-width" >
-
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_1}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
                                               <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
                                                              var="pro" itemLabel="#{pro.nombreProducto}"
                                                              itemValue="#{pro.id_producto}" />
@@ -387,187 +368,386 @@
                                 </div>
 
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_1}"
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_1}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_1}"
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_1}"
                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Total:" value="#{cotizacionBean.ingreso.total_1}"
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_1}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
                                 </div>
-                                <div class="col-lg-2">                                    
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_1}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
                                 </div>
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                             </div>
                             <!-- FIN PRODUCTO #1 --> 
-
+                            
                             <!-- PRODUCTO #2 --> 
                             <div class="row">
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
 
-                                    <b:selectOneMenu value="#{cotizacionBean.ingreso.id_producto_2}" large-screen="full-width" >
-
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_2}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
                                               <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
                                                              var="pro" itemLabel="#{pro.nombreProducto}"
                                                              itemValue="#{pro.id_producto}" />
                                     </b:selectOneMenu>
                                 </div>
+
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_2}"
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_2}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_2}"
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_2}"
                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Total:" value="#{cotizacionBean.ingreso.total_2}"
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_2}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
-                                </div>
-                                <div class="col-lg-2">
 
                                 </div>
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_2}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
                             </div>
                             <!-- FIN PRODUCTO #2 --> 
-
+                            
                             <!-- PRODUCTO #3 --> 
                             <div class="row">
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
 
-                                    <b:selectOneMenu value="#{cotizacionBean.ingreso.id_producto_3}" large-screen="full-width" >
-
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_3}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
                                               <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
                                                              var="pro" itemLabel="#{pro.nombreProducto}"
                                                              itemValue="#{pro.id_producto}" />
                                     </b:selectOneMenu>
                                 </div>
+
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_3}"
-                                                  onkeyup="ajax:inputTextBean.capitalizeText()" />
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_3}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_3}"
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_3}"
                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Total:" value="#{cotizacionBean.ingreso.total_3}"
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_3}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
                                 </div>
                                 <div class="col-lg-2">
-
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_3}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
                                 </div>
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                             </div>
-                            <!-- PRODUCTO #3 --> 
-
+                            <!-- FIN PRODUCTO #3 -->
+                            
                             <!-- PRODUCTO #4 --> 
                             <div class="row">
-                                <div class="col-lg-2"></div>
+                                <div class="col-lg-1"></div>
                                 <div class="col-lg-2">
 
-                                    <b:selectOneMenu value="#{cotizacionBean.ingreso.id_producto_4}" large-screen="full-width" >
-
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_4}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
                                               <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
                                                              var="pro" itemLabel="#{pro.nombreProducto}"
                                                              itemValue="#{pro.id_producto}" />
                                     </b:selectOneMenu>
                                 </div>
+
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_4}"
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_4}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_4}"
-                                                 onkeyup="ajax:inputTextBean.capitalizeText()" />
-
-                                </div>
-                                <div class="col-lg-2">
-                                    <b:inputText  placeholder="Total:" value="#{cotizacionBean.ingreso.total_4}"
-                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
-                                </div>
-                                <div class="col-lg-2">
-
-                                </div>
-                                <div class="col-lg-2"></div>
-                            </div>
-                            <!-- PRODUCTO #4 --> 
-
-                            <!-- PRODUCTO #5 --> 
-                            <div class="row">
-                                <div class="col-lg-2"></div>
-                                <div class="col-lg-2">
-                                    <b:selectOneMenu value="#{cotizacionBean.ingreso.id_producto_5}" large-screen="full-width" >
-
-                                              <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
-                                                             var="pro" itemLabel="#{pro.nombreProducto}"
-                                                             itemValue="#{pro.id_producto}" />
-                                    </b:selectOneMenu>
-                                </div>
-                                <div class="col-lg-2">
-                                    <b:inputText  placeholder="Cantidad:" value="#{cotizacionBean.ingreso.cantidad_5}"
-                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
-
-                                </div>
-                                <div class="col-lg-2">
-                                    <b:inputText placeholder="Precio Unitario:" value="#{cotizacionBean.ingreso.precio_unitario_5}"
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_4}"
                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Total:" value="#{cotizacionBean.ingreso.total_5}"
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_4}"
                                                   onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
                                 </div>
                                 <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_4}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
+                            </div>
+                            <!-- FIN PRODUCTO #4 --> 
+                            
+                            <!-- PRODUCTO #5 --> 
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_5}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
+                                              <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
+                                                             var="pro" itemLabel="#{pro.nombreProducto}"
+                                                             itemValue="#{pro.id_producto}" />
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_5}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
                                 </div>
-                                <div class="col-lg-2"></div>
-                            </div>
-                            <!-- PRODUCTO #5 --> 
+                                <div class="col-lg-2">
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_5}"
+                                                 onkeyup="ajax:inputTextBean.capitalizeText()"  />
 
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_5}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_5}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
+                            </div>
+                            <!-- FIN PRODUCTO #5 --> 
+                            
+                            <!-- PRODUCTO #6 --> 
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_6}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
+                                              <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
+                                                             var="pro" itemLabel="#{pro.nombreProducto}"
+                                                             itemValue="#{pro.id_producto}" />
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_6}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_6}"
+                                                 onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_6}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_6}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
+                            </div>
+                            <!-- FIN PRODUCTO #6 --> 
+                            
+                            <!-- PRODUCTO #7 --> 
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_7}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
+                                              <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
+                                                             var="pro" itemLabel="#{pro.nombreProducto}"
+                                                             itemValue="#{pro.id_producto}" />
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_7}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_7}"
+                                                 onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_7}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_7}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
+                            </div>
+                            <!-- FIN PRODUCTO #7 --> 
+                            
+                            <!-- PRODUCTO #8 --> 
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_8}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
+                                              <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
+                                                             var="pro" itemLabel="#{pro.nombreProducto}"
+                                                             itemValue="#{pro.id_producto}" />
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_8}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_8}"
+                                                 onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_8}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_8}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
+                            </div>
+                            <!-- FIN PRODUCTO #8 --> 
+                            
+                            <!-- PRODUCTO #9 --> 
+                            <div class="row">
+                                <div class="col-lg-1"></div>
+                                <div class="col-lg-2">
+
+                                    <b:selectOneMenu value="#{facturaBean.ingreso.id_producto_9}" large-screen="full-width" >
+                                        <f:selectItem itemLabel="seleccione" itemValue="" />
+                                              <f:selectItems value="#{productoInventarioBean.lstProductoInventario}"
+                                                             var="pro" itemLabel="#{pro.nombreProducto}"
+                                                             itemValue="#{pro.id_producto}" />
+                                    </b:selectOneMenu>
+                                </div>
+
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Cantidad:" value="#{facturaBean.ingreso.cantidad_9}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText placeholder="Precio Unitario:" value="#{facturaBean.ingreso.precio_unitario_9}"
+                                                 onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  placeholder="Descuento:" value="#{facturaBean.ingreso.descuento_9}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+
+                                </div>
+                                <div class="col-lg-2">
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_9}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
+                                </div>
+                                <div class="col-lg-1"></div>
+                            </div>
+                            <!-- FIN PRODUCTO #9 --> 
+                            
+                            
+                            
                             <div class="row">
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-2">
                                 </div>
                                 <div class="col-lg-2"></div>
-                                <div class="col-lg-2">Gran  Total</div>
+                                <div class="col-lg-2"><b>Gran  Total</b></div>
                                 <div class="col-lg-2">
-                                    <b:inputText  placeholder="Total:" value="#{cotizacionBean.ingreso.gran_total}"
-                                                  onkeyup="ajax:inputTextBean.capitalizeText()"  />
+                                    <b:inputText  disabled="true" placeholder="Total:" value="#{facturaBean.ingreso.total_factura}"
+                                                  onkeyup="ajax:inputTextBean.capitalizeText()" >
+                                        <f:facet name="prepend">
+                                            <h:outputText value="Q" />
+                                        </f:facet>
+                                    </b:inputText>
                                 </div>
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-2"></div>
                             </div>
-
-
                         </div>
 
                         <br/>
-
-
                         <div class="row">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-2">
 
                             </div>
                             <div class="col-lg-2">
-                                <p:commandButton icon="ui-icon-mail-closed" value="Guardar" styleClass="btn btn-primary" actionListener="#{cotizacionBean.insertar()}"/>
+                                <p:commandButton  value="Guardar" styleClass="btn btn-primary" actionListener="#{facturaBean.insertar()}" />
+                                
                             </div>
                             <div class="col-lg-2">
 
-                                <b:commandButton  iconAwesome="cart-plus" value="Calcular" look="success" actionListener="#{cotizacionBean.calcularGanancia6()}" size="lg"/>
+                                <b:commandButton  iconAwesome="cart-plus" value="Calcular" look="warning" actionListener="#{facturaBean.calcularGanancia6()}" size="lg"/>
                             </div>
                             <div class="col-lg-2">  
 

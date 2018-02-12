@@ -210,7 +210,5 @@ public class CotizacionDao extends DAO {
             this.cerrar();
         }
         return lstProInv;
-    }
-    
-    
+    }  
 }
