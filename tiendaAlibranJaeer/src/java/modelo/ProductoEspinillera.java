@@ -3,22 +3,12 @@ package modelo;
 /**
  * @author Walter
  */
-public class innerProductoInventario {
+public class ProductoEspinillera {
 
     private int id_producto;
     private String nombreProducto;
-    private int idTallaBalon;
-    private String nombreTallaBalon;
-    private int idTalla;
-    private String nombreTalla;
     private int idTallaEspinillera;
     private String nombreTallaEspinillera;
-    private int idTallaPantaloneta;
-    private String nombreTallaPantaloneta;
-    private int idTallaZapatilla;
-    private String nombreTallaZapatilla;
-    private int idTipoZapatilla;
-    private String tipoZapatilla;
     private int idSucursal;
     private String sucursal;
     private double precioCosto;
@@ -43,30 +33,7 @@ public class innerProductoInventario {
         this.nombreProducto = nombreProducto;
     }
 
-    public int getIdTallaBalon() {
-        return idTallaBalon;
-    }
-
-    public void setIdTallaBalon(int idTallaBalon) {
-        this.idTallaBalon = idTallaBalon;
-    }
     
-    public int getIdTalla() {
-        return idTalla;
-    }
-
-    public void setIdTalla(int idTalla) {
-        this.idTalla = idTalla;
-    }
-
-    public String getNombreTalla() {
-        return nombreTalla;
-    }
-
-    public void setNombreTalla(String nombreTalla) {
-        this.nombreTalla = nombreTalla;
-    }
-
     public int getIdTallaEspinillera() {
         return idTallaEspinillera;
     }
@@ -81,54 +48,6 @@ public class innerProductoInventario {
 
     public void setNombreTallaEspinillera(String nombreTallaEspinillera) {
         this.nombreTallaEspinillera = nombreTallaEspinillera;
-    }
-
-    public int getIdTallaPantaloneta() {
-        return idTallaPantaloneta;
-    }
-
-    public void setIdTallaPantaloneta(int idTallaPantaloneta) {
-        this.idTallaPantaloneta = idTallaPantaloneta;
-    }
-
-    public String getNombreTallaPantaloneta() {
-        return nombreTallaPantaloneta;
-    }
-
-    public void setNombreTallaPantaloneta(String nombreTallaPantaloneta) {
-        this.nombreTallaPantaloneta = nombreTallaPantaloneta;
-    }
-
-    public int getIdTallaZapatilla() {
-        return idTallaZapatilla;
-    }
-
-    public void setIdTallaZapatilla(int idTallaZapatilla) {
-        this.idTallaZapatilla = idTallaZapatilla;
-    }
-
-    public String getNombreTallaZapatilla() {
-        return nombreTallaZapatilla;
-    }
-
-    public void setNombreTallaZapatilla(String nombreTallaZapatilla) {
-        this.nombreTallaZapatilla = nombreTallaZapatilla;
-    }
-
-    public int getIdTipoZapatilla() {
-        return idTipoZapatilla;
-    }
-
-    public void setIdTipoZapatilla(int idTipoZapatilla) {
-        this.idTipoZapatilla = idTipoZapatilla;
-    }
-
-    public String getTipoZapatilla() {
-        return tipoZapatilla;
-    }
-
-    public void setTipoZapatilla(String tipoZapatilla) {
-        this.tipoZapatilla = tipoZapatilla;
     }
 
     public int getIdSucursal() {
@@ -187,11 +106,4 @@ public class innerProductoInventario {
         this.cantidad = cantidad;
     }
 
-    public String getNombreTallaBalon() {
-        return nombreTallaBalon;
-    }
-
-    public void setNombreTallaBalon(String nombreTallaBalon) {
-        this.nombreTallaBalon = nombreTallaBalon;
-    }
 }

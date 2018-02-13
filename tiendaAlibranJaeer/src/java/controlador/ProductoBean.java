@@ -43,13 +43,6 @@ public class ProductoBean {
         this.lstProducto2 = lstProducto2;
     }
     
-    
-    
-    
-
-    
-    
-    
     public void Limpiar(){
         ingreso.setId_producto(0);
         ingreso.setId_sucursal(0);
@@ -59,8 +52,6 @@ public class ProductoBean {
         ingreso.setDescripcion("");
         ingreso.setCantidad_total(0);
     }
-    
-    
     
      public void insertar(){
         ProductoDAO dao;

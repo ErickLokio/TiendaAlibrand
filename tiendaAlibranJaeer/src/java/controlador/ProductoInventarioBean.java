@@ -4,16 +4,38 @@ import dao.ProductoInventarioDao;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import modelo.ProductoEspinillera;
 import modelo.ProductoInventario;
-
+import modelo.Talla;
+import modelo.TallaEspinillera;
 /**
-    * @author Walter
+ * @author Walter
  */
 @ManagedBean
 @ViewScoped
 public class ProductoInventarioBean {
+
     private ProductoInventario modProdInv = new ProductoInventario();
-    private ArrayList<ProductoInventario> lstProductoInventario = new ArrayList<>();
+    private ArrayList<ProductoInventario> lstProductoInventario = new ArrayList();
+    private ArrayList<Talla> lstTalla = new ArrayList();
+    private ArrayList<TallaEspinillera> lstTallaEspinillera = new ArrayList();
+    private ArrayList<ProductoEspinillera> lstProEsp = new ArrayList();
+
+    public ArrayList<ProductoEspinillera> getLstProEsp() {
+        return lstProEsp;
+    }
+
+    public void setLstProEsp(ArrayList<ProductoEspinillera> lstProEsp) {
+        this.lstProEsp = lstProEsp;
+    }
+    
+    public ArrayList<Talla> getLstTalla() {
+        return lstTalla;
+    }
+
+    public void setLstTalla(ArrayList<Talla> lstTalla) {
+        this.lstTalla = lstTalla;
+    }
 
     public ProductoInventario getModProdInv() {
         return modProdInv;
@@ -30,43 +52,99 @@ public class ProductoInventarioBean {
     public void setLstProductoInventario(ArrayList<ProductoInventario> lstProductoInventario) {
         this.lstProductoInventario = lstProductoInventario;
     }
-    
-    public void ingresar(){
-        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
-        try {
-            proInvDao.ingresar(modProdInv);
-        } catch (Exception e) {
-            System.out.println("Error al ingresar en el bean: "+e);
-        }
+
+    public ArrayList<TallaEspinillera> getLstTallaEspinillera() {
+        return lstTallaEspinillera;
+    }
+
+    public void setLstTallaEspinillera(ArrayList<TallaEspinillera> lstTallaEspinillera) {
+        this.lstTallaEspinillera = lstTallaEspinillera;
     }
     
-    public void eliminar(ProductoInventario modProdInv2){
+    public void ingresarPescador() {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
-            proInvDao.ingresar(modProdInv2);
+            proInvDao.ingresarPescador(modProdInv);
         } catch (Exception e) {
-            System.out.println("Error al eliminar en el bean: "+e);
+            System.out.println("Error al ingresar en el bean: " + e);
         }
     }
-    
-    public void modificar(ProductoInventario modProdInv2){
+
+    public void ingresarEspinillera() {
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            proInvDao.ingresarEspinillera(modProdInv);
+        } catch (Exception e) {
+            System.out.println("Error al ingresar en el bean: " + e);
+        }
+    }
+
+    public void eliminar(int idProducto) {
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            proInvDao.eliminar(idProducto);
+        } catch (Exception e) {
+            System.out.println("Error al eliminar en el bean: " + e);
+        }
+    }
+
+    public void modificar(ProductoInventario modProdInv2) {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
             proInvDao.modificar(modProdInv2);
         } catch (Exception e) {
-            System.out.println("Error al modifcar en el bean: "+e);
+            System.out.println("Error al modifcar en el bean: " + e);
         }
     }
     
-    public void listar(){
+    public void modificarEsp(ProductoEspinillera proEsp) {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
-            lstProductoInventario=proInvDao.listar();
-            lstProductoInventario.get(1).getId_producto();
-            System.out.println("producto inventario---------" +lstProductoInventario.get(0).getId_producto());
-            System.out.println(lstProductoInventario.get(1).getId_producto());
+            proInvDao.modificarEspinillera(proEsp);
         } catch (Exception e) {
-            System.out.println("Error al listar en el bean: "+e);
+            System.out.println("Error al modifcar en el bean: " + e);
         }
+    }
+
+    public void listar() {
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            lstProductoInventario = proInvDao.listar();
+        } catch (Exception e) {
+            System.out.println("Error al listar en el bean: " + e);
+        }
+    }
+
+    public void listarTalla() {
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            lstTalla = proInvDao.listarTalla();
+        } catch (Exception e) {
+            System.out.println("Error al listar en el bean: " + e);
+        }
+    }
+
+    public void listarTallaEspinillera() {
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            lstTallaEspinillera = proInvDao.listarTallaEspinillera();
+        } catch (Exception e) {
+            System.out.println("Error al listar en el bean: " + e);
+        }
+    }
+    public void listarProEspi(){
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            lstProEsp = proInvDao.listarProductoEspinillera();
+        } catch (Exception e) {
+            System.out.println("Error al Listar porducto espinillera: "+e);
+        }
+    }
+    public void calcularGanancia() {
+        double total;
+        double precioCosto = modProdInv.getPrecioCosto();
+        double ganancia = modProdInv.getMargenGanancia();
+        total = ((ganancia * precioCosto) / 100) + precioCosto;
+        modProdInv.setPrecioVenta(total);
     }
 }
