@@ -352,8 +352,6 @@
                             </div>
                             <!-- FIN TITULOS DE COTIZACION --> 
 
-                            
-                            
                             <!-- PRODUCTO #1 --> 
                             <div class="row">
                                 <div class="col-lg-1"></div>
@@ -733,6 +731,7 @@
                                 <div class="col-lg-2"></div>
                                 <div class="col-lg-2"></div>
                             </div>
+                            
                         </div>
 
                         <br/>
@@ -742,18 +741,17 @@
 
                             </div>
                             <div class="col-lg-2">
-                                <p:commandButton  value="Guardar" styleClass="btn btn-primary" actionListener="#{facturaBean.insertar()}" />
+                                <p:commandButton  value="Guardar" styleClass="btn btn-primary" action="#{facturaBean.modificar10()}" actionListener="#{facturaBean.insertar()}" />
                                 
                             </div>
                             <div class="col-lg-2">
 
-                                <b:commandButton  iconAwesome="cart-plus" value="Calcular" look="warning" actionListener="#{facturaBean.calcularGanancia6()}" size="lg"/>
+                                <b:commandButton  iconAwesome="cart-plus" value="Calcular" look="warning"   action="#{facturaBean.modificarMaster()}" actionListener="#{facturaBean.calcularGanancia6()}" size="lg"/>
                             </div>
                             <div class="col-lg-2">  
 
                             </div>
-                            <div class="col-lg-2">  
-                            </div>
+                            <div class="col-lg-2"></div>
                             <div class="col-lg-2"></div>
                         </div>
 

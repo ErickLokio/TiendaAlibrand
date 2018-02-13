@@ -131,12 +131,12 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
+                                            <a href="IngresoBalon.xhtml">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="ModificarBalon.xhtml">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -146,12 +146,12 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
+                                            <a href="IngresoChumpa.xhtml">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="ModificarChumpa.xhtml">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -161,12 +161,12 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
+                                            <a href="IngresoLicra.xhtml">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="ModificarLicra.xhtml">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -184,6 +184,38 @@
                                         </li>
                                     </ul>
                                 </li>
+                                
+                                
+                                
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pantalonetas<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoPantaloneta.xhtml">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarPantaloneta.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pescador<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="IngresoPescador.xhtml">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="ModificarPescador.xhtml">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
                             </ul>
 
                             <!-- second-level-items -->
@@ -210,7 +242,7 @@
                             <!-- second-level-items -->
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i>Cotización</a>
+                            <a href="Prueba.xhtml"><i class="fa fa-edit fa-fw"></i>Cotización</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-wrench fa-fw"></i>Facturación</a>
@@ -219,9 +251,20 @@
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Envio</a>
                         </li>
+                        
+                        
                         <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i>Ingreso Empleados</a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Empleado<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoEmpleado.xhtml">Registro</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarEmpleado.xhtml">Modificación</a>
+                                </li>
 
+                            </ul>
+                            <!-- second-level-items -->
                         </li>
 
 
@@ -257,22 +300,15 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Registro de Balones</h1></center>
+                        <center><h1 class="page-header">Balones</h1></center>
                     </div>
-                    
+
                     <center>
-                        <b:iconAwesome name="futbol-o" spin="true" size="5x" />#{'   '}
+                        <img  class="centrado" id="imagen" src="assets/icon/balon2.png" />
                     </center>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    <br/><br/><br/>
+
+
+                    <br/><br/>
 
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
@@ -292,6 +328,7 @@
                             <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{balonBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">
+                                    
                                     <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{balonBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>

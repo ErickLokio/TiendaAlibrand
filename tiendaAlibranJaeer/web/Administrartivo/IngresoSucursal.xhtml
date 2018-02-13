@@ -20,6 +20,7 @@
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
         <f:event type="preRenderView" listener="#{sucursalBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{empleadoBean.listar33()}"/>
     </h:head>
     <h:body>
 
@@ -179,10 +180,18 @@
                             <b:inputText label="Direcciòn" placeholder="Direcciòn" value="#{sucursalBean.suc.direccion}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
-
-                            <b:inputText label="Encargado" placeholder="Encargado" value="#{sucursalBean.suc.id_empleado}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
+                            
+                            
+                            
+                            <h4><span>Encargado</span></h4>
+                            <b:selectOneMenu value="#{sucursalBean.suc.id_empleado}" large-screen="full-width" >
+                                <f:selectItems value="#{empleadoBean.lstTodoEmpleado}"
+                                               var="emp" itemLabel="#{emp.nombreEmplado}"
+                                               itemValue="#{emp.idEmpleado}" />
+                            </b:selectOneMenu>
+                            
+                            
+                            
 
                             <b:inputText label="Telèfono Claro" placeholder="Telefono Claro" value="#{sucursalBean.suc.telefono_claro}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
@@ -196,7 +205,7 @@
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="email"/>
 
-                            <p:commandButton value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}" ></p:commandButton>
+                            <p:commandButton value="Ingresar" class="btn btn-primary" actionListener="#{sucursalBean.insertar()}" update=":frm" ></p:commandButton>
 
                         </h:form>
                     </div> 
