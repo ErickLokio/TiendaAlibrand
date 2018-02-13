@@ -19,6 +19,8 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
         <f:event type="preRenderView" listener="#{productoInventarioBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarTalla()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
     </h:head>
     <h:body>
         <div id="wrapper">
@@ -176,29 +178,26 @@
                             <b:inputText label="Nombre" placeholder="Nombre" value="#{productoInventarioBean.modProdInv.nombreProducto}"/>
 
                             <b:inputText label="Descripcion" placeholder="Descripcion" value="#{productoInventarioBean.modProdInv.descripcion}"/>
-                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTalla}" label="Talla" >
-                                <f:selectItems value="#{productoInventarioBean.lstProductoInventario}" var="c" itemValue="#{c.id_producto}" itemLabel="#{c.nombreProducto}"/>
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTalla}" label="Talla">
+                                <f:selectItems value="#{productoInventarioBean.lstTalla}" var="e" itemValue="#{e.idTalla}" itemLabel="#{e.talla}"/>
                             </b:selectOneMenu>
-                            <b:inputText label="Talla" placeholder="Talla" value="#{productoInventarioBean.modProdInv.idTalla}"
-                                         update="@next" />
 
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{pescadorBean.modPes.idSucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idSucursal}" label="Sucursal">
+                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="c" itemValue="#{c.idSucursal}" itemLabel="#{c.sucursal}"/>
+                            </b:selectOneMenu>
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{productoInventarioBean.modProdInv.precioCosto}"/>
 
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{pantalonetaBean.pan.margenGanancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{productoInventarioBean.modProdInv.margenGanancia}">
                                 <f:facet name="append">
-                                    <b:commandButton  value="Calcular" look="success" actionListener="#{pantalonetaBean.calcularGanancia()}"/>
+                                    <b:commandButton  value="Calcular" look="success" actionListener="#{productoInventarioBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
-
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{pantalonetaBean.pan.precioCosto}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pantalonetaBean.pan.precioVenta}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{pantalonetaBean.ingresar()}" update=":frmTablaCamisola"></p:commandButton>
+                            
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{productoInventarioBean.modProdInv.precioVenta}"/>
+                            
+                            <p:spinner label="Cantidad" id="basic" value="#{productoInventarioBean.modProdInv.cantidad}" />
+                            <br/><br/><br/>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{productoInventarioBean.ingresarPescador()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
                     </div>    

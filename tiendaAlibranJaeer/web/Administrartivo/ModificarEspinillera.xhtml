@@ -19,7 +19,7 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{espinilleraBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarProEspi()}"/>
     </h:head>
     <h:body>
 
@@ -185,18 +185,19 @@
 
                     <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
                         <b:dataTable var="esp" 
-                                     value="#{espinilleraBean.lstEspinillera}" 
+                                     value="#{productoInventarioBean.lstProEsp}" 
                                      id='data'
                                      columnVisibility="true"
                                      class="tabla">
 
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_espinillera}" label="Id"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_producto}" label="Id"/>
                             
                             <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
-                                <b:inputText value="#{esp.nombre_espnillera}" fieldSize="sm"/>
+                                <b:inputText value="#{esp.nombreProducto}" fieldSize="sm"/>
                             </b:dataTableColumn>
                             
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_sucursal}"  label="Sucursal"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.sucursal}"  label="Sucursal"/>
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text" value="#{esp.nombreTallaEspinillera}"  label="Talla"></b:dataTableColumn>
                             <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
                                 <b:inputText value="#{esp.precio_costo}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
                             </b:dataTableColumn>

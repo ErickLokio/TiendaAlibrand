@@ -19,7 +19,9 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{espinilleraBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarProEspi()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarTallaEspinillera()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -267,44 +269,29 @@
                     <div class="col-lg-6">
 
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{espinilleraBean.ingreso.nombre_espnillera}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
-                            <b:label text="#{inputTextBean.map['key']}" id="nombre"/>
-
-                            <b:inputText label="Talla" placeholder="Talla" value="#{espinilleraBean.ingreso.id_talla_espinillera}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
-
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{espinilleraBean.ingreso.id_sucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{espinilleraBean.ingreso.margen_ganancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{productoInventarioBean.modProdInv.nombreProducto}"/>
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTallaEspinillera}" label="Talla">
+                                <f:selectItems value="#{productoInventarioBean.lstTallaEspinillera}" var="e" itemValue="#{e.idTallaEspinillera}" itemLabel="#{e.tallaEspinillera}"/>
+                            </b:selectOneMenu>
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idSucursal}" label="Sucursal">
+                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="c" itemValue="#{c.idSucursal}" itemLabel="#{c.sucursal}"/>
+                            </b:selectOneMenu>
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{productoInventarioBean.modProdInv.margenGanancia}">
                                 <f:facet name="append">
-                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{espinilleraBean.calcularGanancia()}"/>
+                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{productoInventarioBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
 
-                            <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{espinilleraBean.ingreso.precio_costo}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{productoInventarioBean.modProdInv.precioCosto}"/>
 
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{espinilleraBean.ingreso.precio_venta}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="precioVenta"/>
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{productoInventarioBean.modProdInv.precioVenta}"/>
 
+                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{productoInventarioBean.modProdInv.descripcion}"/>
 
-                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{espinilleraBean.ingreso.descripcion}"
-                                             onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"/>
-                            <b:label text="#{inputTextBean.map['key']}" id="descripcion"/>
-
-                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{espinilleraBean.ingreso.cantidad}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="Cantidad"/>
+                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{productoInventarioBean.modProdInv.cantidad}"/>
 
 
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{espinilleraBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{productoInventarioBean.ingresarEspinillera()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
                     </div>
@@ -317,26 +304,24 @@
                         <div class="col-lg-12">
                             <br/><br/>
                             <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
-                                <b:dataTable var="esp" 
-                                             value="#{espinilleraBean.lstEspinillera}" 
+                                <b:dataTable var="pro" 
+                                             value="#{productoInventarioBean.lstProEsp}" 
                                              id='data'
                                              columnVisibility="true"
                                              class="tabla">
 
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_espinillera}" label="Id"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.nombre_espnillera}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_sucursal}"  label="Sucursal"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.precio_costo}"  label="Precio Costo"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.precio_venta}"  label="Precio Venta"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.margen_ganancia}"  label="Margen de Ganancia"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.descripcion}"  label="Descripcion"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{esp.cantidad}"  label="Cantidad"/>
-
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.id_producto}" label="Id"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.nombreProducto}"  label="Producto"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.nombreTallaEspinillera}"  label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.precioCosto}"  label="Precio Costo"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.precioVenta}"  label="Precio Venta"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.margenGanancia}"  label="Margen de Ganancia"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.descripcion}"  label="Descripcion"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{pro.cantidad}"  label="Cantidad"/>
                                     <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{espinilleraBean.Eliminar(esp)}"/>
+                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{productoInventarioBean.eliminar(pro.id_producto)}"/>
                                     </b:dataTableColumn>
-
-
                                 </b:dataTable>
                             </h:form>
                         </div>
