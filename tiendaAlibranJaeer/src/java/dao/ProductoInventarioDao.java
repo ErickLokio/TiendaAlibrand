@@ -209,6 +209,7 @@ public class ProductoInventarioDao extends DAO {
             while (res.next()) {
                 ProductoInventario proInv = new ProductoInventario();
                 proInv.setCantidad(res.getInt("cantidad"));
+                proInv.setCantidad_salida(res.getInt("cantidad_salida"));
                 proInv.setDescripcion(res.getString("descripcion"));
                 proInv.setIdSucursal(res.getInt("id_sucursal"));
                 proInv.setIdTalla(res.getInt("id_talla"));

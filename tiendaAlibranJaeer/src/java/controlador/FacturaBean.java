@@ -3,6 +3,7 @@ package controlador;
 import dao.FacturaDao;
 import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
 import modelo.Factura;
 import modelo.ProductoInventario;
@@ -11,7 +12,7 @@ import modelo.ProductoInventario;
  *
  * @author erick osoy
  */
-@ManagedBean
+@ManagedBean(name="facturaBean")
 @ViewScoped
 public class FacturaBean {
 
@@ -31,7 +32,18 @@ public class FacturaBean {
     /* ------ METODOS DE MODIFICAR ------ */
 
     private ArrayList<Factura> lstFactura = new ArrayList<>();
+    
+    @ManagedProperty("#{productoInventarioBean}")
+    private ProductoInventarioBean proIn ;
 
+    public ProductoInventarioBean getProIn() {
+        return proIn;
+    }
+
+    public void setProIn(ProductoInventarioBean proIn) {
+        this.proIn = proIn;
+    }
+    
     public Factura getIngreso() {
         return ingreso;
     }
@@ -211,14 +223,31 @@ public class FacturaBean {
     
     public void modificar10() {
         int total=0;
-        int cantidad = nuevo.getCantidad();
+        int cantidad = 0;
         int cantidad_salida= ingreso.getCantidad_1();
-        total = ((cantidad - cantidad_salida));
+        int id = ingreso.getId_producto_1();
+        
+        System.out.println("id " + id);
+        
+        for(int i=0; i<proIn.getLstProductoInventario().size(); i++){
+            System.out.println("cantidad_Factura: -------" + proIn.getLstProductoInventario().get(i).getCantidad());
+            
+            if(ingreso.getId_producto_1() == proIn.getLstProductoInventario().get(i).getId_producto()){
+                cantidad = proIn.getLstProductoInventario().get(i).getCantidad();
+                
+                total = ((cantidad - cantidad_salida));
+            }
+        }
+        
+        
+        System.out.println("cantiudad OTRA ------" +cantidad);
+        System.out.println("cantidad salida ----------" +cantidad_salida);
+        System.out.println("total ----------- " +total);
         
         FacturaDao dao;
         try {
             dao = new FacturaDao();
-            pro.setId_producto(ingreso.getId_producto_1());
+            
             pro.setCantidad_salida(total);
             dao.modificarTotalFinal(pro);
         } catch (Exception e) {
@@ -251,8 +280,6 @@ public class FacturaBean {
         double precio = ingreso.getPrecio_unitario_1();
         double cantidad = ingreso.getCantidad_1();
         double descuento = ingreso.getDescuento_1();
-
-        System.out.println("id producto_1" + ingreso.getId_producto_1());
 
         total = ((precio * cantidad) - descuento);
         ingreso.setTotal_1(total);
@@ -371,7 +398,5 @@ public class FacturaBean {
         calcularGanancia9();
         calcularTodo();
 
-    }
-    
-    
+    }    
 }

@@ -8,10 +8,11 @@ import modelo.ProductoEspinillera;
 import modelo.ProductoInventario;
 import modelo.Talla;
 import modelo.TallaEspinillera;
+
 /**
  * @author Walter
  */
-@ManagedBean
+@ManagedBean(name = "productoInventarioBean")
 @ViewScoped
 public class ProductoInventarioBean {
 
@@ -21,6 +22,10 @@ public class ProductoInventarioBean {
     private ArrayList<TallaEspinillera> lstTallaEspinillera = new ArrayList();
     private ArrayList<ProductoEspinillera> lstProEsp = new ArrayList();
 
+    public ProductoInventarioBean() {
+
+    }
+
     public ArrayList<ProductoEspinillera> getLstProEsp() {
         return lstProEsp;
     }
@@ -28,7 +33,7 @@ public class ProductoInventarioBean {
     public void setLstProEsp(ArrayList<ProductoEspinillera> lstProEsp) {
         this.lstProEsp = lstProEsp;
     }
-    
+
     public ArrayList<Talla> getLstTalla() {
         return lstTalla;
     }
@@ -60,7 +65,7 @@ public class ProductoInventarioBean {
     public void setLstTallaEspinillera(ArrayList<TallaEspinillera> lstTallaEspinillera) {
         this.lstTallaEspinillera = lstTallaEspinillera;
     }
-    
+
     public void ingresarPescador() {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
@@ -96,7 +101,7 @@ public class ProductoInventarioBean {
             System.out.println("Error al modifcar en el bean: " + e);
         }
     }
-    
+
     public void modificarEsp(ProductoEspinillera proEsp) {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
@@ -132,14 +137,16 @@ public class ProductoInventarioBean {
             System.out.println("Error al listar en el bean: " + e);
         }
     }
-    public void listarProEspi(){
+
+    public void listarProEspi() {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
             lstProEsp = proInvDao.listarProductoEspinillera();
         } catch (Exception e) {
-            System.out.println("Error al Listar porducto espinillera: "+e);
+            System.out.println("Error al Listar porducto espinillera: " + e);
         }
     }
+
     public void calcularGanancia() {
         double total;
         double precioCosto = modProdInv.getPrecioCosto();
@@ -147,4 +154,18 @@ public class ProductoInventarioBean {
         total = ((ganancia * precioCosto) / 100) + precioCosto;
         modProdInv.setPrecioVenta(total);
     }
+    
+    
+    
+    public void restar(){
+        int total;
+        int cantidad = modProdInv.getCantidad();
+        int cantidad2 = modProdInv.getCantidad_salida();
+        
+        total = ((cantidad - cantidad2));
+    }
+    
+    
+    
+    
 }

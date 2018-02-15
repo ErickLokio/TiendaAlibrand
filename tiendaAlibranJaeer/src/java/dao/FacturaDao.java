@@ -135,7 +135,6 @@ public class FacturaDao extends DAO {
         
         try{
             this.conectar();
-            System.out.println("eeeeeeeeeeeeeee----"  +pro.getCantidad_salida());
             query = "update productoinventario set cantidad_salida=? where id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, pro.getCantidad_salida());
@@ -152,7 +151,6 @@ public class FacturaDao extends DAO {
         
         try{
             this.conectar();
-            System.out.println("eeeeeeeeeeeeeee----"  +pro.getCantidad_salida());
             query = "update productoinventario set cantidad_salida=? where id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, pro.getCantidad_salida());
@@ -168,7 +166,6 @@ public class FacturaDao extends DAO {
         
         try{
             this.conectar();
-            System.out.println("eeeeeeeeeeeeeee----"  +pro.getCantidad_salida());
             query = "update productoinventario set cantidad_salida=? where id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, pro.getCantidad_salida());

@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Balones</title>
+        <title>Tienda Alibrand | Zapatillas</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -18,10 +18,10 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{balonBean.listar33()}"/>
-        <f:event type="preRenderView" listener="#{tallaBalonBean.listarTallaBalon()}"/>
+        <f:event type="preRenderView" listener="#{zapatillaBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{zapatillaBean.listarTalla_Zapatilla()}"/>
+        <f:event type="preRenderView" listener="#{zapatillaBean.listarTipoZapatilla()}"/>
         <f:event type="preRenderView" listener="#{sucursalBean.listar33()}"/>
-        
     </h:head>
     <h:body>
 
@@ -89,13 +89,13 @@
                             <!--end search section-->
                         </li>
                         <li class="">
-                            <a href="index.html"><h4><i class="fa fa-dashboard fa-fw"></i> Ingreso Clientes</h4></a>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i>Ingreso Clientes</a>
                         </li>
 
 
                         <!-- Productos -->
                         <li>
-                            <a href="#"><h4><i class="fa fa-sitemap fa-fw"></i>Productos<span class="fa arrow"></span></h4></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <!-- Productos Espinillera -->
                                 <li>
@@ -187,9 +187,9 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
-                                
-                                
+
+
+
                                 <li>
                                     <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pantalonetas<span class="fa arrow"></span></a>
 
@@ -203,8 +203,8 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
-                                
+
+
                                 <li>
                                     <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pescador<span class="fa arrow"></span></a>
 
@@ -218,145 +218,21 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
-                            </ul>
 
-                            <!-- second-level-items -->
-                        </li>
-                        
-                        
-                        <li>
-                            <a href="#"><h4><i class="fa fa-sitemap fa-fw"></i>Tallas<span class="fa arrow"></span></h4></a>
-                            <ul class="nav nav-second-level">
-                                <!-- Productos Espinillera -->
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Balon<span class="fa arrow"></span></a>
-
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="IngresoEspinillera.xhtml">Registro</a>
-
-                                        </li>
-
-                                        <li>
-                                            <a href="ModificarEspinillera.xhtml">Modificación</a>
-                                        </li>
-
-                                    </ul>
-                                </li>
-                                <!-- Productos Camisola -->
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Espinillera<span class="fa arrow"></span></a>
-
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
-
-                                        </li>
-
-                                        <li>
-                                            <a href="ModificarCamisola.xhtml">Modificación</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- Productos Balon -->
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Pantaloneta<span class="fa arrow"></span></a>
-
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="IngresoBalon.xhtml">Registro</a>
-
-                                        </li>
-
-                                        <li>
-                                            <a href="ModificarBalon.xhtml">Modificación</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- Productos Chumpas -->
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Zapatillas<span class="fa arrow"></span></a>
-
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="IngresoTallaZapatilla.xhtml">Registro</a>
-
-                                        </li>
-
-                                        <li>
-                                            <a href="ModificarTallaZpatilla.xhtml">Modificación</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i> Tipo Zapatillas<span class="fa arrow"></span></a>
-
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="IngresoTipoZapatilla.xhtml">Registro</a>
-
-                                        </li>
-
-                                        <li>
-                                            <a href="ModificarChumpa.xhtml">Modificación</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                
-                                <!-- Productos Licra -->
-                                <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Camisola/Chumpa<span class="fa arrow"></span></a>
-
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="IngresoLicra.xhtml">Registro</a>
-
-                                        </li>
-
-                                        <li>
-                                            <a href="ModificarLicra.xhtml">Modificación</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <!-- Productos Medias -->
                             </ul>
 
                             <!-- second-level-items -->
                         </li>
 
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
 
 
                         <li>
-                            <a href="timeline.html"><h4><i class="fa fa-flask fa-fw"></i>Inventario</h4></a>
+                            <a href="timeline.html"><i class="fa fa-flask fa-fw"></i>Inventario</a>
                         </li>
 
 
                         <li>
-                            <a href="#"><h4><i class="fa fa-sitemap fa-fw"></i>Sucursal<span class="fa arrow"></span></h4></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Sucursal<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="IngresoSucursal.xhtml">Registro de sucursales</a>
@@ -369,19 +245,19 @@
                             <!-- second-level-items -->
                         </li>
                         <li>
-                            <a href="Prueba.xhtml"><h4><i class="fa fa-edit fa-fw"></i>Cotización</h4></a>
+                            <a href="Prueba.xhtml"><i class="fa fa-edit fa-fw"></i>Cotización</a>
                         </li>
                         <li>
-                            <a href="#"><h4><i class="fa fa-wrench fa-fw"></i>Facturación</h4></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i>Facturación</a>
 
                         </li>
                         <li>
-                            <a href="#"><h4><i class="fa fa-sitemap fa-fw"></i>Envio</h4></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Envio</a>
                         </li>
-                        
-                        
+
+
                         <li>
-                            <a href="#"><h4><i class="fa fa-sitemap fa-fw"></i>Empleado<span class="fa arrow"></span></h4></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Empleado<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="IngresoEmpleado.xhtml">Registro</a>
@@ -396,7 +272,7 @@
 
 
                         <li>
-                            <a href="#"><h4><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></h4></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="IngresoUsuarios.xhtml">Registro de Usuarios</a>
@@ -410,7 +286,7 @@
                         </li>
 
                         <li>
-                            <a href="#"><h4><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</h4></a>
+                            <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
 
                         </li>
                     </ul>
@@ -427,11 +303,11 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Balones</h1></center>
+                        <center><h1 class="page-header">Zapatillas</h1></center>
                     </div>
 
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/icon/balon2.png" />
+                        <img  class="centrado" id="imagen" src="assets/icon/zapatilla2.png" />
                     </center>
 
 
@@ -441,50 +317,61 @@
                     <div class="col-lg-6">
 
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{balonBean.ingreso.nombre_balon}"
+                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{zapatillaBean.ingreso.nombre_producto}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            
-                            <b:selectOneMenu value="#{balonBean.ingreso.id_talla_balon}" label="Sucursal">
-                                <f:selectItems value="#{tallaBalonBean.lstTallaBalon}" 
-                                               var="b" itemValue="#{b.id_talla_balon}" itemLabel="#{b.nombre_talla_balon}"/>
-                            </b:selectOneMenu>
-                            
-                            
-                            <b:selectOneMenu value="#{balonBean.ingreso.id_sucursal}" label="Sucursal">
-                                <f:selectItems value="#{sucursalBean.lstSucursal2}" 
-                                               var="s" itemValue="#{s.idSucursal}" itemLabel="#{s.sucursal}"/>
-                            </b:selectOneMenu>
-                            
 
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{balonBean.ingreso.margen_ganancia}"
+                            <h4><span>Talla</span></h4>
+                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_talla_zapatilla}" large-screen="full-width" >
+                                <f:selectItems value="#{zapatillaBean.lstTalla_Zapatilla}"
+                                               var="za" itemLabel="#{za.nombre_zapatilla}"
+                                               itemValue="#{za.id_talla_zapatilla}" />
+                            </b:selectOneMenu>
+
+                            <h4><span>Tipo</span></h4>
+                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_tipo_zapatilla}" large-screen="full-width" >
+                                <f:selectItems value="#{zapatillaBean.lstTipoZapatilla}"
+                                               var="za" itemLabel="#{za.nombre_tipo_zapatilla}"
+                                               itemValue="#{za.id_tipo_zapatilla}" />
+                            </b:selectOneMenu>
+                            
+                            <h4><span>Sucursal</span></h4>
+                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_sucursal}" large-screen="full-width" >
+                                <f:selectItems value="#{sucursalBean.lstSucursal2}"
+                                               var="su" itemLabel="#{su.sucursal}"
+                                               itemValue="#{su.idSucursal}" />
+                            </b:selectOneMenu>
+
+
+
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{zapatillaBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">
-                                    
-                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{balonBean.calcularGanancia()}"/>
+
+                                    <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{zapatillaBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
-
                             <b:label text="#{inputTextBean.map['key']}" id="margenGanancia"/>
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{balonBean.ingreso.precio_costo}"
+                            
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{zapatillaBean.ingreso.precio_costo}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="precioCosto"/>
 
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{balonBean.ingreso.precio_venta}"
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{zapatillaBean.ingreso.precio_venta}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="precioVenta"/>
 
 
-                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{balonBean.ingreso.descripcion}"
+                            <b:inputTextarea label-col-md="Descripción" placeholder="Descripción" value="#{zapatillaBean.ingreso.descripcion}"
                                              onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"/>
                             <b:label text="#{inputTextBean.map['key']}" id="descripcion"/>
 
-                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{balonBean.ingreso.cantidad}"
+                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{zapatillaBean.ingreso.cantidad}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="Cantidad"/>
 
 
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{balonBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{zapatillaBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
                     </div>
@@ -497,8 +384,8 @@
                         <div class="col-lg-12">
                             <br/><br/>
                             <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
-                                <b:dataTable var="ba" 
-                                             value="#{balonBean.lstBalon}" 
+                                <b:dataTable var="za" 
+                                             value="#{zapatillaBean.lstZapatilla}" 
                                              id='data'
                                              columnVisibility="true"
                                              class="tabla"
@@ -509,18 +396,19 @@
                                              scroll-x="false"
                                              responsive="true">
 
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.id_balon}" label="Id"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.nombre_balon}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.id_talla_balon}" label="Talla"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.id_sucursal}"  label="Sucursal"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.precio_costo}"  label="Precio Costo"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.precio_venta}"  label="Precio Venta"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.margen_ganancia}"  label="Margen de Ganancia"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.descripcion}"  label="Descripcion"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.cantidad}"  label="Cantidad"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_producto}" label="Id"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.nombre_producto}"  label="Nombre"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_talla_zapatilla}" label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_tipo_zapatilla}" label="Tipo"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.precio_costo}"  label="Precio Costo"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.precio_venta}"  label="Precio Venta"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.margen_ganancia}"  label="Margen de Ganancia"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.descripcion}"  label="Descripcion"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.cantidad}"  label="Cantidad"/>
 
                                     <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{balonBean.Eliminar(ba)}"/>
+                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{zapatillaBean.Eliminar(za)}"/>
                                     </b:dataTableColumn>
 
 

@@ -8,7 +8,7 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Cotizacion</title>
+        <title>Tienda Alibrand | Factura</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -22,8 +22,6 @@
         <f:event type="preRenderView" listener="#{productoInventarioBean.listar()}"/>
         <f:event type="preRenderView" listener="#{empleadoBean.listar33()}"/>
         <f:event type="preRenderView" listener="#{cotizacionBean.listaProducto()}"/>
-
-
 
     </h:head>
     <h:body>
@@ -738,15 +736,15 @@
                         <div class="row">
                             <div class="col-lg-2"></div>
                             <div class="col-lg-2">
-
+                                
                             </div>
                             <div class="col-lg-2">
-                                <p:commandButton  value="Guardar" styleClass="btn btn-primary" action="#{facturaBean.modificar10()}" actionListener="#{facturaBean.insertar()}" />
+                                <p:commandButton  value="Guardar" styleClass="btn btn-primary"  action="#{facturaBean.modificar10()}"  actionListener="#{facturaBean.insertar()}" />
                                 
                             </div>
                             <div class="col-lg-2">
 
-                                <b:commandButton  iconAwesome="cart-plus" value="Calcular" look="warning"   action="#{facturaBean.modificarMaster()}" actionListener="#{facturaBean.calcularGanancia6()}" size="lg"/>
+                                <b:commandButton  iconAwesome="cart-plus" value="Calcular" look="warning"   action="#{facturaBean.modificarMaster()}"  actionListener="#{facturaBean.calcularGanancia6()}" size="lg"/>
                             </div>
                             <div class="col-lg-2">  
 
@@ -758,6 +756,52 @@
                     </h:form>
 
                     <br/><br/><br/>
+                    
+                    
+                    
+                    
+                    
+                    
+                    <br/><br/><br/>
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <br/><br/>
+                            <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                                <b:dataTable var="ba" 
+                                             value="#{productoInventarioBean.lstProductoInventario}" 
+                                             id='data'
+                                             columnVisibility="true"
+                                             class="tabla"
+                                             striped="true"
+                                             border="false"
+                                             row-highlight="true"
+                                             scroll-size="400px"
+                                             scroll-x="false"
+                                             responsive="true">
+
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.id_producto}" label="Id"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.nombreProducto}"  label="Nombre"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.cantidad}"  label="Cantidad"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{ba.cantidad_salida}"  label="Cantidad Salida"/>
+
+                                    <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
+                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{balonBean.Eliminar(ba)}"/>
+                                    </b:dataTableColumn>
+
+
+                                </b:dataTable>
+                            </h:form>
+
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                    
 
 
 
@@ -784,5 +828,3 @@
         </script>
     </h:body>
 </html>
-
-
