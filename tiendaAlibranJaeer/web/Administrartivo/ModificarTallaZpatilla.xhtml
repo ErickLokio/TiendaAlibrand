@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Modificacion de Camisolas</title>
+        <title>Tienda Alibrand | Modificacion de Talla Zapatilla</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -18,24 +19,18 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{productoInventarioBean.listarProEspi()}"/>
+        <f:event type="preRenderView" listener="#{balonBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{tallaZapatillaBean.listarTalla_Zapatilla()}"/>
     </h:head>
     <h:body>
 
-        
         <div id="wrapper">
             <!-- navbar top -->
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="../recursos/images/ALIBRANDC.png" alt="" />
+                        <img src="assets/images/ALIBRANDC.png" alt=""/>
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -178,73 +173,33 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Espinilleras</h1></center>
+                        <center><h1 class="page-header">Talla Zapatilla</h1></center>
                     </div>
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/icon/espinillera.png" />
+                        <img  class="centrado" id="imagen" src="assets/icon/zapatilla2.png" />
                     </center>
 
 
-                    <br/><br/>
+                    <br/><br/><br/>
 
 
-                <div class="row">
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-6">
-                        <h:form id="frmCamisola">
 
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{pantalonetaBean.pan.precioCosto}"/>
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{pantalonetaBean.pan.margenGanancia}">
-                                <f:facet name="append">
-                                    <b:commandButton  value="Calcular" look="success" actionListener="#{pantalonetaBean.calcularGanancia()}"/>
-                                </f:facet>
-                            </b:inputText>
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pantalonetaBean.pan.precioVenta}"/>
-
-                        </h:form>
-                    </div>    
-                </div>
-                <div class="row">
-                    
                     <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
-                        <b:dataTable var="esp" 
-                                     value="#{productoInventarioBean.lstProEsp}" 
+                        <b:dataTable var="za" 
+                                     value="#{tallaZapatillaBean.lstTalla_Zapatilla}" 
                                      id='data'
-                                     responsive="true"
                                      columnVisibility="true"
                                      class="tabla">
 
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.id_producto}" label="Id"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_talla_zapatilla}" label="Id"/>
                             
-                            <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
-                                <b:inputText value="#{esp.nombreProducto}" fieldSize="sm"/>
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Talla">
+                                <b:inputText value="#{za.nombre_zapatilla}" fieldSize="sm"/>
                             </b:dataTableColumn>
                             
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.sucursal}"  label="Sucursal"/>
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.nombreTallaEspinillera}"  label="Talla"/>
-                            <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
-                                <b:inputText value="#{esp.precioCosto}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                            </b:dataTableColumn>
-                            
-                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Precio Venta">
-                                <b:inputText value="#{esp.precioVenta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                            </b:dataTableColumn>
-                            
-                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Margen de Ganancia">
-                                <b:inputText value="#{esp.margenGanancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                            </b:dataTableColumn>
-                            
-                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Descripción">
-                                <b:inputText value="#{esp.descripcion}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                            </b:dataTableColumn>
-                            
-                            
-                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Cantidad">
-                                <b:inputText value="#{esp.cantidad}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                            </b:dataTableColumn>
                             
                             <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
-                                <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{productoInventarioBean.modificarEsp(esp)}"/>
+                                <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{tallaZapatillaBean.modificar(za)}"/>
                             </b:dataTableColumn>
 
 
@@ -276,5 +231,6 @@
         </script>
     </h:body>
 </html>
+
 
 

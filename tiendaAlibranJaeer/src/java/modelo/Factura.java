@@ -56,6 +56,9 @@ public class Factura {
     private double total_9;
     private double total_factura;
     
+    private int cantidad_producto;
+    private int cantidad_salida_producto;
+    
     public Factura(){
         this.id_factura=0;
         this.nombre_cliente="";
@@ -511,4 +514,24 @@ public class Factura {
     public void setTotal_factura(double total_factura) {
         this.total_factura = total_factura;
     }
+
+    public int getCantidad_producto() {
+        return cantidad_producto;
+    }
+
+    public void setCantidad_producto(int cantidad_producto) {
+        this.cantidad_producto = cantidad_producto;
+    }
+
+    public int getCantidad_salida_producto() {
+        return cantidad_salida_producto;
+    }
+
+    public void setCantidad_salida_producto(int cantidad_salida_producto) {
+        this.cantidad_salida_producto = cantidad_salida_producto;
+    }
+    
+    
+    
+    
 }

@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Cotizacion;
 import modelo.Factura;
+import modelo.ProductoInventario;
 
 /**
  *
@@ -125,6 +126,77 @@ public class FacturaDao extends DAO {
             this.cerrar();
         }
         return lstProInv;
-    }  
-
+    } 
+    
+    
+    
+    
+    public void modificar(ProductoInventario pro) throws Exception{
+        
+        try{
+            this.conectar();
+            query = "update productoinventario set cantidad_salida=? where id_producto=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setInt(1, pro.getCantidad_salida());
+            sta.setInt(2, pro.getId_producto());
+            sta.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERROR " +e);
+        }finally{
+            this.cerrar();
+        }
+    }
+    
+    public void modificar2(ProductoInventario pro) throws Exception{
+        
+        try{
+            this.conectar();
+            query = "update productoinventario set cantidad_salida=? where id_producto=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setInt(1, pro.getCantidad_salida());
+            sta.setInt(2, pro.getId_producto());
+            sta.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERROR " +e);
+        }finally{
+            this.cerrar();
+        }
+    }
+    public void modificar3(ProductoInventario pro) throws Exception{
+        
+        try{
+            this.conectar();
+            query = "update productoinventario set cantidad_salida=? where id_producto=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setInt(1, pro.getCantidad_salida());
+            sta.setInt(2, pro.getId_producto());
+            sta.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERROR " +e);
+        }finally{
+            this.cerrar();
+        }
+    }
+    
+    
+    
+    
+    public void modificarTotalFinal(ProductoInventario pro) throws Exception{
+        
+        try{
+            this.conectar();
+            query = "update productoinventario set cantidad=? where id_producto=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setInt(1, pro.getCantidad());
+            sta.setInt(2, pro.getId_producto());
+            sta.executeUpdate();
+        }catch(Exception e){
+            System.out.println("ERROR " +e);
+        }finally{
+            this.cerrar();
+        }
+    }
+    
+    
+    
 }

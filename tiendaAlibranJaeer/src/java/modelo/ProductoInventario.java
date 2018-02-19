@@ -18,6 +18,7 @@ public class ProductoInventario {
     private String descripcion;
     private int cantidad;
     private int idTipoZapatilla;
+    private int cantidad_salida;
 
     public int getIdTipoZapatilla() {
         return idTipoZapatilla;
@@ -131,6 +132,13 @@ public class ProductoInventario {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
+
+    public int getCantidad_salida() {
+        return cantidad_salida;
+    }
+
+    public void setCantidad_salida(int cantidad_salida) {
+        this.cantidad_salida = cantidad_salida;
+    }
     
 }

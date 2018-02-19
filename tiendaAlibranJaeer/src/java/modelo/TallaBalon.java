@@ -1,6 +1,7 @@
 package modelo;
 
 /**
+<<<<<<< HEAD
  * @author Walter Caal
  */
 public class TallaBalon {

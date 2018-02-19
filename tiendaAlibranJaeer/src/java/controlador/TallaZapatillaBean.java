@@ -1,13 +1,11 @@
 package controlador;
 
-import dao.TallaDao;
 import dao.TallaZapatillaDao;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import modelo.Talla;
 import modelo.TallaZapatilla;
 
 /**
