@@ -18,7 +18,7 @@ public class TallaBalonDao extends DAO{
     public void ingresar(TallaBalon tal) throws Exception{
         try {
             this.conectar();
-            query="insert into talla(nombre_talla_balon) values(?)";
+            query="insert into talla_balon(nombre_talla_balon) values(?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, tal.getTallaBalon());
             sta.executeUpdate();

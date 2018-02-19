@@ -19,7 +19,7 @@ public class TallaZapatillaDao extends DAO{
     public void ingresar(TallaZapatilla tal) throws Exception{
         try {
             this.conectar();
-            query="insert into talla_zapatilla(nombre_talla_zapatilla) values(?)";
+            query="insert into talla_zapatilla(nombre_zapatilla) values(?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, tal.getTallaZapatilla());
             sta.executeUpdate();
@@ -48,7 +48,7 @@ public class TallaZapatillaDao extends DAO{
     public void modificar(TallaZapatilla tal) throws Exception{
         try {
             this.conectar();
-            query="update talla_zapatilla set nombre_talla_zapatilla=? where id_talla_zapatilla=?";
+            query="update talla_zapatilla set nombre_zapatilla=? where id_talla_zapatilla=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, tal.getTallaZapatilla());
             sta.setInt(2, tal.getIdTallaZapatilla());
@@ -71,8 +71,8 @@ public class TallaZapatillaDao extends DAO{
             
             while(res.next()){
                 TallaZapatilla tal = new TallaZapatilla();
-                tal.setIdTallaZapatilla(res.getInt("id_talla"));
-                tal.setTallaZapatilla(res.getString("nombre_talla"));
+                tal.setIdTallaZapatilla(res.getInt("id_talla_zapatilla"));
+                tal.setTallaZapatilla(res.getString("nombre_zapatilla"));
                 lstTalla.add(tal);
             }
         } catch (Exception ex) {

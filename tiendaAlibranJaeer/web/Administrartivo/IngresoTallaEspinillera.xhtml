@@ -18,7 +18,7 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{tallaBalonBean.listarTallaBalon()}"/>
+        <f:event type="preRenderView" listener="#{tallaBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -174,9 +174,9 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                         <h:form id="frmTalla">
-                            <b:inputText label="Talla:" placeholder="Talla" value="#{tallaBalonBean.ingreso.tallaBalon}"/>
+                            <b:inputText label="Talla:" placeholder="Talla" value="#{tallaBean.talMod.talla}"/>
 
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{tallaBalonBean.insertar()}" update=":frmTablaTalla"/>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{tallaBean.ingresar()}" update=":frmTablaTalla"/>
 
                         </h:form>
                     </div>    
@@ -187,18 +187,18 @@
                         <h:form  id="frmTablaTalla">
                             <br/><br/><br/>
                             <b:dataTable 
-                                value="#{tallaBalonBean.lstTallaBalon}"
+                                value="#{tallaBean.lstTalla}"
                                 var="cami"
                                 fixedHeader="true"
                                 scroll-size="400px"
                                 scroll-x="false"
                                 responsive="true">
 
-                                <b:dataTableColumn value="#{cami.idTallaBalon}" label="Id"/>
-                                <b:dataTableColumn value="#{cami.tallaBalon}"  label="Talla"/>
+                                <b:dataTableColumn value="#{cami.idTalla}" label="Id"/>
+                                <b:dataTableColumn value="#{cami.talla}"  label="Talla"/>
                                 
                                 <b:dataTableColumn label="Eliminar">
-                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaTalla" actionListener="#{tallaBalonBean.Eliminar(cami)}"/>
+                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaTalla" actionListener="#{tallaBean.eliminar(cami)}"/>
                                 </b:dataTableColumn>
                             </b:dataTable>
                             
