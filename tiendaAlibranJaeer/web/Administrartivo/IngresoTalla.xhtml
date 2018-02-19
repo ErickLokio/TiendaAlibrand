@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -18,8 +18,6 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{camisolaBean.listar()}"/>
-        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
         <f:event type="preRenderView" listener="#{tallaBean.listar()}"/>
     </h:head>
     <h:body>
@@ -165,7 +163,7 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Camisola</h1></center>
+                        <center><h1 class="page-header">Talla</h1></center>
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
@@ -175,69 +173,36 @@
                 <div class="row">
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
-                        <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{camisolaBean.cam.nombreCamisola}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+                        <h:form id="frmTalla">
+                            <b:inputText label="Talla:" placeholder="Talla" value="#{tallaBean.talMod.talla}"/>
 
-                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{camisolaBean.cam.descripcion}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:selectOneMenu value="#{camisolaBean.cam.idTalla}" label="Talla">
-                                <f:selectItems value="#{tallaBean.lstTalla}" var="cami" itemLabel="#{cami.talla}" itemValue="#{cami.idTalla}"/>
-                            </b:selectOneMenu>
-                            <b:selectOneMenu value="#{camisolaBean.cam.idSucursal}" label="Sucursal">
-                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="sucu" itemValue="#{sucu.idSucursal}" itemLabel="#{sucu.sucursal}"/>
-                            </b:selectOneMenu>
-                            
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{camisolaBean.cam.precioCosto}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
-                                <f:facet name="append">
-                                    <b:commandButton  value="Calcular" look="success" actionListener="#{camisolaBean.calcularGanancia()}"/>
-                                </f:facet>
-                            </b:inputText>
-
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{camisolaBean.cam.precioVenta}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{camisolaBean.ingresar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{tallaBean.ingresar()}" update=":frmTablaTalla"/>
 
                         </h:form>
                     </div>    
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-12">
-                            <h:form  id="frmTablaCamisola">
-                                <br/><br/><br/>
-                                <b:dataTable 
-                                    value="#{camisolaBean.lstCamisola}"
-                                    var="camis"
-                                    id="bcarPool2"
-                                    fixedHeader="true"
-                                    scroll-size="400px"
-                                    scroll-x="false"
-                                    responsive="true"
-                                    lang="es"
-                                    searching="false">
+                    <div >
+                        <h:form  id="frmTablaTalla">
+                            <br/><br/><br/>
+                            <b:dataTable 
+                                value="#{tallaBean.lstTalla}"
+                                var="cami"
+                                fixedHeader="true"
+                                scroll-size="400px"
+                                scroll-x="false"
+                                responsive="true">
 
-
-                                    <b:dataTableColumn value="#{camis.idCamisola}" label="Id"/>
-                                    <b:dataTableColumn value="#{camis.nombreCamisola}"  label="Nombre"/>
-                                    <b:dataTableColumn value="#{camis.sucursal}"  label="Sucursal"/>
-                                    <b:dataTableColumn value="#{camis.talla}"  label="Talla"/>
-                                    <b:dataTableColumn value="#{camis.precioCosto}"  label="Precio Costo"/>
-                                    <b:dataTableColumn value="#{camis.precioVenta}"  label="Precio Venta"/>
-                                    <b:dataTableColumn value="#{camis.margenGanancia}"  label="Margen de Ganancia"/>
-                                    <b:dataTableColumn value="#{camis.descripcion}"  label="Descripcion"/>
-                                    <b:dataTableColumn value="#{camis.cantidad}"  label="Cantidad"/>
-                                    <b:dataTableColumn label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{camisolaBean.eliminar(cami)}"/>
-                                    </b:dataTableColumn>
-                                </b:dataTable>
-                            </h:form>
+                                <b:dataTableColumn value="#{cami.idTalla}" label="Id"/>
+                                <b:dataTableColumn value="#{cami.talla}"  label="Talla"/>
+                                
+                                <b:dataTableColumn label="Eliminar">
+                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaTalla" actionListener="#{tallaBean.eliminar(cami)}"/>
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                            
+                        </h:form>
                     </div>
                 </div>
                 <!-- end  page header -->

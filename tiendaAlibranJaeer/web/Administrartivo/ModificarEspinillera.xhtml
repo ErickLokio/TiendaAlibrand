@@ -28,8 +28,14 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                        <img src="../recursos/images/ALIBRANDC.png" alt="" />
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -180,13 +186,32 @@
 
 
                     <br/><br/><br/>
+                </div>    
 
 
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-6">
+                        <h:form id="frmCamisola">
 
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{pantalonetaBean.pan.precioCosto}"/>
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{pantalonetaBean.pan.margenGanancia}">
+                                <f:facet name="append">
+                                    <b:commandButton  value="Calcular" look="success" actionListener="#{pantalonetaBean.calcularGanancia()}"/>
+                                </f:facet>
+                            </b:inputText>
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pantalonetaBean.pan.precioVenta}"/>
+
+                        </h:form>
+                    </div>    
+                </div>
+                <div class="row">
+                    
                     <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
                         <b:dataTable var="esp" 
                                      value="#{productoInventarioBean.lstProEsp}" 
                                      id='data'
+                                     responsive="true"
                                      columnVisibility="true"
                                      class="tabla">
 
@@ -197,17 +222,17 @@
                             </b:dataTableColumn>
                             
                             <b:dataTableColumn styleClass="div-table-cell" value="#{esp.sucursal}"  label="Sucursal"/>
-                            <b:dataTableColumn styleClass="div-table-cell" dataType="text" value="#{esp.nombreTallaEspinillera}"  label="Talla"></b:dataTableColumn>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{esp.nombreTallaEspinillera}"  label="Talla"/>
                             <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
-                                <b:inputText value="#{esp.precio_costo}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                <b:inputText value="#{esp.precioCosto}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
                             </b:dataTableColumn>
                             
                             <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Precio Venta">
-                                <b:inputText value="#{esp.precio_venta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                <b:inputText value="#{esp.precioVenta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
                             </b:dataTableColumn>
                             
                             <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Margen de Ganancia">
-                                <b:inputText value="#{esp.margen_ganancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                <b:inputText value="#{esp.margenGanancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
                             </b:dataTableColumn>
                             
                             <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Descripción">
@@ -220,7 +245,7 @@
                             </b:dataTableColumn>
                             
                             <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
-                                <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{espinilleraBean.modificar(esp)}"/>
+                                <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{productoInventarioBean.modificarEsp(esp)}"/>
                             </b:dataTableColumn>
 
 

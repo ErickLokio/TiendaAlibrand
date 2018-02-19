@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -18,7 +18,9 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{pantalonetaBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarProPan()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarTallaPantaloneta()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -174,32 +176,29 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{pantalonetaBean.pan.nombrePantaloneta}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{productoInventarioBean.modProdInv.nombreProducto}"/>
 
-                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{pantalonetaBean.pan.descripcion}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{productoInventarioBean.modProdInv.descripcion}" />
 
-                            <b:inputText label="Talla" placeholder="Talla" value="#{pantalonetaBean.pan.idTallaPantaloneta}"
-                                         update="@next" />
-
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{pantalonetaBean.pan.idSucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{pantalonetaBean.pan.margenGanancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTallaPantaloneta}" label="Talla">
+                                <f:selectItems value="#{productoInventarioBean.lstTallPan}" var="e" itemValue="#{e.idTallaPantaloneta}" itemLabel="#{e.tallaPantaloneta}"/>
+                            </b:selectOneMenu>
+                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{productoInventarioBean.modProdInv.cantidad}" />
+                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idSucursal}" label="Sucursal">
+                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="f" itemValue="#{f.idSucursal}" itemLabel="#{f.sucursal}"/>
+                            </b:selectOneMenu>
+                            
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{productoInventarioBean.modProdInv.precioCosto}"/>
+                            
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{productoInventarioBean.modProdInv.margenGanancia}">
                                 <f:facet name="append">
-                                    <b:commandButton  value="Calcular" look="success" actionListener="#{pantalonetaBean.calcularGanancia()}"/>
+                                    <b:commandButton  value="Calcular" look="success" actionListener="#{productoInventarioBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
 
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{pantalonetaBean.pan.precioCosto}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{productoInventarioBean.modProdInv.precioVenta}"/>
 
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pantalonetaBean.pan.precioVenta}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{pantalonetaBean.ingresar()}" update=":frmTablaCamisola"></p:commandButton>
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{productoInventarioBean.ingresarPantaloneta()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
                     </div>    
@@ -207,20 +206,20 @@
 
                 <div class="row">
                     <div >
-                        <h:form  id="frmTablaCamisola">
+                        <h:form  id="frmTablaTalla">
                             <br/><br/><br/>
                             <b:dataTable 
-                                value="#{pantalonetaBean.lstPantaloneta}"
+                                value="#{productoInventarioBean.lstProPan}"
                                 var="cami"
                                 fixedHeader="true"
                                 scroll-size="400px"
                                 scroll-x="false"
                                 responsive="true">
 
-                                <b:dataTableColumn value="#{cami.idPantaloneta}" label="Id"/>
-                                <b:dataTableColumn value="#{cami.nombrePantaloneta}"  label="Nombre"/>
-                                <b:dataTableColumn value="#{cami.idSucursal}"  label="Sucursal"/>
-                                <b:dataTableColumn value="#{cami.idTallaPantaloneta}"  label="talla Pantaloneta"/>
+                                <b:dataTableColumn value="#{cami.id_producto}" label="Id"/>
+                                <b:dataTableColumn value="#{cami.nombreProducto}"  label="Nombre"/>
+                                <b:dataTableColumn value="#{cami.sucursal}"  label="Sucursal"/>
+                                <b:dataTableColumn value="#{cami.tallaPantaloneta}"  label="talla Pantaloneta"/>
                                 <b:dataTableColumn value="#{cami.precioCosto}"  label="Precio Costo"/>
                                 <b:dataTableColumn value="#{cami.precioVenta}"  label="Precio Venta"/>
                                 <b:dataTableColumn value="#{cami.margenGanancia}"  label="Margen de Ganancia"/>
@@ -228,7 +227,7 @@
                                 <b:dataTableColumn value="#{cami.cantidad}"  label="Cantidad"/>
 
                                 <b:dataTableColumn label="Eliminar">
-                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{pantalonetaBean.eliminar(cami)}"/>
+                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{productoInventarioBean.eliminar(cami.id_producto)}"/>
                                 </b:dataTableColumn>
                             </b:dataTable>
                             

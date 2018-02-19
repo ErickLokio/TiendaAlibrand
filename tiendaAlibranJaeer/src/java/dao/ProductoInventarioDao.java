@@ -7,8 +7,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.ProductoEspinillera;
 import modelo.ProductoInventario;
+import modelo.ProductoPantaloneta;
 import modelo.Talla;
 import modelo.TallaEspinillera;
+import modelo.TallaPantaloneta;
 import modelo.innerProductoInventario;
 
 /**
@@ -88,6 +90,27 @@ public class ProductoInventarioDao extends DAO {
         }
     }
 
+    public void ingresarPantaloneta(ProductoInventario proInv) throws Exception {
+        try {
+            this.conectar();
+            query = "insert into productoinventario(nombre_producto, id_talla_pantaloneta, id_sucursal, precio_costo, precio_venta, margen_ganancia, cantidad, descripcion) values(?,?,?,?,?,?,?,?)";
+            sta = this.getCn().prepareStatement(query);
+            sta.setString(1, proInv.getNombreProducto());
+            sta.setInt(2, proInv.getIdTallaPantaloneta());
+            sta.setInt(3, proInv.getIdSucursal());
+            sta.setDouble(4, proInv.getPrecioCosto());
+            sta.setDouble(5, proInv.getPrecioVenta());
+            sta.setDouble(6, proInv.getMargenGanancia());
+            sta.setInt(7, proInv.getCantidad());
+            sta.setString(8, proInv.getDescripcion());
+            sta.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.cerrar();
+        }
+    }
+
     public void eliminar(int idProducto) throws Exception {
         try {
             this.conectar();
@@ -102,9 +125,9 @@ public class ProductoInventarioDao extends DAO {
         }
 
     }
-
+    
     public void modificar(ProductoInventario proInv) throws Exception {
-        try {  
+        try {
             this.conectar();
             query = "update productoinventario set nombre_producto=?, id_talla_balon=?, id_talla=?, id_talla_espinillera, id_talla_pantaloneta=?, id_talla_zapatilla=?, id_tipo_zapatilla=?, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia=?, descripcion=?, cantidad=? where id_producto=?";
             sta = this.getCn().prepareStatement(query);
@@ -129,13 +152,35 @@ public class ProductoInventarioDao extends DAO {
         }
     }
     
+    public void modificarPantaloneta(ProductoPantaloneta proInv) throws Exception {
+        try {
+            this.conectar();
+            query = "update productoinventario set nombre_producto=?, id_talla_pantaloneta=?, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia=?, descripcion=?, cantidad=? where id_producto=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setString(1, proInv.getNombreProducto());
+            sta.setInt(2, proInv.getIdTallaPantaloneta());
+            sta.setInt(3, proInv.getIdSucursal());
+            sta.setDouble(4, proInv.getPrecioCosto());
+            sta.setDouble(5, proInv.getPrecioVenta());
+            sta.setDouble(6, proInv.getMargenGanancia());
+            sta.setString(7, proInv.getDescripcion());
+            sta.setInt(8, proInv.getCantidad());
+            sta.setInt(9, proInv.getId_producto());
+            sta.executeUpdate();
+        } catch (Exception ex) {
+            Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.cerrar();
+        }
+    }
+
     public void modificarEspinillera(ProductoEspinillera proEsp) throws Exception {
         try {
             this.conectar();
-            query = "update productoinventario set nombre_producto=?, id_talla_espinillera, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia=?, descripcion=?, cantidad=? where id_producto=?";
+            query = "update productoinventario set nombre_producto=?, id_talla_espinillera=?, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia=?, descripcion=?, cantidad=? where id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, proEsp.getNombreProducto());
-            sta.setInt(2, proEsp.getIdTallaEspinillera());                    
+            sta.setInt(2, proEsp.getIdTallaEspinillera());
             sta.setInt(3, proEsp.getIdSucursal());
             sta.setDouble(4, proEsp.getPrecioCosto());
             sta.setDouble(5, proEsp.getPrecioVenta());
@@ -187,6 +232,29 @@ public class ProductoInventarioDao extends DAO {
                 TallaEspinillera talMod = new TallaEspinillera();
                 talMod.setIdTallaEspinillera(res.getInt("id_talla_espinillera"));
                 talMod.setTallaEspinillera(res.getString("nombre_talla_espinillera"));
+                lstTalla.add(talMod);
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.cerrar();
+        }
+        return lstTalla;
+    }
+    
+    public ArrayList<TallaPantaloneta> listarTallaPantaloneta() throws Exception {
+        ArrayList<TallaPantaloneta> lstTalla = null;
+        try {
+            this.conectar();
+            query = "select * from talla_pantaloneta";
+            sta = this.getCn().prepareStatement(query);
+            res = sta.executeQuery();
+            lstTalla = new ArrayList<>();
+
+            while (res.next()) {
+                TallaPantaloneta talMod = new TallaPantaloneta();
+                talMod.setIdTallaPantaloneta(res.getInt("id_talla_pantaloneta"));
+                talMod.setTallaPantaloneta(res.getString("nombre_talla_pantaloneta"));
                 lstTalla.add(talMod);
             }
         } catch (Exception ex) {
@@ -255,7 +323,7 @@ public class ProductoInventarioDao extends DAO {
                     + "RIGHT JOIN sucursal ON sucursal.id_sucursal = productoinventario.id_sucursal";
             sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
-            while(res.next()){
+            while (res.next()) {
                 innerProductoInventario innPro = new innerProductoInventario();
                 innPro.setId_producto(res.getInt("id_producto"));
                 innPro.setNombreProducto(res.getString("nombre_producto"));
@@ -277,8 +345,8 @@ public class ProductoInventarioDao extends DAO {
                 innPro.setPrecioCosto(res.getDouble("precio_costo"));
                 innPro.setPrecioVenta(res.getDouble("precio_venta"));
                 innPro.setSucursal(res.getString("nombre_sucursal"));
-                System.out.println("hola: "+res.getString("nombre_sucursal"));
-                lstInnerProducto.add(innPro);                        
+                System.out.println("hola: " + res.getString("nombre_sucursal"));
+                lstInnerProducto.add(innPro);
             }
         } catch (Exception ex) {
             Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
@@ -288,8 +356,8 @@ public class ProductoInventarioDao extends DAO {
 
         return lstInnerProducto;
     }
-    
-    public ArrayList<ProductoEspinillera> listarProductoEspinillera() throws Exception{
+
+    public ArrayList<ProductoEspinillera> listarProductoEspinillera() throws Exception {
         ArrayList<ProductoEspinillera> lstProEspinillera = null;
         try {
             this.conectar();
@@ -302,8 +370,8 @@ public class ProductoInventarioDao extends DAO {
             sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
             lstProEspinillera = new ArrayList<>();
-            
-            while(res.next()){
+
+            while (res.next()) {
                 ProductoEspinillera modProEsp = new ProductoEspinillera();
                 modProEsp.setId_producto(res.getInt("id_producto"));
                 modProEsp.setNombreProducto(res.getString("nombre_producto"));
@@ -318,13 +386,52 @@ public class ProductoInventarioDao extends DAO {
                 modProEsp.setPrecioVenta(res.getDouble("precio_venta"));
                 lstProEspinillera.add(modProEsp);
             }
-            
+
         } catch (Exception ex) {
             Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
-        }finally{
+        } finally {
             this.cerrar();
         }
-        
-       return lstProEspinillera;
+
+        return lstProEspinillera;
+    }
+    
+    public ArrayList<ProductoPantaloneta> listarProductoPantaloneta() throws Exception {
+        ArrayList<ProductoPantaloneta> lstProPan = null;
+        try {
+            this.conectar();
+            query = "select productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_talla_pantaloneta, "
+                    + " productoinventario.id_sucursal, productoinventario.precio_costo, productoinventario.margen_ganancia, productoinventario.precio_venta, productoinventario.descripcion, "
+                    + " productoinventario.descripcion, productoinventario.cantidad, productoinventario.cantidad_salida, sucursal.nombre_sucursal, "
+                    + " sucursal.direccion ,talla_pantaloneta.nombre_talla_pantaloneta "
+                    + " FROM productoinventario "
+                    + " INNER JOIN talla_pantaloneta ON talla_pantaloneta.id_talla_pantaloneta = productoinventario.id_talla_pantaloneta "
+                    + " INNER JOIN sucursal ON sucursal.id_sucursal = productoinventario.id_sucursal ";
+            sta = this.getCn().prepareStatement(query);
+            res = sta.executeQuery();
+            lstProPan = new ArrayList<>();
+
+            while (res.next()) {
+                ProductoPantaloneta modProPan = new ProductoPantaloneta();
+                modProPan.setId_producto(res.getInt("id_producto"));
+                modProPan.setNombreProducto(res.getString("nombre_producto"));
+                modProPan.setCantidad(res.getInt("cantidad"));
+                modProPan.setDescripcion(res.getString("descripcion"));
+                modProPan.setIdSucursal(res.getInt("id_sucursal"));
+                modProPan.setSucursal(res.getString("nombre_sucursal"));
+                modProPan.setIdTallaPantaloneta(res.getInt("id_talla_pantaloneta"));
+                modProPan.setMargenGanancia(res.getDouble("margen_ganancia"));
+                modProPan.setPrecioCosto(res.getDouble("precio_costo"));
+                modProPan.setPrecioVenta(res.getDouble("precio_venta"));
+                lstProPan.add(modProPan);
+            }
+
+        } catch (Exception ex) {
+            Logger.getLogger(ProductoInventarioDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            this.cerrar();
+        }
+
+        return lstProPan;
     }
 }

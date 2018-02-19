@@ -6,8 +6,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import modelo.ProductoEspinillera;
 import modelo.ProductoInventario;
+import modelo.ProductoPantaloneta;
 import modelo.Talla;
 import modelo.TallaEspinillera;
+import modelo.TallaPantaloneta;
 /**
  * @author Walter
  */
@@ -20,7 +22,25 @@ public class ProductoInventarioBean {
     private ArrayList<Talla> lstTalla = new ArrayList();
     private ArrayList<TallaEspinillera> lstTallaEspinillera = new ArrayList();
     private ArrayList<ProductoEspinillera> lstProEsp = new ArrayList();
+    private ArrayList<ProductoPantaloneta> lstProPan = new ArrayList();
+    private ArrayList<TallaPantaloneta> lstTallPan = new ArrayList();
 
+    public ArrayList<TallaPantaloneta> getLstTallPan() {
+        return lstTallPan;
+    }
+
+    public void setLstTallPan(ArrayList<TallaPantaloneta> lstTallPan) {
+        this.lstTallPan = lstTallPan;
+    }
+
+    public ArrayList<ProductoPantaloneta> getLstProPan() {
+        return lstProPan;
+    }
+
+    public void setLstProPan(ArrayList<ProductoPantaloneta> lstProPan) {
+        this.lstProPan = lstProPan;
+    }
+    
     public ArrayList<ProductoEspinillera> getLstProEsp() {
         return lstProEsp;
     }
@@ -96,7 +116,14 @@ public class ProductoInventarioBean {
             System.out.println("Error al modifcar en el bean: " + e);
         }
     }
-    
+    public void modificarPantaloneta(ProductoPantaloneta modProdInv3) {
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            proInvDao.modificarPantaloneta(modProdInv3);
+        } catch (Exception e) {
+            System.out.println("Error al modifcar en el bean: " + e);
+        }
+    }
     public void modificarEsp(ProductoEspinillera proEsp) {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
@@ -106,6 +133,15 @@ public class ProductoInventarioBean {
         }
     }
 
+    public void ingresarPantaloneta(){
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            proInvDao.ingresarPantaloneta(modProdInv);
+        } catch (Exception e) {
+            System.out.println("Error al ingresar en el bean: " + e);
+        }
+    }
+    
     public void listar() {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
@@ -123,7 +159,15 @@ public class ProductoInventarioBean {
             System.out.println("Error al listar en el bean: " + e);
         }
     }
-
+    
+    public void listarTallaPantaloneta(){
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            lstTallPan = proInvDao.listarTallaPantaloneta();
+        } catch (Exception e) {
+            System.out.println("Error al listar en el bean: " + e);
+        }
+    }
     public void listarTallaEspinillera() {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
@@ -136,6 +180,14 @@ public class ProductoInventarioBean {
         ProductoInventarioDao proInvDao = new ProductoInventarioDao();
         try {
             lstProEsp = proInvDao.listarProductoEspinillera();
+        } catch (Exception e) {
+            System.out.println("Error al Listar porducto espinillera: "+e);
+        }
+    }
+     public void listarProPan(){
+        ProductoInventarioDao proInvDao = new ProductoInventarioDao();
+        try {
+            lstProPan = proInvDao.listarProductoPantaloneta();
         } catch (Exception e) {
             System.out.println("Error al Listar porducto espinillera: "+e);
         }

@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -19,17 +18,26 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{pantalonetaBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarProPan()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{productoInventarioBean.listarTallaPantaloneta()}"/>
     </h:head>
     <h:body>
 
         <div id="wrapper">
             <!-- navbar top -->
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
+
                 <!-- navbar-header -->
                 <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                        <img src="../recursos/images/ALIBRANDC.png" alt="" />
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -201,17 +209,17 @@
                     <div >
                         <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
                             <b:dataTable var="cami" 
-                                         value="#{pantalonetaBean.lstPantaloneta}" 
+                                         value="#{productoInventarioBean.lstProPan}" 
                                          id='data'
                                          columnVisibility="true"
                                          class="tabla">
 
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{cami.idPantaloneta}" label="Id"/>
+                                <b:dataTableColumn styleClass="div-table-cell" value="#{cami.id_producto}" label="Id"/>
                                 <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
-                                    <b:inputText value="#{cami.nombrePantaloneta}" fieldSize="sm"/>
+                                    <b:inputText value="#{cami.nombreProducto}" fieldSize="sm"/>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Talla Pantaloneta">
-                                    <b:inputText value="#{cami.idTallaPantaloneta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                                    <b:inputText value="#{cami.idTallaPantaloneta}" fieldSize="sm"/>                                    
                                 </b:dataTableColumn>
                                 <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
                                     <b:inputText value="#{cami.precioCosto}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
@@ -227,9 +235,8 @@
                                     <b:inputText value="#{cami.cantidad}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
                                 </b:dataTableColumn>
                                 <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
-                                    <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{pantalonetaBean.modificar(cami)}"/>
+                                    <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{productoInventarioBean.modificarPantaloneta(cami)}"/>
                                 </b:dataTableColumn>
-
 
                             </b:dataTable>
                         </h:form>

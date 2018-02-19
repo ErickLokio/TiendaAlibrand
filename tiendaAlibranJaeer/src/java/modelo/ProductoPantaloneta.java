@@ -1,29 +1,27 @@
 package modelo;
 
 /**
-
  * @author Walter
  */
-public class Camisola {
-    private int idCamisola;
-    private String nombreCamisola;
+public class ProductoPantaloneta {
+    private int id_producto;
+    private String nombreProducto;
+    private int idTallaPantaloneta;
+    private String tallaPantaloneta;
     private int idSucursal;
     private String sucursal;
-    private int idTalla;
-    private String talla;
     private double precioCosto;
     private double precioVenta;
     private double margenGanancia;
     private String descripcion;
     private int cantidad;
-    private String direccion;
 
-    public String getDireccion() {
-        return direccion;
+    public String getTallaPantaloneta() {
+        return tallaPantaloneta;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setTallaPantaloneta(String tallaPantaloneta) {
+        this.tallaPantaloneta = tallaPantaloneta;
     }
 
     public String getSucursal() {
@@ -33,46 +31,37 @@ public class Camisola {
     public void setSucursal(String sucursal) {
         this.sucursal = sucursal;
     }
-
-    public String getTalla() {
-        return talla;
+    
+    public int getIdTallaPantaloneta() {
+        return idTallaPantaloneta;
     }
 
-    public void setTalla(String talla) {
-        this.talla = talla;
+    public void setIdTallaPantaloneta(int idTallaPantaloneta) {
+        this.idTallaPantaloneta = idTallaPantaloneta;
     }
     
+    public int getId_producto() {
+        return id_producto;
+    }
+
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
+    }
+
+    public String getNombreProducto() {
+        return nombreProducto;
+    }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
     
-    public int getIdCamisola() {
-        return idCamisola;
-    }
-
-    public void setIdCamisola(int idCamisola) {
-        this.idCamisola = idCamisola;
-    }
-
-    public String getNombreCamisola() {
-        return nombreCamisola;
-    }
-
-    public void setNombreCamisola(String nombreCamisola) {
-        this.nombreCamisola = nombreCamisola;
-    }
-
     public int getIdSucursal() {
         return idSucursal;
     }
 
     public void setIdSucursal(int idSucursal) {
         this.idSucursal = idSucursal;
-    }
-
-    public int getIdTalla() {
-        return idTalla;
-    }
-
-    public void setIdTalla(int idTalla) {
-        this.idTalla = idTalla;
     }
 
     public double getPrecioCosto() {
@@ -114,6 +103,6 @@ public class Camisola {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
- 
+    
     
 }
