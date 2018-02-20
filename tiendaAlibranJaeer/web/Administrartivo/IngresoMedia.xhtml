@@ -20,6 +20,8 @@
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
         <f:event type="preRenderView" listener="#{mediaBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar33()}"/>
+        
     </h:head>
     <h:body>
 
@@ -28,8 +30,21 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
+                    <a class="navbar-brand" href="#">
+                    </a>
+                </div>
+                <div class="navbar-header ">
                     <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
+
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -68,8 +83,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -91,22 +105,22 @@
                         </li>
 
 
-                        <!-- Productos -->
+                           <!-- Productos -->
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <!-- Productos Espinillera -->
                                 <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Espinillera<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Balón<span class="fa arrow"></span></a>
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoEspinillera.xhtml">Registro</a>
+                                            <a href="#">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarEspinillera.xhtml">Modificación</a>
+                                            <a href="#">Modificación</a>
                                         </li>
 
                                     </ul>
@@ -117,42 +131,40 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
+                                            <a href="#">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarCamisola.xhtml">Modificación</a>
+                                            <a href="#">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <!-- Productos Balon -->
                                 <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Balónes<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Chumpa<span class="fa arrow"></span></a>
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
-
+                                            <a href="#">Registro</a>
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="#">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <!-- Productos Chumpas -->
                                 <li>
-                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Chumpas<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Espinillera<span class="fa arrow"></span></a>
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
-
+                                            <a href="#">Registro</a>
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="#">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -162,12 +174,12 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoCamisola.xhtml">Registro</a>
+                                            <a href="">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -177,12 +189,203 @@
 
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="IngresoMedia.xhtml">Registro</a>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pantaloneta<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pescador<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Zapatilla<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <!-- second-level-items -->
+                        </li>
+                        
+                        
+                        <!-- Tallas -->
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Tallas<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <!-- Productos Espinillera -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Balón Futbol<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#">Registro</a>
 
                                         </li>
 
                                         <li>
-                                            <a href="ModificarSucursal.xhtml">Modificación</a>
+                                            <a href="#">Modificación</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Balón Basket<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="#">Modificación</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+                                <!-- Productos Camisola -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Camisolas<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="#">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Balon -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Chumpa<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Chumpas -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Espinillera<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="#">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <!-- Productos Licra -->
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Licra<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Pantaloneta<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Pescador<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Talla Zapatilla<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Tipo Zapatilla<span class="fa arrow"></span></a>
+
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="">Registro</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="">Modificación</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -275,9 +478,13 @@
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
 
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{mediaBean.ingreso.id_sucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
+                            <b:selectOneMenu value="#{mediaBean.ingreso.id_sucursal}" label="Sucursal">
+                                <f:selectItems value="#{sucursalBean.lstSucursal2}" 
+                                               var="s" itemValue="#{s.idSucursal}" itemLabel="#{s.sucursal}"/>
+                            </b:selectOneMenu>
+                            
+                            
+                            
                             <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{mediaBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">

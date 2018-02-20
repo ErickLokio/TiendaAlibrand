@@ -44,24 +44,26 @@ public class EmpleadoDao extends DAO {
         ArrayList<innerEmpleado> lstEmpleado = null;
         try {
             this.conectar();
-            query = "select * from dato_empleado";
+            query = "SELECT emp.id_empleado,emp.nombre_empleado as nombre,emp.telefono_claro,emp.telefono_movistar,su.nombre_sucursal as sucursal,"
+                    + "pu.nombre_puesto as puesto, emp.direccion,emp.email "
+                    + "from empleado as emp inner join sucursal as su"
+                    + "on emp.id_sucursal = su.id_sucursal inner join puesto as pu"
+                    + "on emp.id_puesto = pu.id_puesto";
+            
             sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
             lstEmpleado = new ArrayList();
 
             while (res.next()) {
                 innerEmpleado innEmp = new innerEmpleado();
-
-                innEmp.setDireccion(res.getString("direccion"));
-                innEmp.setDireccionSucursal("direccion_sucursal");
-                innEmp.setEmail(res.getString("email"));
                 innEmp.setIdEmpleado(res.getInt("id_empleado"));
-                innEmp.setIdSucursal(res.getInt("id_sucursal"));
-                innEmp.setNombreEmpleado(res.getString("nombre_empleado"));
-                innEmp.setPuesto(res.getString("nombre_puesto"));
-                innEmp.setSucursal(res.getString("nombre_sucursal"));
+                innEmp.setNombreEmpleado(res.getString("nombre"));
                 innEmp.setTelefonoClaro(res.getInt("telefono_claro"));
                 innEmp.setTelefonoMovistar(res.getInt("telefono_movistar"));
+                innEmp.setSucursal(res.getString("sucursal"));
+                innEmp.setPuesto(res.getString("puesto"));
+                innEmp.setDireccion(res.getString("direccion"));
+                innEmp.setEmail(res.getString("email"));
                 lstEmpleado.add(innEmp);
             }
 
@@ -109,11 +111,6 @@ public class EmpleadoDao extends DAO {
         return lstEmpleado;
     }
 
-    
-    
-    
-    
-    
     public ArrayList<Empleado> listaEmpleado() throws Exception {
         ArrayList<Empleado> lista = null;
 
@@ -158,8 +155,6 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
     }
-    
-    
 
     public void modificar(innerEmpleado emp) throws Exception {
         try {
@@ -178,12 +173,7 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
     }
-    
-    
-    
-    
-    
-    
+
     public void modificarTodo(Empleado emp) throws Exception {
         try {
             this.conectar();
@@ -204,10 +194,5 @@ public class EmpleadoDao extends DAO {
             this.cerrar();
         }
     }
-    
-    
-    
-    
-    
-    
+
 }
