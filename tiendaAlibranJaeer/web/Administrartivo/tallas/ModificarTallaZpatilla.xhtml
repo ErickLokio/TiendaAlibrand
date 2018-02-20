@@ -19,7 +19,6 @@
         <!-- Page-Level CSS -->
         <link href="../assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{balonBean.listar33()}"/>
         <f:event type="preRenderView" listener="#{tallaZapatillaBean.listar()}"/>
     </h:head>
     <h:body>
@@ -192,9 +191,7 @@
                     </center>
 
 
-                    <br/><br/><br/>
-
-
+                    <br/><br/>
 
                     <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
                         <b:dataTable var="za" 
@@ -203,10 +200,10 @@
                                      columnVisibility="true"
                                      class="tabla">
 
-                            <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_talla_zapatilla}" label="Id"/>
+                            <b:dataTableColumn value="#{za.idTallaZapatilla}" label="Id"/>
                             
                             <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Talla">
-                                <b:inputText value="#{za.nombre_zapatilla}" fieldSize="sm"/>
+                                <b:inputText value="#{za.tallaZapatilla}" fieldSize="sm"/>
                             </b:dataTableColumn>
                             
                             
