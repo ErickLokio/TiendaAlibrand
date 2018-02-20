@@ -10,14 +10,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Tienda Alibrand | Tipo Zapatillas</title>
         <!-- Core CSS - Include with every page -->
-        <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-        <link href="assets/css/style.css" rel="stylesheet" />
-        <link href="assets/css/main-style.css" rel="stylesheet" />
+        <link href="../assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="../assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+        <link href="../assets/css/style.css" rel="stylesheet" />
+        <link href="../assets/css/main-style.css" rel="stylesheet" />
 
         <!-- Page-Level CSS -->
-        <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+        <link href="../assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
         <f:event type="preRenderView" listener="#{balonBean.listar33()}"/>
         <f:event type="preRenderView" listener="#{tipoZapatillaBean.listarTipoZapatilla()}"/>
     </h:head>
@@ -28,8 +28,21 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                    <a class="navbar-brand">
+                    </a>
+                </div>
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
+
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -68,9 +81,8 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
-                                   </div>
+                                    <img src="../../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
+                                </div>
                             </div>
                             <!--end user image section-->
                         </li>
@@ -91,7 +103,7 @@
                         </li>
 
 
-                                                   <!-- Productos -->
+                        <!-- Productos -->
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Productos<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -185,10 +197,10 @@
                                         </li>
                                     </ul>
                                 </li>
-                                
 
 
-                                        <li>
+
+                                <li>
                                     <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pantalonetas<span class="fa arrow"></span></a>
 
                                     <ul class="nav nav-second-level">
@@ -203,11 +215,11 @@
                                 </li>
 
 
-                                        <li>
+                                <li>
                                     <a href="#"><i class="fa fa-sitemsap fa-fw"></i>Pescador<span class="fa arrow"></span></a>
 
-                            <ul class="nav nav-second-level">
-                                <li>
+                                    <ul class="nav nav-second-level">
+                                        <li>
                                             <a href="IngresoPescador.xhtml">Registro</a>
                                         </li>
 
@@ -217,11 +229,11 @@
                                     </ul>
                                 </li>
 
-                                    </ul>
+                            </ul>
 
                             <!-- second-level-items -->
                         </li>
-                        
+
 
 
                         <li>
@@ -252,8 +264,8 @@
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Envio</a>
                         </li>
-                        
-                        
+
+
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Empleado<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -305,21 +317,18 @@
                     </div>
 
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/icon/zapatilla2.png" />
+                        <img  class="centrado" id="imagen" src="../assets/icon/zapatilla2.png" />
                     </center>
-
-
                     <br/><br/>
-
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
 
                         <h:form id="frmCamisola">
-                            
+
                             <b:inputText label="Tipo" placeholder="Tipo: " value="#{tipoZapatillaBean.ingreso.nombre_tipo_zapatilla}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            
+
                             <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{tipoZapatillaBean.insertar()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
@@ -347,7 +356,7 @@
 
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_tipo_zapatilla}" label="Id"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.nombre_tipo_zapatilla}"  label="TIpo"/>
-                                    
+
                                     <b:dataTableColumn styleClass="div-table-cell" label="Eliminar">
                                         <b:commandButton value="Eliminar" styleClass="btn btn-danger" update=":frmTablaCamisola" actionListener="#{tipoZapatillaBean.Eliminar(za)}"/>
                                     </b:dataTableColumn>
@@ -367,14 +376,14 @@
         </div>
         <!-- end wrapper -->
         <!-- Core Scripts - Include with every page -->
-        <script src="assets/plugins/jquery-1.10.2.js"></script>
-        <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
-        <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-        <script src="assets/plugins/pace/pace.js"></script>
-        <script src="assets/scripts/siminta.js"></script>
+        <script src="../assets/plugins/jquery-1.10.2.js"></script>
+        <script src="../assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="../assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="../assets/plugins/pace/pace.js"></script>
+        <script src="../assets/scripts/siminta.js"></script>
         <!-- Page-Level Plugin Scripts-->
-        <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
-        <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+        <script src="../assets/plugins/dataTables/jquery.dataTables.js"></script>
+        <script src="../assets/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script>
                                              $(document).ready(function () {
                                                  $('#dataTables-example').dataTable();
