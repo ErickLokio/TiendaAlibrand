@@ -48,7 +48,7 @@ public class TallaBalonDao extends DAO{
     public void modificar(TallaBalon tal) throws Exception{
         try {
             this.conectar();
-            query="update talla set nombre_talla_balon=? where id_talla_balon=?";
+            query="update talla_balon set nombre_talla_balon=? where id_talla_balon=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, tal.getTallaBalon());
             sta.setInt(2, tal.getIdTallaBalon());

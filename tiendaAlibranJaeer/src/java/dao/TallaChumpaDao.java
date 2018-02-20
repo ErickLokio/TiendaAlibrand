@@ -49,7 +49,7 @@ public class TallaChumpaDao extends DAO{
     public void modificar(TallaChumpa tal) throws Exception{
         try {
             this.conectar();
-            query="update talla set nombre_talla_chumpa=? where id_talla_chumpa=?";
+            query="update talla_chumpa set nombre_talla_chumpa=? where id_talla_chumpa=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, tal.getTallaChumpa());
             sta.setInt(2, tal.getIdTallaChumpa());
