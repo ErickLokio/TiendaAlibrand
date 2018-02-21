@@ -17,6 +17,24 @@ public class Camisola {
     private String descripcion;
     private int cantidad;
     private String direccion;
+    private int cantidadSalida;
+    private int idTallaCamisola;
+
+    public int getCantidadSalida() {
+        return cantidadSalida;
+    }
+
+    public void setCantidadSalida(int cantidadSalida) {
+        this.cantidadSalida = cantidadSalida;
+    }
+
+    public int getIdTallaCamisola() {
+        return idTallaCamisola;
+    }
+
+    public void setIdTallaCamisola(int idTallaCamisola) {
+        this.idTallaCamisola = idTallaCamisola;
+    }
 
     public String getDireccion() {
         return direccion;

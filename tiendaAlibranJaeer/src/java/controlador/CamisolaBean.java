@@ -54,6 +54,7 @@ public class CamisolaBean {
     
     public void eliminar(Camisola camModelo){
         CamisolaDao camDao = new CamisolaDao();
+        System.out.println("id camisola: "+camModelo.getIdCamisola());
         try {
             camDao.eliminar(camModelo);
         } catch (Exception e) {

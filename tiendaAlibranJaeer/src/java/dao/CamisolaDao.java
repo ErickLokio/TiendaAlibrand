@@ -21,7 +21,7 @@ public class CamisolaDao extends DAO {
 
         try {
             this.conectar();
-            query = "insert into productoinventario(nombre_producto, id_talla, id_sucursal, precio_costo, precio_venta, margen_ganancia, descripcion, cantidad) values(?,?,?,?,?,?,?,?)";
+            query = "insert into productoinventario(nombre_producto, id_talla_camisola, id_sucursal, precio_costo, precio_venta, margen_ganancia, descripcion, cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, cam.getNombreCamisola());
             sta.setInt(2, cam.getIdTalla());
@@ -56,7 +56,7 @@ public class CamisolaDao extends DAO {
     public void modificar(Camisola cam) throws Exception {
         try {
             this.conectar();
-            query = "update productoinventario set nombre_producto=?, id_talla=?, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia, descripcion=?, cantidad=? where id_producto=? limit 1";
+            query = "update productoinventario set nombre_producto=?, id_talla_camisola=?, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia, descripcion=?, cantidad=? where id_producto=? limit 1";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, cam.getNombreCamisola());
             sta.setInt(2, cam.getIdTalla());
@@ -78,11 +78,11 @@ public class CamisolaDao extends DAO {
         ArrayList<Camisola> lstCamisola = null;
         try {
             this.conectar();
-            query = "SELECT productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_talla, productoinventario.id_sucursal, "
-                    + "productoinventario.precio_costo, productoinventario.precio_venta, productoinventario.margen_ganancia, productoinventario.descripcion, productoinventario.cantidad, sucursal.nombre_sucursal, sucursal.direccion, talla.nombre_talla\n"
+            query = "SELECT productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_talla_camisola, productoinventario.id_sucursal, "
+                    + "productoinventario.precio_costo, productoinventario.precio_venta, productoinventario.margen_ganancia, productoinventario.descripcion, productoinventario.cantidad, sucursal.nombre_sucursal, sucursal.direccion, talla_camisola.nombre_talla_camisola\n"
                     + "FROM productoinventario\n"
                     + "INNER JOIN sucursal ON sucursal.id_sucursal = productoinventario.id_sucursal\n"
-                    + "INNER JOIN talla ON talla.id_talla = productoinventario.id_talla";
+                    + "INNER JOIN talla_camisola ON talla_camisola.id_talla_camisola = productoinventario.id_talla_camisola";
             sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
             lstCamisola = new ArrayList<>();
@@ -91,8 +91,8 @@ public class CamisolaDao extends DAO {
                 Camisola cam = new Camisola();
                 cam.setIdCamisola(res.getInt("id_producto"));
                 cam.setNombreCamisola(res.getString("nombre_producto"));
-                cam.setIdTalla(res.getInt("id_talla"));
-                cam.setTalla(res.getString("nombre_talla"));
+                cam.setIdTalla(res.getInt("id_talla_camisola"));
+                cam.setTalla(res.getString("nombre_talla_camisola"));
                 cam.setIdSucursal(res.getInt("id_sucursal"));
                 cam.setSucursal(res.getString("nombre_sucursal"));
                 cam.setDireccion(res.getString("direccion"));

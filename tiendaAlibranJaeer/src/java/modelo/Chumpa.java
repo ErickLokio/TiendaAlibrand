@@ -8,7 +8,9 @@ public class Chumpa {
     private int id_chumpa;
     private String nombre_chumpa;
     private int id_talla;
+    private String talla;
     private int id_sucursal;
+    private String sucursal;
     private double precio_costo;
     private double precio_venta;
     private double margen_ganancia;
@@ -27,6 +29,22 @@ public class Chumpa {
         this.cantidad_total=0;
     }
 
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
+    }
+    
     public int getId_chumpa() {
         return id_chumpa;
     }

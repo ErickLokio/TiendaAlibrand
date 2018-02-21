@@ -20,7 +20,7 @@
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
         <f:event type="preRenderView" listener="#{camisolaBean.listar()}"/>
         <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
-        <f:event type="preRenderView" listener="#{tallaBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{tallaCamisolaBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -165,11 +165,8 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-<<<<<<< HEAD
+                        
                         <center><h1 class="page-header">Camisola</h1></center>
-=======
-                        <center><h1 class="page-header">Camisolas</h1></center>
->>>>>>> origin/master
                     </div>
                     <center>
                         <img  class="centrado" id="imagen" src="assets/icon/camisola.png" />
@@ -187,21 +184,22 @@
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
 
                             <b:selectOneMenu value="#{camisolaBean.cam.idTalla}" label="Talla">
-                                <f:selectItems value="#{tallaBean.lstTalla}" var="cami" itemLabel="#{cami.talla}" itemValue="#{cami.idTalla}"/>
+                                <f:selectItems value="#{tallaCamisolaBean.lstTalla}" var="cami" itemLabel="#{cami.tallaCamisola}" itemValue="#{cami.idTallaCamisola}"/>
                             </b:selectOneMenu>
                             <b:selectOneMenu value="#{camisolaBean.cam.idSucursal}" label="Sucursal">
                                 <f:selectItems value="#{sucursalBean.lstSucursal}" var="sucu" itemValue="#{sucu.idSucursal}" itemLabel="#{sucu.sucursal}"/>
                             </b:selectOneMenu>
-                            
+
                             <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{camisolaBean.cam.precioCosto}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
+
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{camisolaBean.cam.margenGanancia}" >
                                 <f:facet name="append">
                                     <b:commandButton  value="Calcular" look="success" actionListener="#{camisolaBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{camisolaBean.cam.cantidad}"/>
 
                             <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{camisolaBean.cam.precioVenta}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
@@ -214,34 +212,34 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                            <h:form  id="frmTablaCamisola">
-                                <br/><br/><br/>
-                                <b:dataTable 
-                                    value="#{camisolaBean.lstCamisola}"
-                                    var="camis"
-                                    id="bcarPool2"
-                                    fixedHeader="true"
-                                    scroll-size="400px"
-                                    scroll-x="false"
-                                    responsive="true"
-                                    lang="es"
-                                    searching="false">
+                        <h:form  id="frmTablaCamisola">
+                            <br/><br/><br/>
+                            <b:dataTable 
+                                value="#{camisolaBean.lstCamisola}"
+                                var="camis"
+                                id="bcarPool2"
+                                fixedHeader="true"
+                                scroll-size="400px"
+                                scroll-x="false"
+                                responsive="true"
+                                lang="es"
+                                searching="false">
 
 
-                                    <b:dataTableColumn value="#{camis.idCamisola}" label="Id"/>
-                                    <b:dataTableColumn value="#{camis.nombreCamisola}"  label="Nombre"/>
-                                    <b:dataTableColumn value="#{camis.sucursal}"  label="Sucursal"/>
-                                    <b:dataTableColumn value="#{camis.talla}"  label="Talla"/>
-                                    <b:dataTableColumn value="#{camis.precioCosto}"  label="Precio Costo"/>
-                                    <b:dataTableColumn value="#{camis.precioVenta}"  label="Precio Venta"/>
-                                    <b:dataTableColumn value="#{camis.margenGanancia}"  label="Margen de Ganancia"/>
-                                    <b:dataTableColumn value="#{camis.descripcion}"  label="Descripcion"/>
-                                    <b:dataTableColumn value="#{camis.cantidad}"  label="Cantidad"/>
-                                    <b:dataTableColumn label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{camisolaBean.eliminar(cami)}"/>
-                                    </b:dataTableColumn>
-                                </b:dataTable>
-                            </h:form>
+                                <b:dataTableColumn value="#{camis.idCamisola}" label="Id"/>
+                                <b:dataTableColumn value="#{camis.nombreCamisola}"  label="Nombre"/>
+                                <b:dataTableColumn value="#{camis.sucursal}"  label="Sucursal"/>
+                                <b:dataTableColumn value="#{camis.talla}"  label="Talla"/>
+                                <b:dataTableColumn value="#{camis.precioCosto}"  label="Precio Costo"/>
+                                <b:dataTableColumn value="#{camis.precioVenta}"  label="Precio Venta"/>
+                                <b:dataTableColumn value="#{camis.margenGanancia}"  label="Margen de Ganancia"/>
+                                <b:dataTableColumn value="#{camis.descripcion}"  label="Descripcion"/>
+                                <b:dataTableColumn value="#{camis.cantidad}"  label="Cantidad"/>
+                                <b:dataTableColumn label="Eliminar">
+                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{camisolaBean.eliminar(camis)}"/>
+                                </b:dataTableColumn>
+                            </b:dataTable>
+                        </h:form>
                     </div>
                 </div>
                 <!-- end  page header -->
