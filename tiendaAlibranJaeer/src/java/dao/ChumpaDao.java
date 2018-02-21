@@ -16,7 +16,7 @@ public class ChumpaDao extends DAO {
     private PreparedStatement sta;
     private String query;
 
-    public void Guardar(Chumpa chu ) throws Exception {
+    public void Guardar(Chumpa chu) throws Exception {
 
         try {
             this.conectar();
@@ -43,22 +43,30 @@ public class ChumpaDao extends DAO {
 
         try {
             this.conectar();
-            query = "select * from productoinventario";
+            query = "SELECT productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_sucursal, "
+                    + "productoinventario.precio_costo, productoinventario.precio_venta, productoinventario.margen_ganancia, "
+                    + "productoinventario.descripcion, productoinventario.cantidad, productoinventario.id_talla_chumpa, "
+                    + "talla_chumpa.nombre_talla_chumpa, sucursal.nombre_sucursal, sucursal.direccion\n"
+                    + "FROM productoinventario\n"
+                    + "INNER JOIN sucursal ON 	sucursal.id_sucursal = productoinventario.id_sucursal\n"
+                    + "INNER JOIN talla_chumpa ON talla_chumpa.id_talla_chumpa = productoinventario.id_talla_chumpa";
             sta = this.getCn().prepareCall(query);
             res = sta.executeQuery();
             lista = new ArrayList();
 
             while (res.next()) {
                 Chumpa chu = new Chumpa();
-                chu.setId_chumpa(res.getInt("id_chumpa"));
-                chu.setNombre_chumpa(res.getString("nombre_chumpa"));
-                chu.setId_talla(res.getInt("id_talla"));
+                chu.setId_chumpa(res.getInt("id_producto"));
+                chu.setNombre_chumpa(res.getString("nombre_producto"));
+                chu.setId_talla(res.getInt("id_talla_chumpa"));
+                chu.setTalla(res.getString("nombre_talla_chumpa"));
                 chu.setId_sucursal(res.getInt("id_sucursal"));
+                chu.setSucursal(res.getString("nombre_sucursal"));
                 chu.setPrecio_costo(res.getDouble("precio_costo"));
                 chu.setPrecio_venta(res.getDouble("precio_venta"));
                 chu.setMargen_ganancia(res.getDouble("margen_ganancia"));
                 chu.setDescripcion(res.getString("descripcion"));
-                chu.setCantidad_total(res.getInt("cantidad_total"));
+                chu.setCantidad_total(res.getInt("cantidad"));
                 lista.add(chu);
             }
         } catch (Exception e) {
@@ -68,12 +76,11 @@ public class ChumpaDao extends DAO {
         }
         return lista;
     }
-    
 
     public void modificar(Chumpa chu) throws Exception {
         try {
             this.conectar();
-            query = "UPDATE chumpa SET nombre_chumpa=?, id_talla=?, id_sucursal=?,precio_costo=?, precio_venta=?,margen_ganancia=?,descripcion=?,cantidad_total=? WHERE id_chumpa=?";
+            query = "UPDATE productoinventario SET nombre_producto=?, id_talla_chumpa=?, id_sucursal=?,precio_costo=?, precio_venta=?,margen_ganancia=?,descripcion=?,cantidad=? WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, chu.getNombre_chumpa());
             sta.setInt(2, chu.getId_talla());
@@ -95,7 +102,7 @@ public class ChumpaDao extends DAO {
     public void eliminar(Chumpa chu) throws SQLException, Exception {
         try {
             this.conectar();
-            query = "DELETE FROM chumpa WHERE id_chumpa =?";
+            query = "DELETE FROM productoinventario WHERE id_producto =?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, chu.getId_chumpa());
             sta.executeUpdate();
