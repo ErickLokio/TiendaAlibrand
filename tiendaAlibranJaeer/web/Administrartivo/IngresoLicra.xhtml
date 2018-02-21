@@ -20,6 +20,7 @@
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
         <f:event type="preRenderView" listener="#{licraBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -28,8 +29,20 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                    <a class="navbar-brand">
+                    </a>
+                </div>
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -68,8 +81,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -271,9 +283,10 @@
                             <b:inputText label="Nombre" placeholder="Nombre: " value="#{licraBean.ingreso.nombre_licra}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{licraBean.ingreso.id_sucursal }"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
+                            <b:selectOneMenu value="#{licraBean.ingreso.id_sucursal}" label="Sucursal">
+                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="sucu" itemValue="#{sucu.idSucursal}" itemLabel="#{sucu.sucursal}"/>
+                            </b:selectOneMenu>
+                            
                             <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{licraBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">

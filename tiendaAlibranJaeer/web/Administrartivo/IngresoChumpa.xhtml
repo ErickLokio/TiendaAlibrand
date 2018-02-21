@@ -20,6 +20,9 @@
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
         <f:event type="preRenderView" listener="#{chumpaBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{tallaChumpaBean.listar()}"/>
+        
     </h:head>
     <h:body>
 
@@ -28,10 +31,24 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                    <a class="navbar-brand">
                     </a>
                 </div>
+                
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
+                    </a>
+                </div>
+
                 <!-- end navbar-header -->
                 <!-- navbar-top-links -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -68,8 +85,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -272,10 +288,17 @@
                             <b:inputText label="Nombre" placeholder="Nombre: " value="#{chumpaBean.ingreso.nombre_chumpa}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            <b:inputText label="Talla" placeholder="Talla" value="#{chumpaBean.ingreso.id_talla}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="direccion"/>
-
+                            <b:selectOneMenu value="#{chumpaBean.ingreso.nombre_chumpa}" label="Talla">
+                                <f:selectItems value="#{tallaChumpaBean.lstTalla}" var="chu" 
+                                               itemLabel="#{chu.tallaChumpa}" itemValue="#{chu.idTallaChumpa}"/>
+                            </b:selectOneMenu>
+                            
+                            <b:selectOneMenu value="#{chumpaBean.ingreso.id_sucursal}" label="Talla">
+                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="su" 
+                                               itemLabel="#{su.sucursal}" itemValue="#{su.idSucursal}"/>
+                            </b:selectOneMenu>
+                            
+                            
                             <b:inputText label="Sucursal" placeholder="Sucursal" value="#{chumpaBean.ingreso.id_sucursal}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
                             <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>

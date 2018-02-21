@@ -31,8 +31,20 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                    <a class="navbar-brand">
+                    </a>
+                </div>
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -71,8 +83,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -199,16 +210,14 @@
 
                             
                             
-                            <h4><span>Puesto</span></h4>
-                            <b:selectOneMenu value="#{empleadoBean.emp.idPuesto}" large-screen="full-width" >
+                            <b:selectOneMenu value="#{empleadoBean.emp.idPuesto}" label="Puesto" >
                                 <f:selectItems value="#{puestoBean.lstPuesto}"
                                                var="pue" itemLabel="#{pue.puesto}"
                                                itemValue="#{pue.idPuesto}" />
                             </b:selectOneMenu>
                             
 
-                            <h4><span>Sucursal</span></h4>
-                            <b:selectOneMenu value="#{empleadoBean.emp.idSucursal}" large-screen="full-width" >
+                            <b:selectOneMenu value="#{empleadoBean.emp.idSucursal}" label="Sucursal" >
                                 <f:selectItems value="#{sucursalBean.lstSucursal2}"
                                                var="suc" itemLabel="#{suc.sucursal}"
                                                itemValue="#{suc.idSucursal}" />

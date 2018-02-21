@@ -31,12 +31,21 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="../recursos/images/ALIBRANDC.png" alt="" />
+                    <a class="navbar-brand">
+                    </a>
+                </div>
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -75,8 +84,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -186,6 +194,7 @@
                             <b:selectOneMenu value="#{camisolaBean.cam.idTalla}" label="Talla">
                                 <f:selectItems value="#{tallaCamisolaBean.lstTalla}" var="cami" itemLabel="#{cami.tallaCamisola}" itemValue="#{cami.idTallaCamisola}"/>
                             </b:selectOneMenu>
+                            
                             <b:selectOneMenu value="#{camisolaBean.cam.idSucursal}" label="Sucursal">
                                 <f:selectItems value="#{sucursalBean.lstSucursal}" var="sucu" itemValue="#{sucu.idSucursal}" itemLabel="#{sucu.sucursal}"/>
                             </b:selectOneMenu>
