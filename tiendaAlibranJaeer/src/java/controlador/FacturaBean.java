@@ -102,6 +102,8 @@ public class FacturaBean {
 
         try {
             dao = new FacturaDao();
+            ingreso.setCantidad_1(10);
+            ingreso.setId_producto_1(1000);
             dao.guardarFactura(ingreso);
             this.Limpiar();
         } catch (Exception e) {

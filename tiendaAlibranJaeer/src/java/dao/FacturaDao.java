@@ -92,8 +92,13 @@ public class FacturaDao extends DAO {
             sta.setDouble(48, fa.getTotal_9());
             
             sta.setDouble(49, fa.getTotal_factura());
-
+            
             sta.executeUpdate();
+            query="update productoinventario set cantidad=cantidad-? where id_producto=?";
+            sta = this.getCn().prepareStatement(query);
+            sta.setInt(1, fa.getCantidad_1());
+            sta.executeUpdate();
+           
         } catch (Exception e) {
             System.out.println("ERROR GUARDAR FACTURA DAO" + e);
         } finally {

@@ -20,7 +20,7 @@ public class BalonDao extends DAO {
 
         try {
             this.conectar();
-            query = "INSERT INTO balon(nombre_balon, id_talla_balon, id_sucursal,precio_costo, precio_venta,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
+            query = "INSERT INTO productoinventario(nombre_producto, id_talla_balon, id_sucursal, precio_costo, precio_venta,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, ba.getNombre_balon());
             sta.setInt(2, ba.getId_talla_balon());
@@ -43,7 +43,7 @@ public class BalonDao extends DAO {
 
         try {
             this.conectar();
-            query = "select * from balon";
+            query = "select * from productoinventario";
             sta = this.getCn().prepareCall(query);
             res = sta.executeQuery();
             lista = new ArrayList();

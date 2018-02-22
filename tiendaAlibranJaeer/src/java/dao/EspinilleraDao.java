@@ -80,7 +80,7 @@ public class EspinilleraDao extends DAO {
     public void modificar(Espinillera esp) throws Exception{
         try {
             this.conectar();
-            query = "UPDATE espinillera SET nombre_espinillera=?,id_talla_espinillera=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_espinillera=?";
+            query = "UPDATE productoinventario SET nombre_producto=?,id_talla_espinillera=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, esp.getNombre_espnillera());
             sta.setInt(2, esp.getId_talla_espinillera());
