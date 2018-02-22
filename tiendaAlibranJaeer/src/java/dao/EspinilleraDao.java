@@ -23,7 +23,7 @@ public class EspinilleraDao extends DAO {
     
         try{
             this.conectar();
-            query = "INSERT INTO espinillera(nombre_espinillera, id_talla_espinillera, id_sucursal,precio_venta,precio_costo,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
+            query = "INSERT INTO productoinventario(nombre_producto, id_talla_espinillera, id_sucursal,precio_venta,precio_costo,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, esp.getNombre_espnillera());
             sta.setInt(2, esp.getId_talla_espinillera());
@@ -43,36 +43,40 @@ public class EspinilleraDao extends DAO {
     
     
     
-    public ArrayList<Espinillera> listaEspinillera() throws Exception{
-    ArrayList<Espinillera> lista = null;
-    
-    try{
-        this.conectar();
-        query = "select * from espinillera";
-        sta = this.getCn().prepareCall(query);
-        res = sta.executeQuery();
-        lista = new ArrayList();
-        
-        while(res.next()){
-            Espinillera su = new Espinillera();
-            su.setId_espinillera(res.getInt("id_espinillera"));
-            su.setNombre_espnillera(res.getString("nombre_espinillera"));
-            su.setId_talla_espinillera(res.getInt("id_talla_espinillera"));
-            su.setId_sucursal(res.getInt("id_sucursal"));
-            su.setPrecio_costo(res.getDouble("precio_costo"));
-            su.setPrecio_venta(res.getDouble("precio_venta"));
-            su.setMargen_ganancia(res.getDouble("margen_ganancia"));
-            su.setDescripcion(res.getString("descripcion"));
-            su.setCantidad(res.getInt("cantidad"));
-            lista.add(su);
+         public ArrayList<Espinillera> listarEspinillera() throws Exception {
+        ArrayList<Espinillera> lstBalon = null;
+        try {
+            this.conectar();
+            query = "SELECT productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_talla_camisola, productoinventario.id_sucursal, "
+                    + "productoinventario.precio_costo, productoinventario.precio_venta, productoinventario.margen_ganancia, productoinventario.descripcion, productoinventario.cantidad, sucursal.nombre_sucursal, sucursal.direccion, talla_espinillera.nombre_talla_espinillera\n"
+                    + "FROM productoinventario\n"
+                    + "INNER JOIN sucursal ON sucursal.id_sucursal = productoinventario.id_sucursal\n"
+                    + "INNER JOIN talla_espinillera ON talla_espinillera.id_talla_espinillera = productoinventario.id_talla_espinillera";
+            sta = this.getCn().prepareStatement(query);
+            res = sta.executeQuery();
+            lstBalon = new ArrayList<>();
+
+            while (res.next()) {
+                Espinillera cam = new Espinillera();
+                cam.setId_espinillera(res.getInt("id_producto"));
+                cam.setNombre_espnillera(res.getString("nombre_producto"));
+                cam.setTalla(res.getString("nombre_talla_espinillera"));
+                cam.setId_sucursal(res.getInt("id_sucursal"));
+                cam.setSucursal(res.getString("nombre_sucursal"));
+                cam.setPrecio_costo(res.getDouble("precio_costo"));
+                cam.setPrecio_venta(res.getDouble("precio_venta"));
+                cam.setMargen_ganancia(res.getDouble("margen_ganancia"));
+                cam.setDescripcion(res.getString("descripcion"));
+                cam.setCantidad(res.getInt("cantidad"));
+                lstBalon.add(cam);
+            }
+        } catch (Exception ex) {
+            System.out.println("ERROR LISTAR BALON DAO" +ex);
+        } finally {
+            this.cerrar();
         }
-    }catch(Exception e){
-        System.out.println("ERROR LISTAR ESPINILLERA DAO "+e);
-    }finally{
-        this.cerrar();
+        return lstBalon;
     }
-    return lista;
-}
     
     
     
@@ -80,17 +84,16 @@ public class EspinilleraDao extends DAO {
     public void modificar(Espinillera esp) throws Exception{
         try {
             this.conectar();
-            query = "UPDATE productoinventario SET nombre_producto=?,id_talla_espinillera=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_producto=?";
+            query = "UPDATE productoinventario SET nombre_producto=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, esp.getNombre_espnillera());
-            sta.setInt(2, esp.getId_talla_espinillera());
-            sta.setInt(3, esp.getId_sucursal());
-            sta.setDouble(4, esp.getPrecio_costo());
-            sta.setDouble(5, esp.getPrecio_venta());
-            sta.setDouble(6, esp.getMargen_ganancia());
-            sta.setString(7, esp.getDescripcion());
-            sta.setInt(8, esp.getCantidad());
-            sta.setInt(9, esp.getId_espinillera());
+            sta.setInt(2, esp.getId_sucursal());
+            sta.setDouble(3, esp.getPrecio_costo());
+            sta.setDouble(4, esp.getPrecio_venta());
+            sta.setDouble(5, esp.getMargen_ganancia());
+            sta.setString(6, esp.getDescripcion());
+            sta.setInt(7, esp.getCantidad());
+            sta.setInt(8, esp.getId_espinillera());
             sta.executeUpdate(); 
         } catch (SQLException e) {
             System.out.println("Error modificar espinillera dao: "+e);
@@ -105,7 +108,7 @@ public class EspinilleraDao extends DAO {
     public void eliminar (Espinillera esp) throws SQLException, Exception{
         try {
             this.conectar();
-            query = "DELETE FROM espinillera WHERE id_espinillera=?";
+            query = "DELETE FROM productoinventario WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, esp.getId_espinillera());
             sta.executeUpdate();

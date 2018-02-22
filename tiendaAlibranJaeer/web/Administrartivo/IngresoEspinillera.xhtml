@@ -285,9 +285,11 @@
                             <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTallaEspinillera}" label="Talla">
                                 <f:selectItems value="#{productoInventarioBean.lstTallaEspinillera}" var="e" itemValue="#{e.idTallaEspinillera}" itemLabel="#{e.tallaEspinillera}"/>
                             </b:selectOneMenu>
+                            
                             <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idSucursal}" label="Sucursal">
                                 <f:selectItems value="#{sucursalBean.lstSucursal}" var="c" itemValue="#{c.idSucursal}" itemLabel="#{c.sucursal}"/>
                             </b:selectOneMenu>
+                            
                             <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{productoInventarioBean.modProdInv.margenGanancia}">
                                 <f:facet name="append">
                                     <b:commandButton size="sm" value="Calcular" look="success" actionListener="#{productoInventarioBean.calcularGanancia()}"/>

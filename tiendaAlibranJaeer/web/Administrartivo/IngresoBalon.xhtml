@@ -327,7 +327,7 @@
                     <div class="col-lg-6">
 
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{balonBean.ingreso.nombre_balon}"
+                            <b:inputText label="Nombre" placeholder="Nombre: " value="#{balonBean.ingreso.nombre_producto}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
 
@@ -397,10 +397,10 @@
                                              scroll-x="false"
                                              responsive="true">
 
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_balon}" label="Id"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.nombre_balon}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_talla_balon}" label="Talla"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_producto}" label="Id"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.nombre_producto}"  label="Nombre"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.talla_balon}" label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.sucursal}"  label="Sucursal"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.precio_costo}"  label="Precio Costo"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.precio_venta}"  label="Precio Venta"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.margen_ganancia}"  label="Margen de Ganancia"/>

@@ -20,7 +20,7 @@ public class ChumpaDao extends DAO {
 
         try {
             this.conectar();
-            query = "INSERT INTO productoinventario(nombre_producto, id_talla_chumpa, id_sucursal,precio_costo, precio_venta,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
+            query = "INSERT INTO productoinventario(nombre_producto, id_talla_chumpa,id_sucursal,precio_costo, precio_venta,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, chu.getNombre_chumpa());
             sta.setInt(2, chu.getId_talla());

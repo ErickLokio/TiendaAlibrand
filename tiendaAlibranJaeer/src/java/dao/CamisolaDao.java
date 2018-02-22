@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,22 +54,22 @@ public class CamisolaDao extends DAO {
         }
     }
 
-    public void modificar(Camisola cam) throws Exception {
+    public void modificar(Camisola ca) throws Exception {
         try {
             this.conectar();
-            query = "update productoinventario set nombre_producto=?, id_talla_camisola=?, id_sucursal=?, precio_costo=?, precio_venta=?, margen_ganancia, descripcion=?, cantidad=? where id_producto=? limit 1";
+            query = "UPDATE productoinventario SET nombre_producto=?,id_sucursal=?,precio_costo=?, precio_venta=?,margen_ganancia=?,descripcion=?,cantidad=? WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
-            sta.setString(1, cam.getNombreCamisola());
-            sta.setInt(2, cam.getIdTalla());
-            sta.setInt(3, cam.getIdSucursal());
-            sta.setDouble(4, cam.getPrecioCosto());
-            sta.setDouble(5, cam.getPrecioVenta());
-            sta.setDouble(6, cam.getMargenGanancia());
-            sta.setString(7, cam.getDescripcion());
-            sta.setInt(8, cam.getCantidad());
+            sta.setString(1, ca.getNombreCamisola());
+            sta.setInt(2, ca.getIdSucursal());
+            sta.setDouble(3, ca.getPrecioCosto());
+            sta.setDouble(4, ca.getPrecioVenta());
+            sta.setDouble(5, ca.getMargenGanancia());
+            sta.setString(6, ca.getDescripcion());
+            sta.setInt(7, ca.getCantidad());
+            sta.setInt(8, ca.getIdCamisola());
             sta.executeUpdate();
-        } catch (Exception ex) {
-            Logger.getLogger(CamisolaDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException e) {
+            System.out.println("Error modificar CAMISOLA dao: " + e);
         } finally {
             this.cerrar();
         }

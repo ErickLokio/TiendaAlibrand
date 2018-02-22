@@ -69,7 +69,7 @@ public class EspinilleraBean {
     public void listar33(){
         EspinilleraDao sucDao = new EspinilleraDao();
         try {
-           lstEspinillera = sucDao.listaEspinillera();
+           lstEspinillera = sucDao.listarEspinillera();
             
         } catch (Exception e) {
             System.out.println("Error al listar en Espinillera bean");

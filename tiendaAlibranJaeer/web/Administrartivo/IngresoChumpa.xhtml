@@ -20,9 +20,9 @@
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
         <f:event type="preRenderView" listener="#{chumpaBean.listar33()}"/>
-        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar33()}"/>
         <f:event type="preRenderView" listener="#{tallaChumpaBean.listar()}"/>
-        
+
     </h:head>
     <h:body>
 
@@ -34,7 +34,7 @@
                     <a class="navbar-brand">
                     </a>
                 </div>
-                
+
                 <div class="navbar-header ">
                     <a class="navbar-brand" >
                         <font color="#00913D" size="100px" style="font-family: serif" > 
@@ -288,21 +288,17 @@
                             <b:inputText label="Nombre" placeholder="Nombre: " value="#{chumpaBean.ingreso.nombre_chumpa}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            <b:selectOneMenu value="#{chumpaBean.ingreso.nombre_chumpa}" label="Talla">
+                            <b:selectOneMenu value="#{chumpaBean.ingreso.id_talla}" label="Talla">
                                 <f:selectItems value="#{tallaChumpaBean.lstTalla}" var="chu" 
                                                itemLabel="#{chu.tallaChumpa}" itemValue="#{chu.idTallaChumpa}"/>
                             </b:selectOneMenu>
-                            
-                            <b:selectOneMenu value="#{chumpaBean.ingreso.id_sucursal}" label="Talla">
-                                <f:selectItems value="#{sucursalBean.lstSucursal}" var="su" 
-                                               itemLabel="#{su.sucursal}" itemValue="#{su.idSucursal}"/>
+
+                            <b:selectOneMenu value="#{chumpaBean.ingreso.id_sucursal}" label="Sucursal" >
+                                <f:selectItems value="#{sucursalBean.lstSucursal2}"
+                                               var="su" itemLabel="#{su.sucursal}"
+                                               itemValue="#{su.idSucursal}" />
                             </b:selectOneMenu>
-                            
-                            
-                            <b:inputText label="Sucursal" placeholder="Sucursal" value="#{chumpaBean.ingreso.id_sucursal}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="idSucursal"/>
-                            
+
                             <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{chumpaBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">
@@ -350,8 +346,8 @@
 
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{chu.id_chumpa}" label="Id"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{chu.nombre_chumpa}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.id_talla}"  label="Talla"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.id_sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.talla}"  label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{chu.sucursal}"  label="Sucursal"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{chu.precio_costo}"  label="Precio Costo"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{chu.precio_venta}"  label="Precio Venta"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{chu.margen_ganancia}"  label="Margen de Ganancia"/>

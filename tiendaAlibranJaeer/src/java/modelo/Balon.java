@@ -5,8 +5,8 @@ package modelo;
  * @author erick osoy
  */
 public class Balon {
-    private int id_balon;
-    private String nombre_balon;
+    private int id_producto;
+    private String nombre_producto;
     private int id_talla_balon;
     private int id_sucursal;
     private double precio_costo;
@@ -14,35 +14,40 @@ public class Balon {
     private double margen_ganancia;
     private String descripcion;
     private int cantidad;
+    private String talla_balon;
+    private String sucursal;
     
     public Balon(){
-        this.id_balon=0;
-        this.nombre_balon="";
+        this.id_producto=0;
+        this.nombre_producto="";
         this.id_talla_balon=0;
         this.id_sucursal=0;
         this.precio_costo=0;
         this.precio_venta=0;
         this.margen_ganancia=0;
         this.descripcion="";
+        this.talla_balon="";
+        this.sucursal="";
         this.cantidad=0;
         
     }
 
-    public int getId_balon() {
-        return id_balon;
+    public int getId_producto() {
+        return id_producto;
     }
 
-    public void setId_balon(int id_balon) {
-        this.id_balon = id_balon;
+    public void setId_producto(int id_producto) {
+        this.id_producto = id_producto;
     }
 
-    public String getNombre_balon() {
-        return nombre_balon;
+    public String getNombre_producto() {
+        return nombre_producto;
     }
 
-    public void setNombre_balon(String nombre_balon) {
-        this.nombre_balon = nombre_balon;
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
     }
+
 
     public int getId_talla_balon() {
         return id_talla_balon;
@@ -99,5 +104,23 @@ public class Balon {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
+
+    public String getTalla_balon() {
+        return talla_balon;
+    }
+
+    public void setTalla_balon(String talla_balon) {
+        this.talla_balon = talla_balon;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
+    }
+    
+    
     
 }

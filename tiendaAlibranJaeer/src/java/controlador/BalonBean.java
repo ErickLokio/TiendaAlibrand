@@ -36,8 +36,8 @@ public class BalonBean {
     }
 
     public void Limpiar() {
-        ingreso.setId_balon(0);
-        ingreso.setNombre_balon("");
+        ingreso.setId_producto(0);
+        ingreso.setNombre_producto("");
         ingreso.setId_talla_balon(0);
         ingreso.setId_sucursal(0);
         ingreso.setPrecio_costo(0);
@@ -64,7 +64,7 @@ public class BalonBean {
     public void listar33() {
         BalonDao sucDao = new BalonDao();
         try {
-            lstBalon = sucDao.listaBalon();
+            lstBalon = sucDao.listarBalon();
 
         } catch (Exception e) {
             System.out.println("Error al listar Balon bean");

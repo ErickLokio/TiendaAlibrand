@@ -22,7 +22,7 @@ public class BalonDao extends DAO {
             this.conectar();
             query = "INSERT INTO productoinventario(nombre_producto, id_talla_balon, id_sucursal, precio_costo, precio_venta,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
-            sta.setString(1, ba.getNombre_balon());
+            sta.setString(1, ba.getNombre_producto());
             sta.setInt(2, ba.getId_talla_balon());
             sta.setInt(3, ba.getId_sucursal());
             sta.setDouble(4, ba.getPrecio_costo());
@@ -38,51 +38,55 @@ public class BalonDao extends DAO {
         }
     }
 
-    public ArrayList<Balon> listaBalon() throws Exception {
-        ArrayList<Balon> lista = null;
 
+        public ArrayList<Balon> listarBalon() throws Exception {
+        ArrayList<Balon> lstBalon = null;
         try {
             this.conectar();
-            query = "select * from productoinventario";
-            sta = this.getCn().prepareCall(query);
+            query = "SELECT productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_talla_camisola, productoinventario.id_sucursal, "
+                    + "productoinventario.precio_costo, productoinventario.precio_venta, productoinventario.margen_ganancia, productoinventario.descripcion, productoinventario.cantidad, sucursal.nombre_sucursal, sucursal.direccion, talla_balon.nombre_talla_balon\n"
+                    + "FROM productoinventario\n"
+                    + "INNER JOIN sucursal ON sucursal.id_sucursal = productoinventario.id_sucursal\n"
+                    + "INNER JOIN talla_balon ON talla_balon.id_talla_balon = productoinventario.id_talla_balon";
+            sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
-            lista = new ArrayList();
+            lstBalon = new ArrayList<>();
 
             while (res.next()) {
-                Balon ba = new Balon();
-                ba.setId_balon(res.getInt("id_balon"));
-                ba.setNombre_balon(res.getString("nombre_balon"));
-                ba.setId_talla_balon(res.getInt("id_talla_balon"));
-                ba.setId_sucursal(res.getInt("id_sucursal"));
-                ba.setPrecio_costo(res.getDouble("precio_costo"));
-                ba.setPrecio_venta(res.getDouble("precio_venta"));
-                ba.setMargen_ganancia(res.getDouble("margen_ganancia"));
-                ba.setDescripcion(res.getString("descripcion"));
-                ba.setCantidad(res.getInt("cantidad"));
-                lista.add(ba);
+                Balon cam = new Balon();
+                cam.setId_producto(res.getInt("id_producto"));
+                cam.setNombre_producto(res.getString("nombre_producto"));
+                cam.setTalla_balon(res.getString("nombre_talla_balon"));
+                cam.setId_sucursal(res.getInt("id_sucursal"));
+                cam.setSucursal(res.getString("nombre_sucursal"));
+                cam.setPrecio_costo(res.getDouble("precio_costo"));
+                cam.setPrecio_venta(res.getDouble("precio_venta"));
+                cam.setMargen_ganancia(res.getDouble("margen_ganancia"));
+                cam.setDescripcion(res.getString("descripcion"));
+                cam.setCantidad(res.getInt("cantidad"));
+                lstBalon.add(cam);
             }
-        } catch (Exception e) {
-            System.out.println("ERROR LISTAR BALON DAO " + e);
+        } catch (Exception ex) {
+            System.out.println("ERROR LISTAR BALON DAO" +ex);
         } finally {
             this.cerrar();
         }
-        return lista;
+        return lstBalon;
     }
-
+    
     public void modificar(Balon ba) throws Exception {
         try {
             this.conectar();
-            query = "UPDATE balon SET nombre_balon=?, id_talla_balon=?, id_sucursal=?,precio_costo=?, precio_venta=?,margen_ganancia=?,descripcion=?,cantidad=? WHERE id_balon=?";
+            query = "UPDATE productoinventario SET nombre_producto=?,id_sucursal=?,precio_costo=?, precio_venta=?,margen_ganancia=?,descripcion=?,cantidad=? WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
-            sta.setString(1, ba.getNombre_balon());
-            sta.setInt(2, ba.getId_talla_balon());
-            sta.setInt(3, ba.getId_sucursal());
-            sta.setDouble(4, ba.getPrecio_costo());
-            sta.setDouble(5, ba.getPrecio_venta());
-            sta.setDouble(6, ba.getMargen_ganancia());
-            sta.setString(7, ba.getDescripcion());
-            sta.setInt(8, ba.getCantidad());
-            sta.setInt(9, ba.getId_balon());
+            sta.setString(1, ba.getNombre_producto());
+            sta.setInt(2, ba.getId_sucursal());
+            sta.setDouble(3, ba.getPrecio_costo());
+            sta.setDouble(4, ba.getPrecio_venta());
+            sta.setDouble(5, ba.getMargen_ganancia());
+            sta.setString(6, ba.getDescripcion());
+            sta.setInt(7, ba.getCantidad());
+            sta.setInt(8, ba.getId_producto());
             sta.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error modificar BALON dao: " + e);
@@ -94,9 +98,9 @@ public class BalonDao extends DAO {
     public void eliminar(Balon ba) throws SQLException, Exception {
         try {
             this.conectar();
-            query = "DELETE FROM balon WHERE id_balon = ?";
+            query = "DELETE FROM productoinventario WHERE id_producto = ?";
             sta = this.getCn().prepareStatement(query);
-            sta.setInt(1, ba.getId_balon());
+            sta.setInt(1, ba.getId_producto());
             sta.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Error sucursal BALON dao: " + e);

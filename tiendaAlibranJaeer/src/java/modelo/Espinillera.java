@@ -14,6 +14,8 @@ public class Espinillera {
     private double margen_ganancia;
     private String descripcion;
     private int cantidad;
+    private String talla;
+    private String sucursal;
     
     public Espinillera(){
         this.id_espinillera=0;
@@ -25,6 +27,8 @@ public class Espinillera {
         this.margen_ganancia=0;
         this.descripcion="";
         this.cantidad=0;
+        this.talla="";
+        this.sucursal="";
     }
 
     public int getId_espinillera() {
@@ -98,7 +102,21 @@ public class Espinillera {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-    
-    
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
+    }
     
 }
