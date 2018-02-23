@@ -21,6 +21,7 @@
 
         <f:event type="preRenderView" listener="#{licraBean.listar33()}"/>
         <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{tallaLicraBean.listar()}"/>
     </h:head>
     <h:body>
 
@@ -283,10 +284,17 @@
                             <b:inputText label="Nombre" placeholder="Nombre: " value="#{licraBean.ingreso.nombre_licra}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
+                            <b:selectOneMenu value="#{licraBean.ingreso.id_talla_licra}" label="Talla" >
+                                <f:selectItems value="#{tallaLicraBean.lstLiTalla}"
+                                               var="talla" itemLabel="#{talla.tallaLicra}"
+                                               itemValue="#{talla.idTallaLicra}" />
+                            </b:selectOneMenu>
+
+
                             <b:selectOneMenu value="#{licraBean.ingreso.id_sucursal}" label="Sucursal">
                                 <f:selectItems value="#{sucursalBean.lstSucursal}" var="sucu" itemValue="#{sucu.idSucursal}" itemLabel="#{sucu.sucursal}"/>
                             </b:selectOneMenu>
-                            
+
                             <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{licraBean.ingreso.margen_ganancia}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" >
                                 <f:facet name="append">
@@ -334,7 +342,8 @@
 
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{li.id_licra}" label="Id"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{li.nombre_licra}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{li.id_sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{li.talla}"  label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{li.sucursal}"  label="Sucursal"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{li.precio_costo}"  label="Precio Costo"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{li.precio_venta}"  label="Precio Venta"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{li.margen_ganancia}"  label="Margen de Ganancia"/>

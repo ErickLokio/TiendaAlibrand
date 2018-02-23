@@ -6,6 +6,7 @@ package modelo;
  */
 public class Licra {
     private int id_licra;
+    private int id_talla_licra;
     private String nombre_licra;
     private int id_sucursal;
     private double precio_costo;
@@ -13,9 +14,12 @@ public class Licra {
     private double margen_ganancia;
     private String descripcion;
     private int cantidad;
+    private String talla;
+    private String sucursal;
     
     public Licra(){
         this.id_licra=0;
+        this.id_talla_licra=0;
         this.nombre_licra="";
         this.id_sucursal=0;
         this.precio_costo=0;
@@ -23,6 +27,8 @@ public class Licra {
         this.margen_ganancia=0;
         this.descripcion="";
         this.cantidad=0;
+        this.talla="";
+        this.sucursal="";
     }
 
     public int getId_licra() {
@@ -87,6 +93,30 @@ public class Licra {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
+    }
+
+    public int getId_talla_licra() {
+        return id_talla_licra;
+    }
+
+    public void setId_talla_licra(int id_talla_licra) {
+        this.id_talla_licra = id_talla_licra;
     }
     
 }

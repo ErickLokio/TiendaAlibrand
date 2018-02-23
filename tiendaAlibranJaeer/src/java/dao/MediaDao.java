@@ -20,7 +20,7 @@ public class MediaDao extends DAO {
 
         try {
             this.conectar();
-            query = "INSERT INTO media(nombre_media, id_sucursal, precio_venta, precio_costo ,margen_ganancia ,descripcion,cantidad) values(?,?,?,?,?,?,?)";
+            query = "INSERT INTO productoinventario(nombre_producto, id_sucursal, precio_venta, precio_costo ,margen_ganancia ,descripcion,cantidad) values(?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, me.getNombre_media());
             sta.setInt(2, me.getId_sucursal());

@@ -13,6 +13,8 @@ public class Pantaloneta {
    private double margenGanancia;
    private String descripcion;
    private int cantidad;
+   private String talla;
+   private String sucursal;
 
     public int getIdPantaloneta() {
         return idPantaloneta;
@@ -85,7 +87,21 @@ public class Pantaloneta {
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
-   
-   
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
+    }
    
 }

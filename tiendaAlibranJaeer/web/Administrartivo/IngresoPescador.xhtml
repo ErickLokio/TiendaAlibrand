@@ -18,9 +18,10 @@
 
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
-        <f:event type="preRenderView" listener="#{productoInventarioBean.listar()}"/>
-        <f:event type="preRenderView" listener="#{productoInventarioBean.listarTalla()}"/>
         <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{tallaPescadorBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{pescadorBean.listar()}"/>
+        
     </h:head>
     <h:body>
         <div id="wrapper">
@@ -30,14 +31,25 @@
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                         <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">
-                        <img src="../recursos/images/ALIBRANDC.png" alt="" />
+                    <a class="navbar-brand" >
                     </a>
                 </div>
+                
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
+                    </a>
+                </div>
+
                 <!-- end navbar-header -->
                 <!-- navbar-top-links -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -74,8 +86,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -164,10 +175,10 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Empleado</h1></center>
+                        <center><h1 class="page-header">Pescador</h1></center>
                     </div>
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/images/empleado.png" />
+                        <img  class="centrado" id="imagen" src="assets/icon/pescador.png" />
                     </center>
                 </div>    
                 <br/><br/><br/>
@@ -175,29 +186,31 @@
                     <div class="col-lg-3"></div>
                     <div class="col-lg-6">
                         <h:form id="frmCamisola">
-                            <b:inputText label="Nombre" placeholder="Nombre" value="#{productoInventarioBean.modProdInv.nombreProducto}"/>
+                            <b:inputText label="Nombre" placeholder="Nombre" value="#{pescadorBean.modPes.nombrePescador}"/>
 
-                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{productoInventarioBean.modProdInv.descripcion}"/>
-                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idTalla}" label="Talla">
-                                <f:selectItems value="#{productoInventarioBean.lstTalla}" var="e" itemValue="#{e.idTalla}" itemLabel="#{e.talla}"/>
+                            
+                            <b:selectOneMenu value="#{pescadorBean.modPes.id_talla_pescador}" label="Talla">
+                                <f:selectItems value="#{tallaPescadorBean.lstTallaPes}" var="e" itemValue="#{e.idTallaPescador}" itemLabel="#{e.tallaPescador}"/>
                             </b:selectOneMenu>
 
-                            <b:selectOneMenu value="#{productoInventarioBean.modProdInv.idSucursal}" label="Sucursal">
+                            <b:selectOneMenu value="#{pescadorBean.modPes.idSucursal}" label="Sucursal">
                                 <f:selectItems value="#{sucursalBean.lstSucursal}" var="c" itemValue="#{c.idSucursal}" itemLabel="#{c.sucursal}"/>
                             </b:selectOneMenu>
-                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{productoInventarioBean.modProdInv.precioCosto}"/>
+                            <b:inputText label="Precio Costo" placeholder="Precio Costo" value="#{pescadorBean.modPes.precioCosto}"/>
 
-                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{productoInventarioBean.modProdInv.margenGanancia}">
+                            <b:inputText label="Margen de Ganancia" placeholder="Margen de Ganancia" value="#{pescadorBean.modPes.margenGanancia}">
                                 <f:facet name="append">
-                                    <b:commandButton  value="Calcular" look="success" actionListener="#{productoInventarioBean.calcularGanancia()}"/>
+                                    <b:commandButton  value="Calcular" look="success" actionListener="#{pescadorBean.calcularGanancia()}"/>
                                 </f:facet>
                             </b:inputText>
                             
-                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{productoInventarioBean.modProdInv.precioVenta}"/>
+                            <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pescadorBean.modPes.precioVenta}"/>
                             
-                            <p:spinner label="Cantidad" id="basic" value="#{productoInventarioBean.modProdInv.cantidad}" />
-                            <br/><br/><br/>
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{productoInventarioBean.ingresarPescador()}" update=":frmTablaCamisola"></p:commandButton>
+                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{pescadorBean.modPes.descripcion}"/>
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad:" value="#{pescadorBean.modPes.catidad}"/>
+                            
+                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{pescadorBean.ingresar()}" update=":frmTablaCamisola"></p:commandButton>
 
                         </h:form>
                     </div>    
@@ -208,25 +221,25 @@
                         <h:form  id="frmTablaCamisola">
                             <br/><br/><br/>
                             <b:dataTable 
-                                value="#{pantalonetaBean.lstPantaloneta}"
-                                var="cami"
+                                value="#{pescadorBean.lstPescador}"
+                                var="pes"
                                 fixedHeader="true"
                                 scroll-size="400px"
                                 scroll-x="false"
-                                responsive="true">
+                                responsive="true" >
 
-                                <b:dataTableColumn value="#{cami.idPantaloneta}" label="Id"/>
-                                <b:dataTableColumn value="#{cami.nombrePantaloneta}"  label="Nombre"/>
-                                <b:dataTableColumn value="#{cami.idSucursal}"  label="Sucursal"/>
-                                <b:dataTableColumn value="#{cami.idTallaPantaloneta}"  label="talla Pantaloneta"/>
-                                <b:dataTableColumn value="#{cami.precioCosto}"  label="Precio Costo"/>
-                                <b:dataTableColumn value="#{cami.precioVenta}"  label="Precio Venta"/>
-                                <b:dataTableColumn value="#{cami.margenGanancia}"  label="Margen de Ganancia"/>
-                                <b:dataTableColumn value="#{cami.descripcion}"  label="Descripcion"/>
-                                <b:dataTableColumn value="#{cami.cantidad}"  label="Cantidad"/>
+                                <b:dataTableColumn value="#{pes.idPescador}" label="Id"/>
+                                <b:dataTableColumn value="#{pes.nombrePescador}"  label="Nombre"/>
+                                <b:dataTableColumn value="#{pes.sucursal}"  label="Sucursal"/>
+                                <b:dataTableColumn value="#{pes.talla}"  label="talla Pantaloneta"/>
+                                <b:dataTableColumn value="#{pes.precioCosto}"  label="Precio Costo"/>
+                                <b:dataTableColumn value="#{pes.precioVenta}"  label="Precio Venta"/>
+                                <b:dataTableColumn value="#{pes.margenGanancia}"  label="Margen de Ganancia"/>
+                                <b:dataTableColumn value="#{pes.descripcion}"  label="Descripcion"/>
+                                <b:dataTableColumn value="#{pes.catidad}"  label="Cantidad"/>
 
                                 <b:dataTableColumn label="Eliminar">
-                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{pantalonetaBean.eliminar(cami)}"/>
+                                    <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTablaCamisola" actionListener="#{pescadorBean.eliminar(pes)}"/>
                                 </b:dataTableColumn>
                             </b:dataTable>
                             

@@ -52,6 +52,7 @@ public class PescadorBean {
     }
     
     public void modificar(Pescador modPes2){
+    
         PescadorDao pesDao;
         try {
             pesDao = new PescadorDao();
@@ -64,7 +65,7 @@ public class PescadorBean {
         PescadorDao pesDao;
         try {
             pesDao = new PescadorDao();
-            lstPescador = pesDao.listar();
+            lstPescador = pesDao.listarPescador();
         } catch (Exception e) {
             System.out.println("Error al ingresar pescador en el bean "+e);
         }

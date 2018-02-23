@@ -321,22 +321,20 @@
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
 
-                            <h4><span>Talla</span></h4>
-                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_talla_zapatilla}" large-screen="full-width" >
+                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_talla_zapatilla}" label="Talla" >
                                 <f:selectItems value="#{zapatillaBean.lstTalla_Zapatilla}"
                                                var="za" itemLabel="#{za.nombre_zapatilla}"
                                                itemValue="#{za.id_talla_zapatilla}" />
                             </b:selectOneMenu>
 
-                            <h4><span>Tipo</span></h4>
-                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_tipo_zapatilla}" large-screen="full-width" >
+                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_tipo_zapatilla}" label="Tipo" >
                                 <f:selectItems value="#{zapatillaBean.lstTipoZapatilla}"
                                                var="za" itemLabel="#{za.nombre_tipo_zapatilla}"
                                                itemValue="#{za.id_tipo_zapatilla}" />
                             </b:selectOneMenu>
                             
-                            <h4><span>Sucursal</span></h4>
-                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_sucursal}" large-screen="full-width" >
+                            
+                            <b:selectOneMenu value="#{zapatillaBean.ingreso.id_sucursal}" label="Sucursal" >
                                 <f:selectItems value="#{sucursalBean.lstSucursal2}"
                                                var="su" itemLabel="#{su.sucursal}"
                                                itemValue="#{su.idSucursal}" />
@@ -398,9 +396,9 @@
 
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_producto}" label="Id"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.nombre_producto}"  label="Nombre"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_talla_zapatilla}" label="Talla"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_tipo_zapatilla}" label="Tipo"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.id_sucursal}"  label="Sucursal"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.talla}" label="Talla"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.tipo}" label="Tipo"/>
+                                    <b:dataTableColumn styleClass="div-table-cell" value="#{za.sucursal}"  label="Sucursal"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.precio_costo}"  label="Precio Costo"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.precio_venta}"  label="Precio Venta"/>
                                     <b:dataTableColumn styleClass="div-table-cell" value="#{za.margen_ganancia}"  label="Margen de Ganancia"/>

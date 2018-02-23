@@ -190,10 +190,8 @@
                             <b:inputText label="Nombre" placeholder="Nombre: " value="#{pantalonetaBean.pan.nombrePantaloneta}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
 
-                            <b:inputText label="Descripcion" placeholder="Descripcion" value="#{pantalonetaBean.pan.descripcion}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
 
-                            <b:selectOneMenu value="#{pantalonetaBean.pan.idPantaloneta}" label="Talla">
+                            <b:selectOneMenu value="#{pantalonetaBean.pan.idTallaPantaloneta}" label="Talla">
                                 <f:selectItems value="#{tallaPantalonetaBean.lstPanTalla}" var="cami" 
                                                itemLabel="#{cami.tallaPantaloneta}" itemValue="#{cami.idTallaPantaloneta}"/>
                             </b:selectOneMenu>
@@ -211,9 +209,12 @@
                                 </f:facet>
                             </b:inputText>
 
-                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{pantalonetaBean.pan.cantidad}"/>
-
                             <b:inputText label="Precio Venta" placeholder="Precio Venta" value="#{pantalonetaBean.pan.precioVenta}"
+                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
+                            
+                            <b:inputText label="Cantidad" placeholder="Cantidad" value="#{pantalonetaBean.pan.cantidad}"/>
+                            
+                              <b:inputText label="Descripcion" placeholder="Descripcion" value="#{pantalonetaBean.pan.descripcion}"
                                          onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
 
                             <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{pantalonetaBean.ingresar()}" update=":frmTablaCamisola" ></p:commandButton>
@@ -240,8 +241,8 @@
 
                                 <b:dataTableColumn value="#{pa.idPantaloneta}" label="Id"/>
                                 <b:dataTableColumn value="#{pa.nombrePantaloneta}"  label="Nombre"/>
-                                <b:dataTableColumn value="#{pa.idTallaPantaloneta}"  label="Talla"/>
-                                <b:dataTableColumn value="#{pa.idSucursal}"  label="Sucursal"/>
+                                <b:dataTableColumn value="#{pa.talla}"  label="Talla"/>
+                                <b:dataTableColumn value="#{pa.sucursal}"  label="Sucursal"/>
                                 <b:dataTableColumn value="#{pa.precioCosto}"  label="Precio Costo"/>
                                 <b:dataTableColumn value="#{pa.precioVenta}"  label="Precio Venta"/>
                                 <b:dataTableColumn value="#{pa.margenGanancia}"  label="Margen de Ganancia"/>

@@ -66,7 +66,7 @@ public class LicraBean {
     public void listar33(){
         LicraDao sucDao = new LicraDao();
         try {
-           lstLicra = sucDao.listaLicra();
+           lstLicra = sucDao.listarLicra();
             
         } catch (Exception e) {
             System.out.println("Error al listar en Licra bean");

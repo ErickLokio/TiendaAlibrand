@@ -3,11 +3,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:b="http://bootsfaces.net/ui"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand | Modificacion de Camisolas</title>
+        <title>Tienda Alibrand | Modificacion de Zapatilla</title>
         <!-- Core CSS - Include with every page -->
         <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
         <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
@@ -18,24 +19,23 @@
         <!-- Page-Level CSS -->
         <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{pantalonetaBean.listar()}"/>
-        <f:event type="preRenderView" listener="#{tallaPantalonetaBean.listar()}"/>
-        <f:event type="preRenderView" listener="#{sucursalBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{zapatillaBean.listar33()}"/>
+        <f:event type="preRenderView" listener="#{zapatillaBean.listarTalla_Zapatilla()}"/>
+        <f:event type="preRenderView" listener="#{zapatillaBean.listarTipoZapatilla()}"/>
+        <f:event type="preRenderView" listener="#{sucursalBean.listar33()}"/>
+        
     </h:head>
     <h:body>
 
         <div id="wrapper">
             <!-- navbar top -->
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
-
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                    </button>
                     <a class="navbar-brand">
                     </a>
                 </div>
+                
                 <div class="navbar-header ">
                     <a class="navbar-brand" >
                         <font color="#00913D" size="100px" style="font-family: serif" > 
@@ -49,7 +49,6 @@
                         </font>
                     </a>
                 </div>
-
                 <!-- end navbar-header -->
                 <!-- navbar-top-links -->
                 <ul class="nav navbar-top-links navbar-right">
@@ -156,7 +155,7 @@
                             </ul>
                             <!-- second-level-items -->
                         </li>
-
+                        
                         <li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
@@ -189,61 +188,62 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Pantaloneta</h1></center>
+                        <center><h1 class="page-header">Zapatilla</h1></center>
                     </div>
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/icon/pantaloneta2.png" />
+                        <img  class="centrado" id="imagen" src="assets/icon/zapatilla2.png" />
                     </center>
+                    <br/><br/>
 
 
-                    <br/><br/><br/>
-                </div>   
-                <div class="row">
-                    <div >
-                        <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
-                            <b:dataTable var="cami" 
-                                         value="#{pantalonetaBean.lstPantaloneta}" 
-                                         id='data'
-                                         columnVisibility="true"
-                                         class="tabla">
+                    <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                        <b:dataTable var="ba" 
+                                     value="#{zapatillaBean.lstZapatilla}" 
+                                     id='data'
+                                     columnVisibility="true"
+                                     class="tabla">
 
-                                <b:dataTableColumn styleClass="div-table-cell" value="#{cami.idPantaloneta}" label="Id"/>
-                                
-                                <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
-                                    <b:inputText value="#{cami.nombrePantaloneta}" fieldSize="sm"/>
-                                </b:dataTableColumn>
-                                
-                                <b:dataTableColumn value="#{cami.talla}"  label="Talla"/>
-                                
-                                <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
-                                    <b:inputText value="#{cami.precioCosto}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                                </b:dataTableColumn>
-                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Precio Venta">
-                                    <b:inputText value="#{cami.precioVenta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                                </b:dataTableColumn>
-                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Margen de Ganancia">
-                                    <b:inputText value="#{cami.margenGanancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                                </b:dataTableColumn>
-                                
-                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Descripciòn">
-                                    <b:inputText value="#{cami.descripcion}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                                </b:dataTableColumn>
-                                
-                                <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Cantidad">
-                                    <b:inputText value="#{cami.cantidad}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
-                                </b:dataTableColumn>
-                                
-                                <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
-                                    <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{pantalonetaBean.modificar(cami)}"/>
-                                </b:dataTableColumn>
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Nombre">
+                                <b:inputText value="#{ba.nombre_producto}" fieldSize="sm"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{ba.talla}"  label="Talla"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{ba.tipo}"  label="Tipo"/>
+                            <b:dataTableColumn styleClass="div-table-cell" value="#{ba.sucursal}"  label="Sucursal"/>
+                            
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text" label="Precio Costo">
+                                <b:inputText value="#{ba.precio_costo}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Precio Venta">
+                                <b:inputText value="#{ba.precio_venta}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Margen de Ganancia">
+                                <b:inputText value="#{ba.margen_ganancia}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Descripción">
+                                <b:inputText value="#{ba.descripcion}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell"  dataType="text" label="Cantidad">
+                                <b:inputText value="#{ba.cantidad}" fieldSize="sm" style="width: 80px; heigth: 2px;"/>
+                            </b:dataTableColumn>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
+                                <b:commandButton value="Modificar" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{zapatillaBean.modificar(ba)}"/>
+                            </b:dataTableColumn>
 
-                            </b:dataTable>
-                        </h:form>
-                    </div>
+
+                        </b:dataTable>
+                    </h:form>
+
+
+
+                    <!-- end  page header -->
                 </div>
-
-                <!-- end  page header -->
-
             </div>
             <!-- end page-wrapper -->
 
@@ -265,5 +265,6 @@
         </script>
     </h:body>
 </html>
+
 
 

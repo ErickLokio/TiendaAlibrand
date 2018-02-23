@@ -66,7 +66,7 @@ public class PantalonetaBean {
         PantalonetaDao panDao;
         try {
             panDao = new PantalonetaDao();
-            lstPantaloneta=panDao.listar();
+            lstPantaloneta=panDao.listarPantaloneta();
         } catch (Exception e) {
             System.out.println("Error al listar en el pantaloneta bean "+e);
         }

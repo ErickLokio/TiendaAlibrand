@@ -20,15 +20,16 @@ public class LicraDao extends DAO {
 
         try {
             this.conectar();
-            query = "INSERT INTO licra(nombre_licra, id_sucursal,precio_venta,precio_costo,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?)";
+            query = "INSERT INTO productoinventario(nombre_producto,id_talla_licra,id_sucursal,precio_venta,precio_costo,margen_ganancia,descripcion,cantidad) values(?,?,?,?,?,?,?,?)";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, li.getNombre_licra());
-            sta.setInt(2, li.getId_sucursal());
-            sta.setDouble(3, li.getPrecio_costo());
-            sta.setDouble(4, li.getPrecio_venta());
-            sta.setDouble(5, li.getMargen_ganancia());
-            sta.setString(6, li.getDescripcion());
-            sta.setInt(7, li.getCantidad());
+            sta.setInt(2, li.getId_talla_licra());
+            sta.setInt(3, li.getId_sucursal());
+            sta.setDouble(4, li.getPrecio_costo());
+            sta.setDouble(5, li.getPrecio_venta());
+            sta.setDouble(6, li.getMargen_ganancia());
+            sta.setString(7, li.getDescripcion());
+            sta.setInt(8, li.getCantidad());
             sta.executeUpdate();
         } catch (Exception e) {
             System.out.println("ERROR INSERTAR LICRA DAO" + e);
@@ -37,40 +38,46 @@ public class LicraDao extends DAO {
         }
     }
 
-    public ArrayList<Licra> listaLicra() throws Exception {
-        ArrayList<Licra> lista = null;
-
+    
+    public ArrayList<Licra> listarLicra() throws Exception {
+        ArrayList<Licra> lstBalon = null;
         try {
             this.conectar();
-            query = "select * from licra";
-            sta = this.getCn().prepareCall(query);
+            query = "SELECT productoinventario.id_producto, productoinventario.nombre_producto, productoinventario.id_talla_camisola, productoinventario.id_sucursal, "
+                    + "productoinventario.precio_costo, productoinventario.precio_venta, productoinventario.margen_ganancia, productoinventario.descripcion, productoinventario.cantidad, sucursal.nombre_sucursal, sucursal.direccion, talla_licra.nombre_talla_licra\n"
+                    + "FROM productoinventario\n"
+                    + "INNER JOIN sucursal ON sucursal.id_sucursal = productoinventario.id_sucursal\n"
+                    + "INNER JOIN talla_licra ON talla_licra.id_talla_licra = productoinventario.id_talla_licra";
+            sta = this.getCn().prepareStatement(query);
             res = sta.executeQuery();
-            lista = new ArrayList();
+            lstBalon = new ArrayList<>();
 
             while (res.next()) {
-                Licra su = new Licra();
-                su.setId_licra(res.getInt("id_licra"));
-                su.setNombre_licra(res.getString("nombre_licra"));
-                su.setId_sucursal(res.getInt("id_sucursal"));
-                su.setPrecio_costo(res.getDouble("precio_costo"));
-                su.setPrecio_venta(res.getDouble("precio_venta"));
-                su.setMargen_ganancia(res.getDouble("margen_ganancia"));
-                su.setDescripcion(res.getString("descripcion"));
-                su.setCantidad(res.getInt("cantidad"));
-                lista.add(su);
+                Licra cam = new Licra();
+                cam.setId_licra(res.getInt("id_producto"));
+                cam.setNombre_licra(res.getString("nombre_producto"));
+                cam.setTalla(res.getString("nombre_talla_licra"));
+                cam.setId_sucursal(res.getInt("id_sucursal"));
+                cam.setSucursal(res.getString("nombre_sucursal"));
+                cam.setPrecio_costo(res.getDouble("precio_costo"));
+                cam.setPrecio_venta(res.getDouble("precio_venta"));
+                cam.setMargen_ganancia(res.getDouble("margen_ganancia"));
+                cam.setDescripcion(res.getString("descripcion"));
+                cam.setCantidad(res.getInt("cantidad"));
+                lstBalon.add(cam);
             }
-        } catch (Exception e) {
-            System.out.println("ERROR LISTAR LICRA DAO " + e);
+        } catch (Exception ex) {
+            System.out.println("ERROR LISTAR BALON DAO" + ex);
         } finally {
             this.cerrar();
         }
-        return lista;
+        return lstBalon;
     }
-
+    
     public void modificar(Licra li) throws Exception {
         try {
             this.conectar();
-            query = "UPDATE licra SET nombre_licra=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_licra=?";
+            query = "UPDATE productoinventario SET nombre_producto=?,id_sucursal=?,precio_venta=?,precio_costo=?,margen_ganancia=?, descripcion=?, cantidad=? WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setString(1, li.getNombre_licra());
             sta.setInt(2, li.getId_sucursal());
@@ -91,7 +98,7 @@ public class LicraDao extends DAO {
     public void eliminar(Licra li) throws SQLException, Exception {
         try {
             this.conectar();
-            query = "DELETE FROM licra WHERE id_licra=?";
+            query = "DELETE FROM productoinventario WHERE id_producto=?";
             sta = this.getCn().prepareStatement(query);
             sta.setInt(1, li.getId_licra());
             sta.executeUpdate();

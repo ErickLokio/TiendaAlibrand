@@ -15,6 +15,9 @@ public class Zapatilla {
     private double margen_ganancia;
     private String descripcion;
     private int cantidad;
+    private String tipo;
+    private String talla;
+    private String sucursal;
     
     public Zapatilla(){
         this.id_producto=0;
@@ -27,6 +30,9 @@ public class Zapatilla {
         this.margen_ganancia=0;
         this.descripcion="";
         this.cantidad=0;
+        this.tipo="";
+        this.talla="";
+        this.sucursal="";
     }
 
     public int getId_producto() {
@@ -107,6 +113,30 @@ public class Zapatilla {
 
     public void setId_talla_zapatilla(int id_talla_zapatilla) {
         this.id_talla_zapatilla = id_talla_zapatilla;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getTalla() {
+        return talla;
+    }
+
+    public void setTalla(String talla) {
+        this.talla = talla;
+    }
+
+    public String getSucursal() {
+        return sucursal;
+    }
+
+    public void setSucursal(String sucursal) {
+        this.sucursal = sucursal;
     }
     
 }

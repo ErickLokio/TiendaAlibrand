@@ -38,8 +38,7 @@ public class BalonDao extends DAO {
         }
     }
 
-
-        public ArrayList<Balon> listarBalon() throws Exception {
+    public ArrayList<Balon> listarBalon() throws Exception {
         ArrayList<Balon> lstBalon = null;
         try {
             this.conectar();
@@ -67,13 +66,13 @@ public class BalonDao extends DAO {
                 lstBalon.add(cam);
             }
         } catch (Exception ex) {
-            System.out.println("ERROR LISTAR BALON DAO" +ex);
+            System.out.println("ERROR LISTAR BALON DAO" + ex);
         } finally {
             this.cerrar();
         }
         return lstBalon;
     }
-    
+
     public void modificar(Balon ba) throws Exception {
         try {
             this.conectar();
