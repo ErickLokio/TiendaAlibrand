@@ -8,19 +8,18 @@
     <h:head>
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <title>Tienda Alibrand</title>
+        <title>Tienda Alibrand | Modificacion de Tipo Zapatilla</title>
         <!-- Core CSS - Include with every page -->
-        <link href="assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
-        <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
-        <link href="assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
-        <link href="assets/css/style.css" rel="stylesheet" />
-        <link href="assets/css/main-style.css" rel="stylesheet" />
+        <link href="../assets/plugins/bootstrap/bootstrap.css" rel="stylesheet" />
+        <link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+        <link href="../assets/plugins/pace/pace-theme-big-counter.css" rel="stylesheet" />
+        <link href="../assets/css/style.css" rel="stylesheet" />
+        <link href="../assets/css/main-style.css" rel="stylesheet" />
 
         <!-- Page-Level CSS -->
-        <link href="assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+        <link href="../assets/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 
-        <f:event type="preRenderView" listener="#{usuariosBean2.listar33()}"/>
-        <f:event type="preRenderView" listener="#{puestoBean.listar()}"/>
+        <f:event type="preRenderView" listener="#{tipoZapatillaBean.listarTipoZapatilla()}"/>
     </h:head>
     <h:body>
 
@@ -29,8 +28,21 @@
             <nav class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
                 <!-- navbar-header -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/ALIBRANDC.png" alt=""/>
+                    <a class="navbar-brand" >
+                    </a>
+                </div>
+                <div class="navbar-header ">
+                    <a class="navbar-brand" >
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>T</strong>ienda
+                        </font>
+                        <font color="#FFF" size="100px" style="font-family: serif" > 
+                            <strong>D</strong>eportiva
+                        </font>
+                        <font color="#00913D" size="100px" style="font-family: serif" > 
+                            <strong>A</strong>li<strong>B</strong>rand
+                        </font>
+
                     </a>
                 </div>
                 <!-- end navbar-header -->
@@ -69,8 +81,7 @@
                             <!-- user image section-->
                             <div class="user-section">
                                 <div class="user-info">
-                                    <div>#Tienda <strong>Alibrand</strong></div>
-
+                                    <img src="../../recursos/images/ALIBRANDC.png" alt="" width="200px" height="150px" />
                                 </div>
                             </div>
                             <!--end user image section-->
@@ -140,6 +151,20 @@
                             </ul>
                             <!-- second-level-items -->
                         </li>
+                        
+                        <li>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i>Usuarios<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="IngresoUsuarios.xhtml">Registro de Usuarios</a>
+                                </li>
+                                <li>
+                                    <a href="ModificarUsuario.xhtml">Modificar Usuarios</a>
+                                </li>
+
+                            </ul>
+                            <!-- second-level-items -->
+                        </li>
 
                         <li>
                             <a href="#"><i class="fa fa-dashboard fa-fw"></i>Ingreso Reportes</a>
@@ -159,68 +184,38 @@
                     <!--  page header -->
 
                     <div class="col-lg-12">
-                        <center><h1 class="page-header">Usuarios</h1></center>
+                        <center><h1 class="page-header">Tipo Zapatilla</h1></center>
                     </div>
                     <center>
-                        <img  class="centrado" id="imagen" src="assets/images/login.png" />
+                        <img  class="centrado" id="imagen" src="../assets/icon/zapatilla2.png" />
                     </center>
 
-                    <br/><br/><br/>
-                    <div class="col-lg-3"></div>
-                    <div class="col-lg-6">
-                        <h:form id="frm">
-                            <b:inputText label="Código" placeholder="Código" value="#{usuariosBean2.ingreso.id_usuario}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next"  />
+
+                    <br/><br/>
+
+                    <h:form class="div-table-row div-table-head" id="frmTablaCamisola">
+                        <b:dataTable var="za" 
+                                     value="#{tipoZapatillaBean.lstTipoZapatilla}" 
+                                     id='data'
+                                     columnVisibility="true"
+                                     class="tabla">
+
+                            <b:dataTableColumn value="#{za.id_tipo_zapatilla}" label="Id"/>
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" dataType="text"  label="Tipo">
+                                <b:inputText value="#{za.nombre_tipo_zapatilla}" fieldSize="sm"/>
+                            </b:dataTableColumn>
+                            
+                            
+                            <b:dataTableColumn styleClass="div-table-cell" label="Modificar">
+                                <b:commandButton value="Modificacion" icon="edit" look="warning" size="sm" update="frmTablaCamisola" actionListener="#{tipoZapatillaBean.modificar(za)}"/>
+                            </b:dataTableColumn>
 
 
-                            <b:selectOneMenu value="#{usuariosBean2.ingreso.id_puesto}" label="Puesto">
-                                <f:selectItems value="#{puestoBean.lstPuesto}"
-                                               var="pue" itemLabel="#{pue.puesto}"
-                                               itemValue="#{pue.idPuesto}" />
-                            </b:selectOneMenu>
-
-                            <b:inputText label="Usuario" placeholder="Usuario" value="#{usuariosBean2.ingreso.nombre}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="encargado"/>
-
-                            <b:inputText label="Contraseña" placeholder="Contraseña" value="#{usuariosBean2.ingreso.contraseña}"
-                                         onkeyup="ajax:inputTextBean.capitalizeText()" update="@next" />
-                            <b:label text="#{inputTextBean.map['key']}" id="tel1"/>
+                        </b:dataTable>
+                    </h:form>
 
 
-                            <p:commandButton value="Ingresar" styleClass="btn btn-primary" actionListener="#{usuariosBean2.insertar()}" update=":frmTabla"></p:commandButton>
-
-                        </h:form>
-                    </div>
-                    <div class="col-lg-3"></div>
-
-
-
-                    <br/><br/><br/>
-
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <br/><br/>
-                            <h:form class="div-table-row div-table-head" id="frmTabla">
-                                <b:dataTable var="usu" 
-                                             value="#{usuariosBean2.lstUsuarios}" 
-                                             id='data'
-                                             columnVisibility="true"
-                                             class="tabla">
-
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{usu.id_usuario}" label="Id"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{usu.id_puesto}"  label="Puesto"/>
-                                    <b:dataTableColumn styleClass="div-table-cell" value="#{usu.nombre}"  label="Usuario"/>
-
-                                    <b:dataTableColumn class="div-table-cell" label="Eliminar">
-                                        <b:commandButton value="Eliminar" styleClass="btn btn-danger" update="frmTabla" actionListener="#{usuariosBean2.Eliminar(usu)}" />
-                                    </b:dataTableColumn>
-
-
-                                </b:dataTable>
-                            </h:form>
-                        </div>
-                    </div>
 
                     <!-- end  page header -->
                 </div>
@@ -230,20 +225,21 @@
         </div>
         <!-- end wrapper -->
         <!-- Core Scripts - Include with every page -->
-        <script src="assets/plugins/jquery-1.10.2.js"></script>
-        <script src="assets/plugins/bootstrap/bootstrap.min.js"></script>
-        <script src="assets/plugins/metisMenu/jquery.metisMenu.js"></script>
-        <script src="assets/plugins/pace/pace.js"></script>
-        <script src="assets/scripts/siminta.js"></script>
+        <script src="../assets/plugins/jquery-1.10.2.js"></script>
+        <script src="../assets/plugins/bootstrap/bootstrap.min.js"></script>
+        <script src="../assets/plugins/metisMenu/jquery.metisMenu.js"></script>
+        <script src="../assets/plugins/pace/pace.js"></script>
+        <script src="../assets/scripts/siminta.js"></script>
         <!-- Page-Level Plugin Scripts-->
-        <script src="assets/plugins/dataTables/jquery.dataTables.js"></script>
-        <script src="assets/plugins/dataTables/dataTables.bootstrap.js"></script>
+        <script src="../assets/plugins/dataTables/jquery.dataTables.js"></script>
+        <script src="../assets/plugins/dataTables/dataTables.bootstrap.js"></script>
         <script>
-                                             $(document).ready(function () {
-                                                 $('#dataTables-example').dataTable();
-                                             });
+            $(document).ready(function () {
+                $('#dataTables-example').dataTable();
+            });
         </script>
     </h:body>
 </html>
+
 
 
